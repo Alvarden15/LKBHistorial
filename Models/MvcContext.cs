@@ -12,7 +12,10 @@ namespace LKBHistorial.Models
 
         }
 
+        public DbSet<Perro> Perro{get;set;}
 
+        public DbSet<Deudor> Deudor { get; set; }
+        
 
     }
 }
