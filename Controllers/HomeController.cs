@@ -13,9 +13,7 @@ namespace LKBHistorial.Controllers
     public class HomeController : Controller
     {
         readonly MvcContext context;
-        public HomeController(MvcContext cont){
-            context=cont;
-        }
+       
 
         public IActionResult Index()
         {

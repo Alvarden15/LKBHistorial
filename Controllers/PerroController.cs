@@ -15,9 +15,8 @@ namespace LKBHistorial.Controllers
     {
         readonly MvcContext context;
 
-        public PerroController(MvcContext cont){
-            context=cont;
-        }
+      
+      
         
 
     }

@@ -15,9 +15,7 @@ namespace LKBHistorial.Controllers
     {
         readonly MvcContext context;
 
-        public DeudorController(MvcContext cont){
-            context=cont;
-        }
+      
 
         
         
