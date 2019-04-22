@@ -32,6 +32,8 @@ namespace LKBHistorial
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            
+            // Agregen este metodo para la inyección de dependencias
             services.AddDbContext<MvcContext>();
 
             services.AddMvc();

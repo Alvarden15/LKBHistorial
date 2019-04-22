@@ -20,6 +20,7 @@ namespace Models.MvcContext
         public DbSet<Celo> Celo { get; set; }
 
         public DbSet<Perro> Perro{get;set;}
+        public DbSet<Reproductora> Reproductora { get; set; }
 
         public DbSet<Deudor> Deudor { get; set; }
         
