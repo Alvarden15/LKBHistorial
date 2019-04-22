@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models.MvcContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Http;
 
 namespace LKBHistorial
 {
@@ -32,9 +33,12 @@ namespace LKBHistorial
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             // Agregen este metodo para la inyección de dependencias
-            services.AddDbContext<MvcContext>();
+            services.AddDbContext<MvcContext>();            
+            //services.AddDbContextPool<MvcContext>();
+            
+            services.AddHttpClient();
 
             services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

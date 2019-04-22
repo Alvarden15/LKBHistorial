@@ -47,7 +47,7 @@ namespace LKBHistorial.Controllers
             if(!String.IsNullOrEmpty(busqueda)){
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.NombrePerro==busqueda);
+                perros= perros.Where(m=>m.NombrePerro.Contains(busqueda));
             }
             return View(await _context.Perro.ToListAsync());
         }
@@ -55,9 +55,11 @@ namespace LKBHistorial.Controllers
         public async Task<IActionResult> ListaHembras(){
             return View(await _context.Reproductora.ToListAsync());
         }
-
+        
+        //El HttpPost se cambia el estado de la pagina que tiene el mismo nombre que la función
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
