@@ -52,6 +52,10 @@ namespace LKBHistorial.Controllers
             return View(await _context.Perro.ToListAsync());
         }
 
+        public async Task<IActionResult> ListaHembras(){
+            return View(await _context.Reproductora.ToListAsync());
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
