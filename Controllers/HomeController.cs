@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Models.MvcContext;
 
 namespace LKBHistorial.Controllers
 {
     public class HomeController : Controller
     {
-        readonly MvcContext context;
+    
+        private readonly MvcContext _context;
        
+        public HomeController(MvcContext context){
+            _context=context;
+        }
+
 
         public IActionResult Index()
         {
