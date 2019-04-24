@@ -2,18 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading.Tasks;   
+using System.Data.SqlClient;
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
-
+using Microsoft.Extensions.Caching.Memory;
 
 
 namespace LKBHistorial.Controllers
 {
     public class PerroController:Controller
     {
+        private IMemoryCache cache;
+
+        /* 
+         Esto es por si queremos agregar memoria cache:
+
+         public PerroController(MvcContext context, IMemoryCache memory){
+            _context=context;
+            cache=memory;
+        }
+        
+        */
+        
         private readonly MvcContext _context;
 
         public PerroController(MvcContext context){
@@ -68,6 +82,8 @@ namespace LKBHistorial.Controllers
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
+
+                    //if(!_context.Perro.Any(m=>m.IDPerro==perro.IDPerro || m.NombrePerro==perro.NombrePerro));
                    _context.Add(perro);
 
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función

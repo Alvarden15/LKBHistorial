@@ -13,6 +13,7 @@ using Models.MvcContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Http;
 
+
 namespace LKBHistorial
 {
     public class Startup
@@ -39,7 +40,7 @@ namespace LKBHistorial
             //services.AddDbContextPool<MvcContext>();
             
             services.AddHttpClient();
-
+            services.AddMemoryCache();
             services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
