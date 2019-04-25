@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Models.MvcContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Http;
-
+using System.Data.SqlClient;
 
 namespace LKBHistorial
 {
@@ -35,8 +35,11 @@ namespace LKBHistorial
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // Agregen este metodo para la inyección de dependencias
-            services.AddDbContext<MvcContext>();            
+            // Agregen estos metodos para la inyección de dependencias
+
+            /*services.AddDbContext<MvcContext>(options =>
+                   options.UseSqlServer(""));  */
+                       
             //services.AddDbContextPool<MvcContext>();
             
             services.AddHttpClient();
@@ -61,7 +64,7 @@ namespace LKBHistorial
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseExceptionHandler();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

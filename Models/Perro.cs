@@ -19,6 +19,9 @@ namespace LKBHistorial.Models
          [Required]
         public int Edad { get; set; }
 
+        [Required]
+        public string TipoPerro{get;set;}
+
         public String Padre { get; set; }
 
         public String Madre {get; set;}

@@ -27,7 +27,7 @@ namespace LKBHistorial.Controllers
         }
         
         */
-        
+
         private readonly MvcContext _context;
 
         public PerroController(MvcContext context){
@@ -54,14 +54,16 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ArbolGeneologico(String busqueda){
+        [HttpGet]
+        public async Task<IActionResult> ArbolGeneologico(String nombre, String tipo){
 
             // Se verifica que todo este en orden en la base de datos
             var perros= from m in _context.Perro select m;
-            if(!String.IsNullOrEmpty(busqueda)){
+            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.NombrePerro.Contains(busqueda));
+                perros= perros.Where(m=>m.NombrePerro.Contains(nombre,StringComparison.OrdinalIgnoreCase) 
+                || m.TipoPerro.Contains(tipo));
             }
             return View(await _context.Perro.ToListAsync());
         }
