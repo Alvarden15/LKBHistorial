@@ -79,7 +79,7 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("NombrePerro,Edad")]Perro perro){
+        public async Task<IActionResult> RegistrarPerro([Bind("IDPerro,NombrePerro,Edad")]Perro perro){
 
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
@@ -120,23 +120,12 @@ namespace LKBHistorial.Controllers
             }
             return View();
         }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarPrenada([Bind("IDPre,NombrePre")]Preñada Preñada){
-            if(ModelState.IsValid){
-                _context.Preñada.Add(Preñada);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-
-            return View(Preñada);
-        }
+        
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarPerro(int? id){
+        public async Task<IActionResult> EliminarPerro(String id){
 
             // Se verifica si una entidad esta registrada en la base de datos o no
             if(id==null){
@@ -152,7 +141,7 @@ namespace LKBHistorial.Controllers
         }
 
 
-        public async Task<IActionResult> ModificarPerro(int? id){
+        public async Task<IActionResult> ModificarPerro(String id){
 
             // Antes de entrar a la pagina de modificación se valida si esta en la tabla o no
             if(id==null){
@@ -169,7 +158,7 @@ namespace LKBHistorial.Controllers
         // En esta ocación se llama aqui al metodo que tiene los parametros
         [HttpPost,ActionName("EliminarPerro")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarEliminacion(int id){
+        public async Task<IActionResult> ConfirmarEliminacion(String id){
             var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
@@ -178,7 +167,7 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarPerro(int? id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
+        public async Task<IActionResult> ModificarPerro(String id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
             if(id!=perro.IDPerro){
                 return NotFound();
             }
@@ -206,7 +195,7 @@ namespace LKBHistorial.Controllers
 
 
         // Se ve si es que la entidad con el campo asignado se encuentra en la base de datos
-        bool VerificarPerro(int id){
+        bool VerificarPerro(String id){
             return _context.Perro.Any(m=>m.IDPerro==id);
         }
 
