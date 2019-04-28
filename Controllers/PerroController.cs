@@ -99,20 +99,12 @@ namespace LKBHistorial.Controllers
             return View(perro);
         }
         
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarCelada([Bind("IDCelo,NombreCelo")]Celo celo){
-            if(ModelState.IsValid){
-                _context.Celo.Add(celo);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            return View();
-        }
+       
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarReproductora([Bind("IDRepro, NombreRepro")]Reproductora Reproductora){
+        public async Task<IActionResult> RegistrarReproductora
+            ([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
             if(ModelState.IsValid){
                 _context.Reproductora.Add(Reproductora);
                 await _context.SaveChangesAsync();

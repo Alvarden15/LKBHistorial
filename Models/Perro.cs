@@ -28,6 +28,13 @@ namespace LKBHistorial.Models
 
         public String  AbueloPaterno { get; set; }
 
+
+        public List<Reproductora> Reproductora { get; set; }
+
+        public Perro(){
+            Reproductora=new List<Reproductora>();
+        }
+
         
 
     }

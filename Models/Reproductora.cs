@@ -12,6 +12,12 @@ namespace LKBHistorial.Models
         [Key]
         public int IDReproductora { get; set; }
 
+        public Perro Perro { get; set; }
+
+        public int IDPerro{get; set;}
+
+        public DateTime Fecha{get;set;}
+
         
     }
 }
