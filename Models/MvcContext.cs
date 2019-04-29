@@ -15,7 +15,6 @@ namespace Models.MvcContext
         }
 
 
-
         public DbSet<Celo> Celo { get; set; }
 
         public DbSet<Perro> Perro{get;set;}

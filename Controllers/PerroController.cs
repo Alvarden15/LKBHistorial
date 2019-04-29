@@ -132,6 +132,18 @@ namespace LKBHistorial.Controllers
             return View(perros);
         }
 
+        public async Task<IActionResult> DetallesPerro(String id){
+            if(id==null){
+                return NotFound();
+            }
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro.Contains(id));
+            if(perros==null){
+                return NotFound();
+            }
+
+            return View(perros);
+        }
+
 
         public async Task<IActionResult> ModificarPerro(String id){
 

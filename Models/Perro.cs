@@ -16,18 +16,21 @@ namespace LKBHistorial.Models
         
         public String NombrePerro { get; set; }
 
-         [Required]
-        public int Edad { get; set; }
+        public String Temperamiento { get; set; }
+
+        [Required]
+        public DateTime FechaNacimiento { get; set; }
 
         [Required]
         public string TipoPerro{get;set;}
 
+        public String Estatura { get; set; }
+        
+        public String Criadero { get; set; }
+
         public String Padre { get; set; }
 
         public String Madre {get; set;}
-
-        public String  AbueloPaterno { get; set; }
-
 
         public List<Reproductora> Reproductora { get; set; }
 
