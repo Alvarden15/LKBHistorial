@@ -18,11 +18,16 @@ namespace LKBHistorial.Models
 
         public String Temperamiento { get; set; }
 
+        public int Microchip {get; set;}
+
         [Required]
         public DateTime FechaNacimiento { get; set; }
 
         [Required]
-        public string TipoPerro{get;set;}
+        public String TipoPerro{get;set;}
+
+        [Required]
+        public String Raza{get; set;}
 
         public String Estatura { get; set; }
         
@@ -33,6 +38,8 @@ namespace LKBHistorial.Models
         public String Madre {get; set;}
 
         public List<Reproductora> Reproductora { get; set; }
+        
+        public Byte[] Imagen{get; set;}
 
         public Perro(){
             Reproductora=new List<Reproductora>();

@@ -12,5 +12,6 @@ namespace LKBHistorial.Models
         public int IDCelo { get; set; }
 
         
+        
     }
 }

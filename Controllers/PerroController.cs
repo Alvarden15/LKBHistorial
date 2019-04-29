@@ -10,6 +10,7 @@ using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
+using System.IO;
 
 
 namespace LKBHistorial.Controllers
