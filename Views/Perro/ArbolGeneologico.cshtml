@@ -13,12 +13,26 @@ sobre este (y porque en el backend se demanda uno al hacer ToList)-->
 
     <body>
         <div class="row">
+
+            <div class="col-md-12">
+                <form asp-controller="Perro" asp-action="ArbolGeneologico">
+                    <label>Buscar</label>
+                    <!--Aqui se define los inputs con nombre que lo enlazaran con el controller-->
+                    <input type="text" name="nombre">
+                    <input type="text" name="tipo">
+                </form>
+            </div>
             @foreach (var item in Model)
             {
                 <div class="col-md-5">
-                    
+                    <h2>@Html.DisplayFor(modelItem=>item.NombrePerro)</h2>
+                    <p>@Html.DisplayFor(modelItem=>item.Raza)</p>
 
-
+                </div>
+                <div class="col-md-1">
+                    <li>
+                        <a asp-action="DetallesPerro" asp-route-id="@item.IDPerro"></a>
+                    </li>
                 </div>
 
             }

@@ -106,8 +106,7 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarReproductora
-            ([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
+        public async Task<IActionResult> RegistrarReproductora([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
             if(ModelState.IsValid){
                 _context.Reproductora.Add(Reproductora);
                 await _context.SaveChangesAsync();
