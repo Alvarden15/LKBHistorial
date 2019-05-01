@@ -31,7 +31,8 @@ sobre este (y porque en el backend se demanda uno al hacer ToList)-->
                 </div>
                 <div class="col-md-1">
                     <li>
-                        <a asp-action="DetallesPerro" asp-route-id="@item.IDPerro"></a>
+                        <!--En caso no funcione: <a asp-action="DetallesPerro" asp-route-idperro="@item.IDPerro"></a>-->
+                        <a asp-action="DetallesPerro" asp-route-idperro="@item.IDPerro"> Detalles del perro</a>
                     </li>
                 </div>
 

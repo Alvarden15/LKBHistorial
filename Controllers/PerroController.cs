@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;   
-using System.Data.SqlClient;
+using System.IO;
+using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using LKBHistorial.Models;
@@ -13,6 +13,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 
 
 namespace LKBHistorial.Controllers
@@ -20,6 +21,7 @@ namespace LKBHistorial.Controllers
     public class PerroController:Controller
     {
         private IMemoryCache cache;
+        private String filelocation="";
 
         /* 
          Esto es por si queremos agregar memoria cache:
@@ -207,7 +209,25 @@ namespace LKBHistorial.Controllers
         
 
         // Transforma los bytes almacenados en la base de datos en un link de la imagen
-    
+        public async Task<bool> registrar(IFormFile file){
+            
+            if(file!=null && file.Length>0){
+                try{
+                     var name=Path.GetFileName(file.FileName);
+                     var path=Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\images",name);
+                     filelocation=path;
+                    using (var filestream=new FileStream(path, FileMode.Create)){
+                        await file.CopyToAsync(filestream);
+                    }
+                }catch(Exception e){
+                    ViewBag.ErrorImagen="Error: "+e.Message.ToString();
+                }
+               
+                return true;
+
+            }
+            return false;
+        }
 
     }
 }
