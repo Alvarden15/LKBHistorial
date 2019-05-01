@@ -19,20 +19,37 @@
             <div class="col-md-4">
                 <form asp-action="RegistrarPerro" asp-controller="Perro">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="form-group">
+                        <label>Codigo de perro</label>
+                        <input type="text" asp-for="IDPerro" class="form-control">
+                        <span asp-asp-validation-for="IDPerro"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre de perro</label>
+                        <!--pon aqui un input, defines que tipo de input es, 
+                         pones el asp-for para enlazarlo con un atributo, y le asignas una clase
+                         -->
+                       <input type="text" asp-for="NombrePerro" class="form-control">
+                       <!--Esto se usa para mostrar algun mensaje de error
+                        -->
+                       <span asp-asp-validation-for="NombrePerro"></span>
+
+                    <div class="form-group">
+
+                   
+                    </div>
+
                     <div class="form-group">
 
                     </div>
-                    <div class="form-group">
 
+                    <div class="form-group">
+                        
                     </div>
-                    <div class="form-group">
-
-                    </div>
-                    <div class="form-group">
-
-                    </div>
-                    <div class="form-group">
-
+                     <div class="form-group">
+                        <input type="submit" value="Registrar Perro" class="btn btn-default">
                     </div>
 
                 </form>
@@ -43,7 +60,7 @@
 
         </div>
 
-         <form asp-action="Index" asp-controller="Home" >
+         <form asp-action="ArbolGeneonlogico" >
             <input type="button" value="Regresar" class="btn btn-secondary">
         </form>
        

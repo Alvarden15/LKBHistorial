@@ -1,4 +1,7 @@
-@model LKBHistorial.Models.Perro
+<!-- Para el listado se pone un IEnumerable para tener mayor control
+sobre este (y porque en el backend se demanda uno al hacer ToList)-->
+
+@model IEnumerable<LKBHistorial.Models.Perro>
 
 <html>
     <head>
@@ -10,10 +13,21 @@
 
     <body>
         <div class="row">
-            
+            @foreach (var item in Model)
+            {
+                <div class="col-md-5">
+                    
 
+
+                </div>
+
+            }
 
         </div>
+
+         <form asp-action="Index" asp-controller="Home" >
+            <input type="button" value="Regresar" class="btn btn-secondary">
+        </form>
 
     </body>
 

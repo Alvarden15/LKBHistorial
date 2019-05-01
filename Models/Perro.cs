@@ -21,6 +21,7 @@ namespace LKBHistorial.Models
         public int Microchip {get; set;}
 
         [Required]
+        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaNacimiento { get; set; }
 
         [Required]
@@ -39,7 +40,7 @@ namespace LKBHistorial.Models
 
         public List<Reproductora> Reproductora { get; set; }
         
-        public Byte[] Imagen{get; set;}
+        public String Imagen{get; set;}
 
         public Perro(){
             Reproductora=new List<Reproductora>();

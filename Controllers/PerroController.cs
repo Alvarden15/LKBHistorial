@@ -10,7 +10,9 @@ using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
-using System.IO;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.AspNetCore.Authentication;
 
 
 namespace LKBHistorial.Controllers
@@ -203,6 +205,10 @@ namespace LKBHistorial.Controllers
         bool VerificarPerro(String id){
             return _context.Perro.Any(m=>m.IDPerro==id);
         }
+        
+
+        // Transforma los bytes almacenados en la base de datos en un link de la imagen
+    
 
     }
 }
