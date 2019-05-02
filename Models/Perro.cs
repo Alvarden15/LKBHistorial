@@ -42,6 +42,8 @@ namespace LKBHistorial.Models
         
         public String Imagen{get; set;}
 
+        
+
         public Perro(){
             Reproductora=new List<Reproductora>();
         }
