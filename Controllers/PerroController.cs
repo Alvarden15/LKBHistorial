@@ -86,12 +86,15 @@ namespace LKBHistorial.Controllers
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("IDPerro,NombrePerro,Edad")]Perro perro, IFormFile imag){
             
-            var verificar=registrarImagen(imag);
+            
             
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
-                    perro.Imagen=filelocation;
+                    var verificar= await registrarImagen(imag);
+                    if(verificar){
+                         perro.Imagen=filelocation;
+                    }                 
                     //if(!_context.Perro.Any(m=>m.IDPerro==perro.IDPerro || m.NombrePerro==perro.NombrePerro));
                    _context.Add(perro);
 
@@ -212,7 +215,7 @@ namespace LKBHistorial.Controllers
 
         // Transforma los bytes almacenados en la base de datos en un link de la imagen
         public async Task<bool> registrarImagen(IFormFile file){
-            
+          
             if(file!=null && file.Length>0){
                 try{
                      var name=Path.GetFileName(file.FileName);
