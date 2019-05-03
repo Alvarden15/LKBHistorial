@@ -25,6 +25,7 @@ sobre este (y porque en el backend se demanda uno al hacer ToList)-->
             @foreach (var item in Model)
             {
                 <div class="col-md-5">
+                    <img src="Url.Content(item.Imagen)" height="250" width="200"/>
                     <h2>@Html.DisplayFor(modelItem=>item.NombrePerro)</h2>
                     <p>@Html.DisplayFor(modelItem=>item.Raza)</p>
 
