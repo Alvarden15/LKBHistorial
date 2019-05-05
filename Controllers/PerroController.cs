@@ -68,7 +68,7 @@ namespace LKBHistorial.Controllers
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
                 perros= perros.Where(m=>m.NombrePerro.Contains(nombre,StringComparison.OrdinalIgnoreCase) 
-                || m.TipoPerro.Contains(tipo));
+               );
             }
             return View(await _context.Perro.ToListAsync());
         }

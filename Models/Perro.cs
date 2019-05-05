@@ -15,14 +15,7 @@ namespace LKBHistorial.Models
         
         public String NombrePerro { get; set; }
 
-        public String Temperamiento { get; set; }
-
-        public int Microchip {get; set;}
-
-        
-
-        [Required]
-        public String TipoPerro{get;set;}
+        public Perro_Adulto Perro_Adulto { get; set; }
 
         public Raza_Perro Raza_Perro { get; set; }
 

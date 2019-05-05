@@ -17,6 +17,8 @@ namespace LKBHistorial.Models
 
         public int Altura { get; set; }
 
+        
+
 
     }
 }
