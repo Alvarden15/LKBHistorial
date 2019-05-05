@@ -20,8 +20,8 @@ namespace LKBHistorial.Controllers
 {
     public class PerroController:Controller
     {
-        private IMemoryCache cache;
-        private String filelocation="";
+        //private IMemoryCache cache;
+        //private String filelocation="";
 
         /* 
          Esto es por si queremos agregar memoria cache:
@@ -87,7 +87,7 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("IDPerro,NombrePerro,Edad")]Perro perro, IFormFile imag){
+        public async Task<IActionResult> RegistrarPerro([Bind("ID,NombrePerro,Raza_PerroID,Dueno_actual,Sexo,Fecha_nacimiento")]Perro perro, IFormFile imag){
             
             
             
@@ -136,7 +136,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro==id);
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
 
             if(perros==null){
                 return NotFound();
@@ -149,7 +149,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro.Contains(id));
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.ID.Contains(id));
             if(perros==null){
                 return NotFound();
             }
@@ -165,7 +165,7 @@ namespace LKBHistorial.Controllers
                 return NotFound();
             }
 
-            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro==id);
+            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
             if(perro==null){
                 return NotFound();
             }
@@ -176,7 +176,7 @@ namespace LKBHistorial.Controllers
         [HttpPost,ActionName("EliminarPerro")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmarEliminacion(String id){
-            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.IDPerro==id);
+            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index","Home");
@@ -185,7 +185,7 @@ namespace LKBHistorial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModificarPerro(String id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
-            if(id!=perro.IDPerro){
+            if(id!=perro.ID){
                 return NotFound();
             }
 
@@ -196,7 +196,7 @@ namespace LKBHistorial.Controllers
                 _context.Perro.Update(perro);
                 await _context.SaveChangesAsync();
                }catch(DbUpdateConcurrencyException){
-                if(!VerificarPerro(perro.IDPerro)){
+                if(!VerificarPerro(perro.ID)){
                     return NotFound();
                 }else{
                     throw;
@@ -213,7 +213,7 @@ namespace LKBHistorial.Controllers
 
         // Se ve si es que la entidad con el campo asignado se encuentra en la base de datos
         bool VerificarPerro(String id){
-            return _context.Perro.Any(m=>m.IDPerro==id);
+            return _context.Perro.Any(m=>m.ID==id);
         }
         
 

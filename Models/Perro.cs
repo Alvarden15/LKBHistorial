@@ -9,7 +9,7 @@ namespace LKBHistorial.Models
     public class Perro
     {
         [Key]
-        public String IDPerro { get; set; }
+        public String ID { get; set; }
 
         [Required]
         
@@ -21,21 +21,27 @@ namespace LKBHistorial.Models
 
         public int Raza_PerroID { get; set; }
 
-        public List<Reproductora> Reproductora { get; set; }
-
         public List<Perro_Criadero> Perro_Criadero{get; set;}
+
+        public List<Perro_Lunada> Perro_Lunada{get;set;}
+
+        public List<Perro_Prenada> Perro_Prenada { get; set; }
+        
+        public String Dueno_actual { get; set; }
 
         public String Sexo { get; set; }
         
         [Required]
         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime Fecha_nacimiento { get; set; }
         
         
 
         public Perro(){
-            Reproductora=new List<Reproductora>();
+            
             Perro_Criadero=new List<Perro_Criadero>();
+            Perro_Lunada= new List<Perro_Lunada>();
+            Perro_Prenada= new List<Perro_Prenada>();
         }
 
         
