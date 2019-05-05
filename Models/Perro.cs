@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace LKBHistorial.Models
 {
     public class Perro
@@ -20,32 +19,30 @@ namespace LKBHistorial.Models
 
         public int Microchip {get; set;}
 
-        [Required]
-        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
-        public DateTime FechaNacimiento { get; set; }
+        
 
         [Required]
         public String TipoPerro{get;set;}
 
-        [Required]
-        public String Raza{get; set;}
+        public Raza_Perro Raza_Perro { get; set; }
 
-        public String Estatura { get; set; }
-        
-        public String Criadero { get; set; }
-
-        public String Padre { get; set; }
-
-        public String Madre {get; set;}
+        public int Raza_PerroID { get; set; }
 
         public List<Reproductora> Reproductora { get; set; }
-        
-        public String Imagen{get; set;}
 
+        public List<Perro_Criadero> Perro_Criadero{get; set;}
+
+        public String Sexo { get; set; }
+        
+        [Required]
+        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
+        public DateTime FechaNacimiento { get; set; }
+        
         
 
         public Perro(){
             Reproductora=new List<Reproductora>();
+            Perro_Criadero=new List<Perro_Criadero>();
         }
 
         

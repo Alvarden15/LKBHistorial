@@ -6,9 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LKBHistorial.Models
 {
-    
-    public class Deudor
+    public class Tipo_Parto
     {
-        
+        [Key]
+        public int ID { get; set; }
+
+        public String Tipo { get; set; }
+
     }
 }

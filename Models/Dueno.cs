@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LKBHistorial.Models
 {
-    public class Reproductora
+    public class Dueno
     {
         [Key]
-        public int IDReproductora { get; set; }
+        public int ID { get; set; }
 
-        public Perro Perro { get; set; }
+        public String Nombre { get; set; }
 
-        public int IDPerro{get; set;}
+        public String Apellido_paterno { get; set; }
 
-        public DateTime Fecha{get;set;}
+        public String Apellido_materno { get; set; }
 
-        
+
     }
 }

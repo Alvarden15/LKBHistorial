@@ -73,9 +73,12 @@ namespace LKBHistorial.Controllers
             return View(await _context.Perro.ToListAsync());
         }
 
+        /*
         public async Task<IActionResult> ListaHembras(){
             return View(await _context.Reproductora.ToListAsync());
         }
+         */
+        
         
         //El HttpPost se cambia el estado de la pagina que tiene el mismo nombre que la función
         [HttpPost]
@@ -91,10 +94,7 @@ namespace LKBHistorial.Controllers
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
-                    var verificar= await registrarImagen(imag);
-                    if(verificar){
-                         perro.Imagen=filelocation;
-                    }                 
+                                
                     //if(!_context.Perro.Any(m=>m.IDPerro==perro.IDPerro || m.NombrePerro==perro.NombrePerro));
                    _context.Add(perro);
 
@@ -111,6 +111,7 @@ namespace LKBHistorial.Controllers
         
        
 
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarReproductora([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
@@ -121,6 +122,9 @@ namespace LKBHistorial.Controllers
             }
             return View();
         }
+        
+        
+         */
         
 
 
@@ -214,6 +218,7 @@ namespace LKBHistorial.Controllers
         
 
         // Transforma los bytes almacenados en la base de datos en un link de la imagen
+        /*
         public async Task<bool> registrarImagen(IFormFile file){
           
             if(file!=null && file.Length>0){
@@ -233,6 +238,9 @@ namespace LKBHistorial.Controllers
             }
             return false;
         }
+        
+         */
+        
 
     }
 }

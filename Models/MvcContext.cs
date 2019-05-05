@@ -18,9 +18,24 @@ namespace Models.MvcContext
         public DbSet<Celo> Celo { get; set; }
 
         public DbSet<Perro> Perro{get;set;}
-        public DbSet<Reproductora> Reproductora { get; set; }
 
         public DbSet<Deudor> Deudor { get; set; }
+
+        public DbSet<Dueno> Dueno{get; set;}
+
+        public DbSet<Criadero> Criadero { get; set; }
+
+        public DbSet<Perro_Adulto> Perro_Adulto { get; set; }
+
+        public DbSet<Lunada> Lunada { get; set; }
+
+        public DbSet<Prenada> Prenada{get; set;}
+
+        public DbSet<Raza_Perro> Raza_Perro{get; set;}
+
+        public DbSet<Tipo_Monta> Tipo_Monta { get; set; }
+
+        public DbSet<Tipo_Parto> Tipo_Parto { get; set; }
         
 
     }
