@@ -130,13 +130,13 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EliminarPerro(String id){
+        public async Task<IActionResult> EliminarPerro(int? id){
 
             // Se verifica si una entidad esta registrada en la base de datos o no
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
 
             if(perros==null){
                 return NotFound();
@@ -145,11 +145,11 @@ namespace LKBHistorial.Controllers
             return View(perros);
         }
 
-        public async Task<IActionResult> DetallesPerro(String id){
+        public async Task<IActionResult> DetallesPerro(int? id){
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.id.Contains(id));
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==(id));
             if(perros==null){
                 return NotFound();
             }
@@ -158,14 +158,14 @@ namespace LKBHistorial.Controllers
         }
 
 
-        public async Task<IActionResult> ModificarPerro(String id){
+        public async Task<IActionResult> ModificarPerro(int? id){
 
             // Antes de entrar a la pagina de modificación se valida si esta en la tabla o no
             if(id==null){
                 return NotFound();
             }
 
-            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
+            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
             if(perro==null){
                 return NotFound();
             }
@@ -175,8 +175,8 @@ namespace LKBHistorial.Controllers
         // En esta ocación se llama aqui al metodo que tiene los parametros
         [HttpPost,ActionName("EliminarPerro")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarEliminacion(String id){
-            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
+        public async Task<IActionResult> ConfirmarEliminacion(int id){
+            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index","Home");
@@ -184,8 +184,8 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarPerro(String id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
-            if(id!=perro.id){
+        public async Task<IActionResult> ModificarPerro(int? id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
+            if(id!=perro.Id){
                 return NotFound();
             }
 
@@ -196,7 +196,7 @@ namespace LKBHistorial.Controllers
                 _context.Perro.Update(perro);
                 await _context.SaveChangesAsync();
                }catch(DbUpdateConcurrencyException){
-                if(!VerificarPerro(perro.id)){
+                if(!VerificarPerro(perro.Id)){
                     return NotFound();
                 }else{
                     throw;
@@ -212,8 +212,8 @@ namespace LKBHistorial.Controllers
 
 
         // Se ve si es que la entidad con el campo asignado se encuentra en la base de datos
-        bool VerificarPerro(String id){
-            return _context.Perro.Any(m=>m.id==id);
+        bool VerificarPerro(int id){
+            return _context.Perro.Any(m=>m.Id==id);
         }
         
 
