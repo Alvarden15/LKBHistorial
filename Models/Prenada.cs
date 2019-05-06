@@ -10,7 +10,7 @@ namespace LKBHistorial.Models
     {
         public int ID { get; set; }
 
-        public Tipo_Monta Tipo_Monta{get; set;}
+        public TipoMonta TipoMonta{get; set;}
 
         public int Tipo_MontaID {get; set;}
 
@@ -20,7 +20,7 @@ namespace LKBHistorial.Models
 
         public String Fecha_fin { get; set; }
 
-        public Tipo_Parto Tipo_Parto { get; set; }
+        public TipoParto TipoParto { get; set; }
 
         public int Tipo_PartoID { get; set; }
 

@@ -15,10 +15,10 @@ namespace Models.MvcContext
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<Dueno_Criadero>().HasKey(sc=>new{sc.id_criadero, sc.id_dueno});
-            modelBuilder.Entity<Perro_Criadero>().HasKey(sc=>new{sc.CriaderoID,sc.PerroID});
-            modelBuilder.Entity<Perro_Prenada>().HasKey(sc=>new{sc.PerroID,sc.PrenadaID});
-            modelBuilder.Entity<Perro_Lunada>().HasKey(sc=>new{sc.PerroID,sc.LunadaID});
+            //modelBuilder.Entity<DuenoCriadero>().HasKey(sc=>new{sc.id_criadero, sc.id_dueno});
+           // modelBuilder.Entity<PerroCriadero>().HasKey(sc=>new{sc.CriaderoID,sc.PerroID});
+            //modelBuilder.Entity<PerroPrenada>().HasKey(sc=>new{sc.PerroID,sc.PrenadaID});
+            //modelBuilder.Entity<PerroLunada>().HasKey(sc=>new{sc.PerroID,sc.LunadaID});
 
         }
 
@@ -33,17 +33,17 @@ namespace Models.MvcContext
 
         public DbSet<Criadero> Criadero { get; set; }
 
-        public DbSet<Perro_Adulto> Perro_Adulto { get; set; }
+        public DbSet<PerroAdulto> PerroAdulto { get; set; }
 
         public DbSet<Lunada> Lunada { get; set; }
 
         public DbSet<Prenada> Prenada{get; set;}
 
-        public DbSet<Raza_Perro> Raza_Perro{get; set;}
+        public DbSet<RazaPerro> RazaPerro{get; set;}
 
-        public DbSet<Tipo_Monta> Tipo_Monta { get; set; }
+        public DbSet<TipoMonta> TipoMonta { get; set; }
 
-        public DbSet<Tipo_Parto> Tipo_Parto { get; set; }
+        public DbSet<TipoParto> TipoParto { get; set; }
         
 
     }

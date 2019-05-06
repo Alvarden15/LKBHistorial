@@ -15,9 +15,9 @@ namespace LKBHistorial.Models
         
         public String NombrePerro { get; set; }
 
-        public Perro_Adulto Perro_Adulto { get; set; }
+        public PerroAdulto PerroAdulto { get; set; }
 
-        public Raza_Perro Raza_Perro { get; set; }
+        public RazaPerro RazaPerro { get; set; }
 
         public int Raza_PerroID { get; set; }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LKBHistorial.Models
 {
-    public class Tipo_Monta
+    public class TipoMonta
     {
         [Key]
         public int ID { get; set; }
