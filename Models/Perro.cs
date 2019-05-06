@@ -21,11 +21,11 @@ namespace LKBHistorial.Models
 
         public int Raza_PerroID { get; set; }
 
-        public List<Perro_Criadero> Perro_Criadero{get; set;}
+        public List<PerroCriadero> PerroCriadero{get; set;}
 
-        public List<Perro_Lunada> Perro_Lunada{get;set;}
+        public List<PerroLunada> PerroLunada{get;set;}
 
-        public List<Perro_Prenada> Perro_Prenada { get; set; }
+        public List<PerroPrenada> PerroPrenada { get; set; }
         
         public String Dueno_actual { get; set; }
 
@@ -39,9 +39,9 @@ namespace LKBHistorial.Models
 
         public Perro(){
             
-            Perro_Criadero=new List<Perro_Criadero>();
-            Perro_Lunada= new List<Perro_Lunada>();
-            Perro_Prenada= new List<Perro_Prenada>();
+            PerroCriadero=new List<PerroCriadero>();
+            PerroLunada= new List<PerroLunada>();
+            PerroPrenada= new List<PerroPrenada>();
         }
 
         

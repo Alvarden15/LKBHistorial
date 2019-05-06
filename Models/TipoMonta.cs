@@ -9,10 +9,15 @@ namespace LKBHistorial.Models
     public class TipoMonta
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public String Tipo { get; set; }
+        public string Tipo { get; set; }
 
+        public List<Prenada> Prenada{get; set;}
+
+        public TipoMonta(){
+            Prenada= new List<Prenada>();
+        }
 
     }
 }

@@ -37,11 +37,11 @@ namespace LKBHistorial
 
             // Agregen estos metodos para la inyección de dependencias
 
-            /*services.AddDbContext<MvcContext>(options =>
-                   options.UseSqlServer(""));  */
+            /*  */
                        
             //services.AddDbContextPool<MvcContext>();
-            
+            services.AddDbContext<MvcContext>(options =>
+                   options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddHttpClient();
             services.AddMemoryCache();
             services.AddMvc();

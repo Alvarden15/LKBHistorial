@@ -23,10 +23,10 @@ namespace LKBHistorial.Models
         [Required]
         public String Calle { get; set; }
 
-        public List<Perro_Criadero> Perro_Criadero {get; set;}
+        public List<PerroCriadero> PerroCriadero {get; set;}
 
         public Criadero(){
-            Perro_Criadero= new List<Perro_Criadero>();
+            PerroCriadero= new List<PerroCriadero>();
         }
         
 

@@ -11,11 +11,11 @@ namespace LKBHistorial.Models
         public Perro Perro { get; set; }
 
         [Key]
-        public int PerroID { get; set; }
+        public int Id { get; set; }
 
-        public int Temperatura { get; set; }
+        public string Temperamento{ get; set; }
 
-        public int Altura { get; set; }
+        public string Estatura { get; set; }
 
         
 

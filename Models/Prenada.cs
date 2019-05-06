@@ -12,26 +12,26 @@ namespace LKBHistorial.Models
 
         public TipoMonta TipoMonta{get; set;}
 
-        public int Tipo_MontaID {get; set;}
+        public int IdMonta {get; set;}
 
-        public int Cantidad_inseminadas { get; set; }
+        public int CantidadInseminadas { get; set; }
 
-        public String Fecha_inicio { get; set; }
+        public DateTime FechaInicio { get; set; }
 
-        public String Fecha_fin { get; set; }
+        public DateTime FechaFin { get; set; }
 
         public TipoParto TipoParto { get; set; }
 
-        public int Tipo_PartoID { get; set; }
+        public int IdParto{ get; set; }
 
         public String FechaCesaria { get; set; }
 
-        public int Numero_camadas { get; set; }
+        public int NumeroCamadas { get; set; }
 
-        public List<Perro_Prenada> Perro_Prenada { get; set; }
+        public List<PerroPrenada> PerroPrenada { get; set; }
 
         public Prenada(){
-            Perro_Prenada= new List<Perro_Prenada>();
+            PerroPrenada= new List<PerroPrenada>();
         }
 
     }

@@ -6,16 +6,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LKBHistorial.Models
 {
-    public class Perro_Lunada
+    public class DuenoCriadero
     {
-        public Perro Perro { get; set; }
 
-        public Lunada Lunada { get; set; }
+        public Dueno Dueno { get; set; }
 
-        public int PerroID { get; set; }
+        public Criadero Criadero { get; set; }
 
-        public int LunadaID { get; set; }
-
+        public int IdDueno { get; set; }
+        
+        public int IdCriadero { get; set; }
         
     }
 }

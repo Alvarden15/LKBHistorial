@@ -9,9 +9,9 @@ namespace LKBHistorial.Models
     public class RazaPerro
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public String Raza { get; set; }
+        public string Raza { get; set; }
 
         public List<Perro> Perro {get; set;}
 

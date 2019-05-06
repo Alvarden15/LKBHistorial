@@ -13,9 +13,11 @@ namespace LKBHistorial.Models
 
         public String Nombre { get; set; }
 
-        public String Apellido_paterno { get; set; }
+        public String ApellidoPaterno { get; set; }
 
-        public String Apellido_materno { get; set; }
+        public String ApellidoMaterno { get; set; }
+
+        public string Celular{get; set;}
 
 
     }
