@@ -15,8 +15,9 @@ namespace LKBHistorial.Models
         [ForeignKey("id_prenada")]
         public Prenada Prenada { get; set; }
 
+        [Column("id_Perro")]
         public int IdPerro { get; set; }
-
+        [Column("id_Prenada")]
         public int IdPrenada { get; set; }
         
         

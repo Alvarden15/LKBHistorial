@@ -12,12 +12,11 @@ namespace LKBHistorial.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        
+
         public PerroAdulto PerroAdulto { get; set; }
         
-        [ForeignKey("IdRaza")]
-       
-        public RazaPerro Raza { get; set; }
+        [ForeignKey("IdRaza")]      
+        public RazaPerro RazaPerro { get; set; }
 
         [Column("id_raza")]
         public int IdRazaPerro { get; set; }

@@ -87,7 +87,7 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("ID,NombrePerro,Raza_PerroID,Dueno_actual,Sexo,Fecha_nacimiento")]Perro perro, IFormFile imag){
+        public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRazaPerro,DuenoActual,Sexo,FechaNacimiento")]Perro perro){
             
             
             

@@ -12,9 +12,9 @@ namespace LKBHistorial.Models
         public Perro Perro { get; set; }
 
         public Lunada Lunada { get; set; }
-
+        [Column("id_Perro")]
         public int IdPerro { get; set; }
-
+        [Column("id_Lunada")]
         public int IdLunada { get; set; }
 
         

@@ -10,11 +10,13 @@ namespace LKBHistorial.Models
     public class RazaPerro
     {
         [Key]
+        [Column("id")]
         public int Id { get; set; }
 
+         [Column("raza")]
         public string Raza { get; set; }
 
-        [InverseProperty("Raza")]
+        
         public List<Perro> Perro {get; set;}
 
         public RazaPerro(){
