@@ -9,7 +9,7 @@ namespace LKBHistorial.Models
     public class Perro
     {
         [Key]
-        public String ID { get; set; }
+        public String id { get; set; }
 
         [Required]
         

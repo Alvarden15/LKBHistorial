@@ -15,7 +15,7 @@ namespace Models.MvcContext
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<Dueno_Criadero>().HasKey(sc=>new{sc.CriaderoID, sc.DuenoID});
+            modelBuilder.Entity<Dueno_Criadero>().HasKey(sc=>new{sc.id_criadero, sc.id_dueno});
             modelBuilder.Entity<Perro_Criadero>().HasKey(sc=>new{sc.CriaderoID,sc.PerroID});
             modelBuilder.Entity<Perro_Prenada>().HasKey(sc=>new{sc.PerroID,sc.PrenadaID});
             modelBuilder.Entity<Perro_Lunada>().HasKey(sc=>new{sc.PerroID,sc.LunadaID});

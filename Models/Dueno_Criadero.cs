@@ -13,9 +13,9 @@ namespace LKBHistorial.Models
 
         public Criadero Criadero { get; set; }
 
-        public int DuenoID { get; set; }
+        public int id_dueno { get; set; }
         
-        public int CriaderoID { get; set; }
+        public int id_criadero { get; set; }
         
     }
 }

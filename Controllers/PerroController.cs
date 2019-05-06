@@ -136,7 +136,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
 
             if(perros==null){
                 return NotFound();
@@ -149,7 +149,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.ID.Contains(id));
+            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.id.Contains(id));
             if(perros==null){
                 return NotFound();
             }
@@ -165,7 +165,7 @@ namespace LKBHistorial.Controllers
                 return NotFound();
             }
 
-            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
+            var perro=await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
             if(perro==null){
                 return NotFound();
             }
@@ -176,7 +176,7 @@ namespace LKBHistorial.Controllers
         [HttpPost,ActionName("EliminarPerro")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmarEliminacion(String id){
-            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.ID==id);
+            var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.id==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index","Home");
@@ -185,7 +185,7 @@ namespace LKBHistorial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModificarPerro(String id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
-            if(id!=perro.ID){
+            if(id!=perro.id){
                 return NotFound();
             }
 
@@ -196,7 +196,7 @@ namespace LKBHistorial.Controllers
                 _context.Perro.Update(perro);
                 await _context.SaveChangesAsync();
                }catch(DbUpdateConcurrencyException){
-                if(!VerificarPerro(perro.ID)){
+                if(!VerificarPerro(perro.id)){
                     return NotFound();
                 }else{
                     throw;
@@ -213,7 +213,7 @@ namespace LKBHistorial.Controllers
 
         // Se ve si es que la entidad con el campo asignado se encuentra en la base de datos
         bool VerificarPerro(String id){
-            return _context.Perro.Any(m=>m.ID==id);
+            return _context.Perro.Any(m=>m.id==id);
         }
         
 
