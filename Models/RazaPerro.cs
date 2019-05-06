@@ -14,6 +14,7 @@ namespace LKBHistorial.Models
 
         public string Raza { get; set; }
 
+        [InverseProperty("Raza")]
         public List<Perro> Perro {get; set;}
 
         public RazaPerro(){

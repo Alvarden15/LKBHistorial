@@ -12,14 +12,12 @@ namespace LKBHistorial.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        [Required]
-        [Column("nombre")]
-        public string NombrePerro { get; set; }
-
+        
         public PerroAdulto PerroAdulto { get; set; }
-
-        public RazaPerro RazaPerro { get; set; }
+        
+        [ForeignKey("IdRaza")]
+       
+        public RazaPerro Raza { get; set; }
 
         [Column("id_raza")]
         public int IdRazaPerro { get; set; }
@@ -34,6 +32,7 @@ namespace LKBHistorial.Models
         public string DuenoActual { get; set; }
 
         [Column("sexo")]
+        [Required]
         public string Sexo { get; set; }
         
         [Required]

@@ -60,14 +60,14 @@ namespace LKBHistorial.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ArbolGeneologico(String nombre, String tipo){
+        public async Task<IActionResult> ArbolGeneologico(int? id,String nombre, String tipo){
 
             // Se verifica que todo este en orden en la base de datos
             var perros= from m in _context.Perro select m;
             if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.NombrePerro.Contains(nombre,StringComparison.OrdinalIgnoreCase) 
+                perros= perros.Where(m=>m.Id==id 
                );
             }
             return View(await _context.Perro.ToListAsync());
