@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LKBHistorial.Models
 {
     public class Lunada
     {
-        public int ID { get; set; }
-
-        public String Fecha_inicio { get; set; }
-
-        public String Fecha_fin { get; set; }
-
-        public int Numero_celos { get; set; }
+        [Key]
+        [Column("id")]
+        public int Id { get; set; }
+        [Column("fecha_inicio", TypeName = "date")]
+        public DateTime FechaInicio { get; set; }
+        [Column("fecha_fin", TypeName = "date")]
+        public DateTime FechaFin { get; set; }
+        [Column("numero_celos")]
+        public int NumeroCelos { get; set; }
 
         public List<PerroLunada> PerroLunada { get; set; }
 

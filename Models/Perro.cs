@@ -3,37 +3,43 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LKBHistorial.Models
 {
     public class Perro
     {
         [Key]
+        [Column("id")]
         public int Id { get; set; }
 
         [Required]
-        
-        public String NombrePerro { get; set; }
+        [Column("nombre")]
+        public string NombrePerro { get; set; }
 
         public PerroAdulto PerroAdulto { get; set; }
 
         public RazaPerro RazaPerro { get; set; }
 
-        public int Raza_PerroID { get; set; }
+        [Column("id_raza")]
+        public int IdRazaPerro { get; set; }
 
         public List<PerroCriadero> PerroCriadero{get; set;}
 
         public List<PerroLunada> PerroLunada{get;set;}
 
         public List<PerroPrenada> PerroPrenada { get; set; }
-        
-        public String Dueno_actual { get; set; }
+        [Required]
+        [Column("dueno_actual")]
+        public string DuenoActual { get; set; }
 
-        public String Sexo { get; set; }
+        [Column("sexo")]
+        public string Sexo { get; set; }
         
         [Required]
         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
-        public DateTime Fecha_nacimiento { get; set; }
+        [Column("fecha_nacimiento")]
+        public DateTime FechaNacimiento { get; set; }
         
         
 
