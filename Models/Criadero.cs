@@ -10,7 +10,7 @@ namespace LKBHistorial.Models
     public class Criadero
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [Column("nombre")]

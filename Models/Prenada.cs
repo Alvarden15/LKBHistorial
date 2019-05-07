@@ -10,6 +10,7 @@ namespace LKBHistorial.Models
     public class Prenada
     {
         [Column("id")]
+        [Key]
         public int Id { get; set; }
 
         public TipoMonta TipoMonta{get; set;}

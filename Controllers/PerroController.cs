@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
@@ -14,7 +15,6 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-
 
 namespace LKBHistorial.Controllers
 {
@@ -32,19 +32,28 @@ namespace LKBHistorial.Controllers
         }
         
         */
-
+       
         private readonly MvcContext _context;
+
+        private SelectList perros;
 
         public PerroController(MvcContext context){
             _context=context;
         }
 
+        //Se genera la lista de perros mediante la llave foranea
+        public void ListarPerros(){
+            perros= new SelectList(_context.Perro,"Id","");
+            
+            //Como se hacia esto?
+            //ViewBag.ListaPerros= new SelectList("d","Pro");
+        }
 
         public IActionResult RegistrarPerro(){
 
             return View();
         }
-        public IActionResult RegistrarCelada(){
+        public IActionResult RegistrarLunada(){
             return View();
         }
 
@@ -56,6 +65,14 @@ namespace LKBHistorial.Controllers
             return View();
         }
         public IActionResult BorrarPerro(){
+            return View();
+        }
+
+        public IActionResult RegistrarDueno(){
+            return View();
+        }
+
+        public IActionResult RegistrarCriadero(){
             return View();
         }
 
@@ -72,6 +89,8 @@ namespace LKBHistorial.Controllers
             }
             return View(await _context.Perro.ToListAsync());
         }
+
+        
 
         /*
         public async Task<IActionResult> ListaHembras(){
@@ -108,7 +127,51 @@ namespace LKBHistorial.Controllers
 
             return View(perro);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarDueno([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno,Celular")]Dueno dueno){
+            if(ModelState.IsValid){
+                _context.Dueno.Add(dueno);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("");
+            }
+            return View(dueno);
+        }
         
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarPrenada([Bind("Id,IdMonta,CantidadInseminada,FechaInicio,FechaFin,IdParto,FechaCesaria,NumeroCamadas")]Prenada prenada){
+            if(ModelState.IsValid){
+                _context.Prenada.Add(prenada);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("");
+            }
+            return View(prenada);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarLunada([Bind("Id,FechaInicio,FechaFin,NumeroCelos")]Lunada lunada){
+            if(ModelState.IsValid){
+                _context.Lunada.Add(lunada);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("");
+            }
+            return View(lunada);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarCriadero([Bind("Id,Nombre,Departamento,Distrito,Calle")]Criadero criadero){
+            if(ModelState.IsValid){
+                _context.Criadero.Add(criadero);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("");
+            }
+            return View(criadero);
+        }
+
        
 
         /*
