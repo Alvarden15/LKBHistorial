@@ -172,6 +172,24 @@ namespace LKBHistorial.Controllers
             return View(criadero);
         }
 
+        public async Task<IActionResult> ListarCriadero(){
+
+            
+            return View(await _context.Criadero.ToListAsync());
+        }
+
+        public async Task<IActionResult> ListarPrenadas(){
+            return View(await _context.Prenada.ToListAsync());
+        }
+
+        
+        public async Task<IActionResult> ListarLunadas(){
+            return View(await _context.Lunada.ToListAsync());
+        }
+
+         public async Task<IActionResult> ListarDuenos(){
+            return View(await _context.Dueno.ToListAsync());
+        }
        
 
         /*
