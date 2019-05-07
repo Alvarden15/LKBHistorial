@@ -49,6 +49,8 @@ namespace LKBHistorial.Controllers
             //ViewBag.ListaPerros= new SelectList("d","Pro");
         }
 
+        /*Las paginas en si (que no son de listado) */
+
         public IActionResult RegistrarPerro(){
 
             return View();
@@ -98,6 +100,7 @@ namespace LKBHistorial.Controllers
         }
          */
         
+        /*Desde aqui estarán los registros */
         
         //El HttpPost se cambia el estado de la pagina que tiene el mismo nombre que la función
         [HttpPost]
@@ -172,6 +175,8 @@ namespace LKBHistorial.Controllers
             return View(criadero);
         }
 
+        /*Desde aquí estan los listados */
+
         public async Task<IActionResult> ListarCriadero(){
 
             
@@ -207,8 +212,9 @@ namespace LKBHistorial.Controllers
         
          */
         
+        /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
 
-
+        //Para las pagina de eliminar
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminarPerro(int? id){
@@ -225,7 +231,8 @@ namespace LKBHistorial.Controllers
 
             return View(perros);
         }
-
+        
+        //Para las paginas de los detalles
         public async Task<IActionResult> DetallesPerro(int? id){
             if(id==null){
                 return NotFound();
@@ -238,7 +245,7 @@ namespace LKBHistorial.Controllers
             return View(perros);
         }
 
-
+        //Para las paginas de modificaciones
         public async Task<IActionResult> ModificarPerro(int? id){
 
             // Antes de entrar a la pagina de modificación se valida si esta en la tabla o no
@@ -253,6 +260,10 @@ namespace LKBHistorial.Controllers
 
             return View(perro);
         }
+
+        /*Las operaciones en si */
+
+        //Eliminacion
         // En esta ocación se llama aqui al metodo que tiene los parametros
         [HttpPost,ActionName("EliminarPerro")]
         [ValidateAntiForgeryToken]
@@ -263,6 +274,7 @@ namespace LKBHistorial.Controllers
             return RedirectToAction("Index","Home");
         }
 
+        //Modificacion
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModificarPerro(int? id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
