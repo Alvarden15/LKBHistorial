@@ -9,10 +9,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Models.MvcContext;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Http;
-using System.Data.SqlClient;
 
 namespace LKBHistorial
 {
@@ -35,17 +31,8 @@ namespace LKBHistorial
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // Agregen estos metodos para la inyección de dependencias
 
-            /*  */
-                       
-            //services.AddDbContextPool<MvcContext>();
-            services.AddDbContext<MvcContext>(options =>
-                   options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            services.AddHttpClient();
-            services.AddMemoryCache();
-            services.AddMvc();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,20 +41,18 @@ namespace LKBHistorial
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
-                
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseExceptionHandler();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
