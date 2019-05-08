@@ -13,8 +13,10 @@ namespace LKBHistorial.Models
         [Column("id")]
         public int Id { get; set; }
         [Column("fecha_inicio", TypeName = "date")]
+         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaInicio { get; set; }
         [Column("fecha_fin", TypeName = "date")]
+         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaFin { get; set; }
         [Column("numero_celos")]
         public int NumeroCelos { get; set; }

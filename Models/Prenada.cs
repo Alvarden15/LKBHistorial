@@ -19,8 +19,10 @@ namespace LKBHistorial.Models
         [Column("cantidad_inseminadas")]
         public int CantidadInseminadas { get; set; }
         [Column("fecha_inicio", TypeName = "date")]
+         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaInicio { get; set; }
         [Column("fecha_fin", TypeName = "date")]
+         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaFin { get; set; }
 
         public TipoParto TipoParto { get; set; }
