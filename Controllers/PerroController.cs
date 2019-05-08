@@ -11,8 +11,7 @@ using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 
