@@ -11,7 +11,6 @@ using LKBHistorial.Models;
 using Microsoft.EntityFrameworkCore;
 using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
-
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 
@@ -30,8 +29,7 @@ namespace LKBHistorial.Controllers
             cache=memory;
         }
         
-        */
-       
+        */ 
         private readonly MvcContext _context;
 
         private SelectList perros;
@@ -77,22 +75,6 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ArbolGeneologico(int? id,String nombre, String tipo){
-
-            // Se verifica que todo este en orden en la base de datos
-            var perros= from m in _context.Perro select m;
-            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
-
-                // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.Id==id 
-               );
-            }
-            return View(await _context.Perro.ToListAsync());
-        }
-
-        
-
         /*
         public async Task<IActionResult> ListaHembras(){
             return View(await _context.Reproductora.ToListAsync());
@@ -101,7 +83,8 @@ namespace LKBHistorial.Controllers
         
         /*Desde aqui estarán los registros */
         
-        //El HttpPost se cambia el estado de la pagina que tiene el mismo nombre que la función
+        //El HttpPost asegura que realice una petición post
+        //El ValidateAntiForgeryToken permite aplicar la validación de modelos
         [HttpPost]
         [ValidateAntiForgeryToken]
 
@@ -109,21 +92,17 @@ namespace LKBHistorial.Controllers
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRazaPerro,DuenoActual,Sexo,FechaNacimiento")]Perro perro){
-            
-            
-            
+
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
-                                
-                    //if(!_context.Perro.Any(m=>m.IDPerro==perro.IDPerro || m.NombrePerro==perro.NombrePerro));
                    _context.Add(perro);
 
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función
                    await _context.SaveChangesAsync();
 
                    // El RedirectToAction te envia a una pagina en especifico una vez hecha la operación
-                   // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida"
+                   // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
                    return RedirectToAction("Index","Home");
                 }
 
@@ -194,22 +173,6 @@ namespace LKBHistorial.Controllers
          public async Task<IActionResult> ListarDuenos(){
             return View(await _context.Dueno.ToListAsync());
         }
-       
-
-        /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarReproductora([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
-            if(ModelState.IsValid){
-                _context.Reproductora.Add(Reproductora);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            return View();
-        }
-        
-        
-         */
         
         /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
 
@@ -236,6 +199,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
+            //Se verifica si esta presente en la tabla
             var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==(id));
             if(perros==null){
                 return NotFound();
@@ -307,7 +271,36 @@ namespace LKBHistorial.Controllers
         bool VerificarPerro(int id){
             return _context.Perro.Any(m=>m.Id==id);
         }
-        
+
+        //Comando que puede que esten o no en el entregable
+
+         /*
+         [HttpGet]
+        public async Task<IActionResult> ArbolGeneologico(int? id,String nombre, String tipo){
+            // Se verifica que todo este en orden en la base de datos
+            var perros= from m in _context.Perro select m;
+            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
+
+                // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
+                perros= perros.Where(m=>m.Id==id 
+               );
+            }
+           return View(await _context.Perro.ToListAsync());
+        }
+         */
+
+          /*
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarReproductora([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
+            if(ModelState.IsValid){
+                _context.Reproductora.Add(Reproductora);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index","Home");
+            }
+            return View();
+        }
+         */ 
 
         // Transforma los bytes almacenados en la base de datos en un link de la imagen
         /*

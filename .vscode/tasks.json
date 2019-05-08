@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/KLBHistoria.csproj"
+                "${workspaceFolder}/KLBHistorial.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
