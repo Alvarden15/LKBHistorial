@@ -36,8 +36,8 @@ namespace LKBHistorial
            
 
             services.AddMvc();
-            services.AddDbContext<MvcContext>(options=>
-                            options.UseSqlServer(Configuration.GetConnectionStrings("Default")));
+            services.AddDbContext<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+                            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
