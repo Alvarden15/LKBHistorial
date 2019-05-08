@@ -155,6 +155,16 @@ namespace LKBHistorial.Controllers
 
         /*Desde aquí estan los listados */
 
+        public async Task<IActionResult> ListaPerros(String nombre, int raza){
+            var perros= from m in _context.Perro select m;
+            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
+
+                // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
+                perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRazaPerro==raza );
+            }
+            return View(await _context.Perro.ToListAsync());
+        }
+
         public async Task<IActionResult> ListarCriadero(){
 
             
