@@ -104,3 +104,5 @@ obj/Debug/netcoreapp2.2/Razor/Views/Shared/Error.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Shared/_CookieConsentPartial.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Shared/_ValidationScriptsPartial.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriadero.g.cshtml.cs
+obj/Debug/netcoreapp2.2/project.razor.json
