@@ -13,17 +13,24 @@
     <div class="row">
         <div class="col-md-5">
             <form asp-action="RegistrarLunada" asp-controller="Perro">
+                <label>Selecciona hembra:</label>
                 <div class="form-control">
-
+                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro"></select>
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha de inicio</label>
+                    <input type="date" asp-for="FechaInicio">
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha final</label>
+                    <input type="date" asp-for="FechaFin">
                 </div>
                 <div class="form-control">
-
+                    <label>Numero de celos (sin contar actual)</label>
+                    <input type="number" asp-for="NumeroCelos">
+                </div>
+                <div class="form-control">
+                    <input type="submit" value="Registrar Lunada" class="btn btn-primary">
                 </div>
             </form>
         </div>
