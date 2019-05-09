@@ -32,6 +32,7 @@ namespace LKBHistorial.Models
         [InverseProperty("CriadorOriginal")]
         public List<Perro> PerroOriginal{get; set;}
 
+       
         public Criadero Criadero{get; set;}
 
         [Column("id_Criadero")]
