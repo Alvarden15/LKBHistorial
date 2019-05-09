@@ -88,7 +88,7 @@ namespace LKBHistorial.Models
         public Perro(){
             Lunada= new List<Lunada>();
             Prenada= new List<Prenada>();
-            IdetificarPadre= new List<Perro>();
+            IdentificarPadre= new List<Perro>();
             IdentificarMadre= new List<Perro>();
 
         }
