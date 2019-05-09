@@ -12,52 +12,64 @@ namespace LKBHistorial.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-
-        public string Nombre {get; set;}
-
-        public PerroAdulto PerroAdulto { get; set; }
-        
-        [ForeignKey("IdRaza")]      
         public RazaPerro RazaPerro { get; set; }
 
         [Column("id_raza")]
-        public int IdRazaPerro { get; set; }
-
-        public PerroCriadero Criadero{get; set;}
-
-        public int IdCriadero{get;set;}
-
-        public Dueno Dueno{get; set;}
-
-        public int IdDueno{get; set;}
-
-        public List<PerroLunada> PerroLunada{get;set;}
-
-        public List<PerroPrenada> PerroPrenada { get; set; }
-        [Required]
-        [Column("dueno_actual")]
-        public string DuenoActual { get; set; }
+        public int IdRaza { get; set; }
 
         [Column("sexo")]
         [Required]
         public string Sexo { get; set; }
-        
+
         [Required]
         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
-        [Column("fecha_nacimiento")]
+        [Column("fecha_nacimiento", TypeName = "date")]
         public DateTime FechaNacimiento { get; set; }
 
-        public string Padre{get; set;}
-
-        public string Madre{get; set;}
+        [Required]
+        [Column("nombre")]
+        public string Nombre {get; set;}
         
+        [Required]
+        [Column("madurez")]
+        public string Madurez { get; set; }
+
+        [Column("temperamento")]
+        [StringLength(50)]
+        public string Temperamento { get; set; }
+
+        [Column("id_Tipo_Estatura")]
+        public int IdEstatura { get; set; }
+        [Column("id_Criador_Actual")]
+        public int IdCriadorActual { get; set; }
+
+        [Column("id_Criador_Original")]
+        public int IdCriadorOriginal { get; set; }
+
+        [Column("id_Criadero")]
+        public int IdCriadero{ get; set; }
+        [Column("id_Perro_Padre")]
+        public int IdPadre { get; set; }
+        [Column("id_Perro_Madre")]
+        public int IdMadre { get; set; }
+
+        public Criadero Criadero{get; set;}
+
+        [InverseProperty("PerroActual")]
+        public Criador CriadorActual{get;set;}
+        [InverseProperty("PerroOriginal")]
+        public Criador CriadorOriginal{get; set;}
+
+        public List<Lunada> Lunada{ get; set;}
+
+        public List<Prenada> Prenada{get; set;}
+
+
         
 
         public Perro(){
-            
-           
-            PerroLunada= new List<PerroLunada>();
-            PerroPrenada= new List<PerroPrenada>();
+            Lunada= new List<Lunada>();
+            Prenada= new List<Prenada>();
         }
 
         

@@ -7,19 +7,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LKBHistorial.Models
 {
-    public class TipoMonta
+    public class TipoEstatura
     {
+
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        [Column("tipo")]
-        public string Tipo { get; set; }
 
-        public List<Prenada> Prenada{get; set;}
+        [Required]
+        [Column("tipo_estatura")]
+        [StringLength(10)]
+        public string TipoEstatura { get; set; }
 
-        public TipoMonta(){
-            Prenada= new List<Prenada>();
+        public List<Perro> Perro{get; set;}
+
+
+        public TipoEstatura(){
+            Perro= new List<Perro>();
         }
-
     }
 }

@@ -31,9 +31,7 @@ namespace Models.MvcContext
 
         public DbSet<RazaPerro> RazaPerro{get; set;}
 
-        public DbSet<TipoMonta> TipoMonta { get; set; }
-
-        public DbSet<TipoParto> TipoParto { get; set; }
+     
         
 
     }

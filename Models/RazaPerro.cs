@@ -13,7 +13,7 @@ namespace LKBHistorial.Models
         [Column("id")]
         public int Id { get; set; }
 
-         [Column("raza")]
+        [Column("raza")]
         public string Raza { get; set; }
 
         

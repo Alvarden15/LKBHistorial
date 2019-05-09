@@ -22,24 +22,34 @@
                 <form asp-action="RegistrarCriadero" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <input type="number">
+                        <label>Numero de criadero</label>
+                        <input type="number" asp-for="Id" class="form-control">
+                        <span asp-validation-for="Id" class="text-danger"></span>
 
                     </div>
                      <div class="form-group">
-                        <input type="text">
+                         <label>Nombre de criadero</label>
+                        <input type="text" asp-for="Nombre" class="form-control">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
                     
                     </div>
                      <div class="form-group">
+                        <label>Departamento de criadero</label>
+                        <input type="text" asp-for="Departamento" class="form-control">
+                        <span asp-validation-for="Departamento" class="text-danger"></span>
 
-                    
                     </div>
                      <div class="form-group">
+                         <label>Distrito de criadero</label>
+                        <input type="text" asp-for="Distrito" class="form-control">
+                        <span asp-validation-for="Distrito" class="text-danger"></span>
 
-                    
                     </div>
                     <div class="form-group">
+                        <label>Calle de criadero</label>
+                        <input type="text" asp-for="Calle" class="form-control">
+                        <span asp-validation-for="Calle" class="text-danger"></span>
 
-                    
                     </div>
                     <div class="form-group">
                       <input type="submit" id="Boton" value="Registrar Criadero" class="btn btn-default">                   
@@ -49,6 +59,13 @@
                 
             </div>   
 
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <form asp-action="Index" asp-controller="Home">
+                    <input type="submit" value="Regresar">
+                </form>
+            </div>
         </div>
 
 

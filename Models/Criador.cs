@@ -23,13 +23,22 @@ namespace LKBHistorial.Models
         public string ApellidoMaterno { get; set; }
 
         [Required]
-        [Column("celular")]
-        public string Celular{get; set;}
+        [Column("telefono")]
+        public string Telefono{get; set;}
 
-        public List<Perro> Perro{get; set;}      
+        [InverseProperty("CriadorActual")]
+        public List<Perro> PerroOriginal{get; set;}
+        [InverseProperty("CriadorOriginal")]
+        public List<Perro> PerroActual{get; set;}
+
+        public Criadero Criadero{get; set;}
+
+        [Column("id_Criadero")]
+        public int IdCriadero{get; set;}      
 
         public Dueno(){
-           Perro= new List<Perro>();
+           PerroOriginal= new List<Perro>();
+           PerroActual= new List<Perro>();
         }
 
 

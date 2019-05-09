@@ -125,7 +125,7 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarCriador([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno,Celular")]Criador criador){
+        public async Task<IActionResult> RegistrarCriador([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno,Telefono,IdCriadero")]Criador criador){
             if(ModelState.IsValid){
                 _context.Criador.Add(criador);
                 await _context.SaveChangesAsync();
@@ -162,7 +162,7 @@ namespace LKBHistorial.Controllers
             if(ModelState.IsValid){
                 _context.Criadero.Add(criadero);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("");
+                return RedirectToAction("Index","Home");
             }
             return View(criadero);
         }
@@ -174,7 +174,7 @@ namespace LKBHistorial.Controllers
             if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRazaPerro==raza );
+                perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
             }
             return View(await _context.Perro.ToListAsync());
         }
