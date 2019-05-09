@@ -36,10 +36,17 @@ namespace LKBHistorial.Controllers
             _context=context;
         }
 
-        //Se genera la lista de perros mediante la llave foranea
+        //Se genera los listados de los registros mediante la llave foranea
         public void ListadoPerros(){
+            //Se hace un listado primero
             var perros= _context.Perro.ToList();
-            ViewBag.ListPerros= new SelectList(perros,"Id","Nombre");
+            //Luego se crea un ViewBag tipo SelectList, con el campo que leerá y en campo que mostrará
+            ViewBag.ListaPerros= new SelectList(perros,"Id","Nombre");
+        }
+
+        public void ListadoEstatura(){
+            var estaturas= _context.TipoEstatura.ToList();
+            ViewBag.Estaturas=new SelectList(estaturas,"Id","Estatura");
         }
 
         public void ListadoCriaderos(){
@@ -57,6 +64,16 @@ namespace LKBHistorial.Controllers
             ViewBag.Razas= new SelectList(razas,"Id","Tipo");
         }
 
+        public void ListadoHembras(){
+            var hembras=_context.Perro.Where(m=>m.Sexo.Contains("H"));
+            ViewBag.Hembras=new SelectList(hembras,"Id","Nombre");
+        }
+
+        public void ListadoMachos(){
+            var machos=_context.Perro.Where(o=>o.Sexo.Contains("M"));
+            ViewBag.Machos=new SelectList(machos,"Id","Nombre");
+        }
+
         /*Las paginas en si (que no son de listado) */
 
         public IActionResult RegistrarPerro(){
@@ -67,12 +84,12 @@ namespace LKBHistorial.Controllers
             return View();
         }
         public IActionResult RegistrarLunada(){
-            ListadoPerros();
+            ListadoHembras();
             return View();
         }
 
         public IActionResult RegistrarPrenada(){
-            ListadoPerros();
+            ListadoHembras();
             return View();
         }
         public IActionResult BorrarPerro(){
@@ -145,7 +162,7 @@ namespace LKBHistorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
-            ListadoPerros();
+            ListadoHembras();
             return View(prenada);
         }
 
@@ -157,7 +174,7 @@ namespace LKBHistorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
-            ListadoPerros();
+            ListadoHembras();
             return View(lunada);
         }
 

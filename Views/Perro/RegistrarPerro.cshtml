@@ -27,9 +27,14 @@
             <div class="col-md-4">
                 <form asp-action="RegistrarPerro" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    
+                     <div class="form-group">
+                        <select asp-for="Madurez">
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Adulto">Adulto</option>
+                        </select>
+                    </div>
                     <div class="form-group">
-                        <label>Codigo de perro</label>
+                        <label>Microchip</label>
                         <input type="text" asp-for="Id" class="form-control">
                         <span asp-asp-validation-for="Id" class="text-danger"></span>
                     </div>
@@ -45,15 +50,31 @@
                        <span asp-asp-validation-for="Nombre"></span>
 
                     <div class="form-group">
-                        <label></label>
+                        <label>Nombre del criador (Original)</label>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal"></select>
                          
+                   
+                    </div>
+                     <div class="form-group">
+                        <label>Nombre del criador (Actual)</label>
+                         <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
+                   
+                    </div>
+                     <div class="form-group">
+                        <label>Nombre del criadero</label>
+                          <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
+                   
+                    </div>
+                     <div class="form-group">
+                        <label>Raza</label>
+                         <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
                    
                     </div>
 
                     <div class="form-group">
                         <select asp-for="Sexo">
-                            <option value="m">Macho</option>
-                             <option value="h">Hembra</option>
+                            <option value="M">Macho</option>
+                             <option value="H">Hembra</option>
                         </select>
                         
                     </div>
@@ -64,19 +85,34 @@
                        
                     </div>
 
-                    <div class="form-group">
-                        <label>Madurez</label>
-                        <select asp-for="Madurez">
-                            <option value="Cachorro">Cachorro</option>
-                            <option value="Adulto">Adulto</option>
-                        </select>
-                       
+                
                     </div>
 
                      <div class="form-group">
-                        <label>Fecha de Nacimiento</label>
-                        <input type="date" asp-for="FechaNacimiento" class="form-control">
-                      
+                        <label>Padre</label>
+                         <select asp-items="ViewBag.Machos" asp-for="IdPadre"></select>
+                   
+                    </div>
+                    <div class="form-group">
+                        <label>Madre</label>
+                         <select asp-items="ViewBag.Hembras" asp-for="IdMadre"></select>
+                   
+                    </div>
+
+                    <div class="form-group">
+                        <label>Temperamento</label>
+                        <select asp-for="Temperamento">
+                            <option value="Docil"></option>
+                            <option value="Relajado"></option>
+                            <option value="Moderado"></option>
+                            <option value="Agresivo"></option>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Estatura</label>
+                        <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
                     </div>
 
                      <div class="form-group">
