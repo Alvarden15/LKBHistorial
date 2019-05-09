@@ -39,23 +39,28 @@
                         <!--pon aqui un input, defines que tipo de input es, 
                          pones el asp-for para enlazarlo con un atributo, y le asignas una clase
                          -->
-                       <input type="text" class="form-control">
+                       <input type="text" asp-for="Nombre" class="form-control">
                        <!--Esto se usa para mostrar algun mensaje de error
                         -->
-                       <span ></span>
+                       <span asp-asp-validation-for="Nombre"></span>
 
                     <div class="form-group">
-
+                        <label></label>
+                         
                    
                     </div>
 
                     <div class="form-group">
-
+                        <select asp-for="Sexo">
+                            <option value="m">Macho</option>
+                             <option value="h">Hembra</option>
+                        </select>
+                        
                     </div>
 
                     <div class="form-group">
                         <label>Subir imagen</label>
-                        <input type="file" name="imag">
+                       
                     </div>
                      <div class="form-group">
                         <input type="submit" value="Registrar Perro" class="btn btn-default">

@@ -144,11 +144,11 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarLunada([Bind("Id,FechaInicio,FechaFin,NumeroCelos")]Lunada lunada){
+        public async Task<IActionResult> RegistrarLunada([Bind("Id,FechaInicio,FechaFin,NumeroCelos,IdPerro")]Lunada lunada){
             if(ModelState.IsValid){
                 _context.Lunada.Add(lunada);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("");
+                return RedirectToAction("Index","Home");
             }
             return View(lunada);
         }

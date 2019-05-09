@@ -15,15 +15,11 @@ namespace Models.MvcContext
         }
 
 
-
         public DbSet<Perro> Perro{get;set;}
-
-
 
         public DbSet<Criadero> Criadero { get; set; }
 
         public DbSet<Criador> Criador {get; set;}
-
 
         public DbSet<Lunada> Lunada { get; set; }
 
@@ -31,8 +27,7 @@ namespace Models.MvcContext
 
         public DbSet<RazaPerro> RazaPerro{get; set;}
 
-     
+        public DbSet<TipoEstatura> TipoEstatura{get; set;}
         
-
     }
 }

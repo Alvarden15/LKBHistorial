@@ -12,27 +12,37 @@ namespace LKBHistorial.Models
         [Column("id")]
         [Key]
         public int Id { get; set; }
-
-        [Column("id_monta")]
-        public int IdMonta {get; set;}
+        
         [Column("cantidad_inseminadas")]
         public int CantidadInseminadas { get; set; }
+
         [Column("fecha_inicio", TypeName = "date")]
-         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
+        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaInicio { get; set; }
+
         [Column("fecha_fin", TypeName = "date")]
-         [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
+        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaFin { get; set; }
 
+        [Required]
+        [Column("tipo_parto")]
+        [StringLength(12)]
+        public string TipoParto { get; set; }
+
         [Column("fecha_cesarea", TypeName = "date")]
-        public DateTime FechaCesaria { get; set; }
+        public DateTime? FechaCesaria { get; set; }
+
+        [Column("fecha_parto_normal", TypeName = "date")]
+        public DateTime? FechaPartoNormal { get; set; }
+
         [Column("numero_camadas")]
         public int NumeroCamadas { get; set; }
 
+        public Perro Perro{get; set;}
 
-        public Prenada(){
-            
-        }
+        [Column("id_Perro")]
+        public int IdPerro{get; set;}
+
 
     }
 }
