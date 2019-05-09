@@ -19,6 +19,7 @@ namespace LKBHistorial.Models
 
         [Column("sexo")]
         [Required]
+         [StringLength(1)]
         public string Sexo { get; set; }
 
         [Required]
@@ -28,10 +29,12 @@ namespace LKBHistorial.Models
 
         [Required]
         [Column("nombre")]
+        [StringLength(20)]
         public string Nombre {get; set;}
         
         [Required]
         [Column("madurez")]
+        [StringLength(8)]
         public string Madurez { get; set; }
 
         [Column("temperamento")]
@@ -61,16 +64,32 @@ namespace LKBHistorial.Models
         [InverseProperty("PerroOriginal")]
         public Criador CriadorOriginal{get; set;}
 
+        public TipoEstatura TipoEstatura{get; set;}
+
         public List<Lunada> Lunada{ get; set;}
 
         public List<Prenada> Prenada{get; set;}
 
+        [InverseProperty("Padre")]
+        public List<Perro> IdetificarPadre{get; set;}
+
+        [InverseProperty("IdentificarPadre")]
+        public Perro Padre{get; set;}
+
+        [InverseProperty("Madre")]
+        public List<Perro> IdentificarMadre{get; set;}
+        
+        [InverseProperty("IdentificarMadre")]
+        public Perro Madre{get; set;}
 
         
-
+        
         public Perro(){
             Lunada= new List<Lunada>();
             Prenada= new List<Prenada>();
+            IdetificarPadre= new List<Perro>();
+            IdentificarMadre= new List<Perro>();
+
         }
 
         

@@ -14,6 +14,7 @@ namespace LKBHistorial.Models
         public int Id { get; set; }
 
         [Column("raza")]
+        [StringLength(20)]
         public string Raza { get; set; }
 
         

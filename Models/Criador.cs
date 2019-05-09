@@ -28,6 +28,7 @@ namespace LKBHistorial.Models
 
         [InverseProperty("CriadorActual")]
         public List<Perro> PerroActual{get; set;}
+        
         [InverseProperty("CriadorOriginal")]
         public List<Perro> PerroOriginal{get; set;}
 
