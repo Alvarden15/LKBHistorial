@@ -42,9 +42,6 @@ namespace LKBHistorial.Controllers
         public void ListarPerros(){
             var perros= _context.Perros.ToListAsync();
             ViewBag.ListPerros= new SelectList(perros,"Id","Nombre");
-            
-            //Como se hacia esto?
-            //ViewBag.ListaPerros= new SelectList("d","Pro");
         }
 
 
@@ -66,7 +63,9 @@ namespace LKBHistorial.Controllers
         /*Las paginas en si (que no son de listado) */
 
         public IActionResult RegistrarPerro(){
-
+            ListadoCriaderos();
+            ListadoCriadores();
+            ListadoRazas();
             return View();
         }
         public IActionResult RegistrarLunada(){
@@ -76,15 +75,11 @@ namespace LKBHistorial.Controllers
         public IActionResult RegistrarPrenada(){
             return View();
         }
-
-        public IActionResult RegistrarReproductora(){
-            return View();
-        }
         public IActionResult BorrarPerro(){
             return View();
         }
 
-        public IActionResult RegistrarDueno(){
+        public IActionResult RegistrarCriador(){
             return View();
         }
 
@@ -109,7 +104,7 @@ namespace LKBHistorial.Controllers
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("Id,Nombre,IdRazaPerro,IdCriadero,IdDueno,DuenoActual,Sexo,FechaNacimiento,Padre,Madre")]Perro perro){
-
+            
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
@@ -122,15 +117,17 @@ namespace LKBHistorial.Controllers
                    // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
                    return RedirectToAction("Index","Home");
                 }
-
+            ListadoCriaderos();
+            ListadoCriadores();
+            ListadoRazas();
             return View(perro);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarDueno([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno,Celular")]Dueno dueno){
+        public async Task<IActionResult> RegistrarCriador([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno,Celular")]Criador criador){
             if(ModelState.IsValid){
-                _context.Dueno.Add(dueno);
+                _context.Criador.Add(criador);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("");
             }

@@ -14,24 +14,16 @@ namespace Models.MvcContext
 
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<DuenoCriadero>().HasKey(sc=>new{sc.IdCriadero, sc.IdDueno});
-            modelBuilder.Entity<PerroCriadero>().HasKey(sc=>new{sc.IdCriadero,sc.IdPerro});
-            modelBuilder.Entity<PerroPrenada>().HasKey(sc=>new{sc.IdPerro,sc.IdPrenada});
-            modelBuilder.Entity<PerroLunada>().HasKey(sc=>new{sc.IdPerro,sc.IdLunada});
-
-        }
 
 
         public DbSet<Perro> Perro{get;set;}
 
-        public DbSet<Deudor> Deudor { get; set; }
 
-        public DbSet<Dueno> Dueno{get; set;}
 
         public DbSet<Criadero> Criadero { get; set; }
 
-        public DbSet<PerroAdulto> PerroAdulto { get; set; }
+        public DbSet<Criador> Criador {get; set;}
+
 
         public DbSet<Lunada> Lunada { get; set; }
 

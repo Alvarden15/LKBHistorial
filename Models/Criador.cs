@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LKBHistorial.Models
 {
-    public class Dueno
+    public class Criador
     {
         [Key]
         [Column("id")]
@@ -26,10 +26,10 @@ namespace LKBHistorial.Models
         [Column("celular")]
         public string Celular{get; set;}
 
-        public List<DuenoCriadero> DuenoCriadero{get; set;}
+        public List<Perro> Perro{get; set;}      
 
         public Dueno(){
-            DuenoCriadero= new List<DuenoCriadero>();
+           Perro= new List<Perro>();
         }
 
 
