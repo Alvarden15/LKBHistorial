@@ -1,5 +1,81 @@
-
+@model LKBHistorial.Models.Criador
 
 @{
     ViewData["Title"]="Registrar Criador";
 }
+
+<html>
+    <script type="text/javascript">
+        $("#Boton").confirm("Quieres realizar el registro?");
+        function confirmar(){
+            
+        }
+
+    </script>
+
+    <head>
+
+
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="col-md-4"> 
+                <form asp-action="RegistrarCriador" asp-controller="Perro" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                         <label>Numero de criador</label>
+                        <input type="number" asp-for="Id" class="form-control">
+                        
+
+                     <div class="form-group">
+                         <label>Nombre de criador</label>
+                        <input type="text" asp-for="Nombre" class="form-control">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    
+                    </div>
+                     <div class="form-group">
+                        <label>Apellido Paterno</label>
+                        <input type="text" asp-for="ApellidoPaterno" class="form-control">
+                        <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
+
+                    </div>
+                     <div class="form-group">
+                         <label>Apellido Materno</label>
+                        <input type="text" asp-for="ApellidoMaterno" class="form-control">
+                        <span asp-validation-for="ApellidoMaterno" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Calle de criadero</label>
+                        <input type="number" asp-for="Telefono" class="form-control">
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Criadero</label>
+                       
+                      
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" id="Boton" value="Registrar Criadero" class="btn btn-primary">                   
+                    </div>
+
+                </form>
+                
+            </div>   
+
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <form asp-action="Index" asp-controller="Home">
+                    <input type="submit" value="Regresar">
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+
+</html>

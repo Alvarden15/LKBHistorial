@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label>Codigo de perro</label>
                         <input type="text" asp-for="Id" class="form-control">
-                        <span asp-asp-validation-for="Id"></span>
+                        <span asp-asp-validation-for="Id" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -59,9 +59,26 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Subir imagen</label>
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" asp-for="FechaNacimiento" class="form-control">
                        
                     </div>
+
+                    <div class="form-group">
+                        <label>Madurez</label>
+                        <select asp-for="Madurez">
+                            <option value="Cachorro">Cachorro</option>
+                            <option value="Adulto">Adulto</option>
+                        </select>
+                       
+                    </div>
+
+                     <div class="form-group">
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" asp-for="FechaNacimiento" class="form-control">
+                      
+                    </div>
+
                      <div class="form-group">
                         <input type="submit" value="Registrar Perro" class="btn btn-default">
                     </div>
@@ -74,7 +91,7 @@
 
         </div>
 
-         <form asp-action="ArbolGeneonlogico" >
+         <form asp-action="Index" asp-controller="Home" >
             <input type="button" value="Regresar" class="btn btn-secondary">
         </form>
        
