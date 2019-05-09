@@ -29,14 +29,10 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                      <div class="form-group">
                         <select asp-for="Madurez">
-                            <option value="Cachorro">Cachorro</option>
-                            <option value="Adulto">Adulto</option>
+                            <option value="C">Cachorro</option>
+                            <option value="A">Adulto</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Microchip</label>
-                        <input type="text" asp-for="Id" class="form-control">
-                        <span asp-validation-for="Id" class="text-danger"></span>
+                        <span asp-validation-for="Madurez" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -62,18 +58,19 @@
                     </div>
                      <div class="form-group">
                         <label>Nombre del criadero</label>
-                          <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
-                   
+                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
+                        <span asp-validation-for="IdCriadero" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                          <label>Nombre del criadero</label>
                          <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
+                         
                      </div>
 
                     <div class="form-group">
                         <select asp-for="Sexo">
                             <option value="M">Macho</option>
-                             <option value="H">Hembra</option>
+                            <option value="H">Hembra</option>
                         </select>
                          <span asp-validation-for="Sexo" class="text-danger"></span>
                         
@@ -83,7 +80,7 @@
                         <label>Fecha de Nacimiento</label>
                         <input type="date" asp-for="FechaNacimiento" class="form-control">
                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
-
+                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                     </div>
 
                 
@@ -91,13 +88,15 @@
 
                      <div class="form-group">
                         <label>Padre</label>
-                         <select asp-items="ViewBag.Machos" asp-for="IdPadre"></select>
+                        <select asp-items="ViewBag.Machos" asp-for="IdPadre"></select>
+                        <span asp-validation-for="IdPadre" class="text-danger"></span>
+                        
                    
                     </div>
                     <div class="form-group">
                         <label>Madre</label>
-                         <select asp-items="ViewBag.Hembras" asp-for="IdMadre"></select>
-                   
+                        <select asp-items="ViewBag.Hembras" asp-for="IdMadre"></select>
+                        <span asp-validation-for="IdMadre" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -109,11 +108,13 @@
                             <option value="Agresivo">Agresivo</option>
                             <option value=""></option>
                         </select>
+                        <span asp-validation-for="Temperamento" class="text-danger"></span>
                     </div>
                     
                     <div class="form-group">
                         <label>Estatura</label>
                         <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
+                        <span asp-validation-for="IdEstatura" class="text-danger"></span>
                     </div>
 
                      <div class="form-group">

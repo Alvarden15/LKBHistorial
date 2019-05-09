@@ -122,16 +122,14 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("Id,Nombre,IdRazaPerro,IdCriadero,IdDueno,DuenoActual,Sexo,FechaNacimiento,Padre,Madre")]Perro perro){
+        public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
             
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
                    _context.Add(perro);
-
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función
                    await _context.SaveChangesAsync();
-
                    // El RedirectToAction te envia a una pagina en especifico una vez hecha la operación
                    // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
                    return RedirectToAction("Index","Home");
