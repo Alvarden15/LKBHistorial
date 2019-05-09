@@ -27,9 +27,9 @@ namespace LKBHistorial.Models
         public string Telefono{get; set;}
 
         [InverseProperty("CriadorActual")]
-        public List<Perro> PerroOriginal{get; set;}
-        [InverseProperty("CriadorOriginal")]
         public List<Perro> PerroActual{get; set;}
+        [InverseProperty("CriadorOriginal")]
+        public List<Perro> PerroOriginal{get; set;}
 
         public Criadero Criadero{get; set;}
 
