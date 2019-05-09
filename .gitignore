@@ -108,3 +108,5 @@ obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriadero.g.cshtml.cs
 obj/Debug/netcoreapp2.2/project.razor.json
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriador.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriador.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarLunada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarPrenada.g.cshtml.cs

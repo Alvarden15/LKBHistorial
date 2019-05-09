@@ -55,13 +55,13 @@ namespace LKBHistorial.Controllers
         }
 
         public void ListadoCriadores(){
-            var criador=_context.Criadero.ToList();
+            var criador=_context.Criador.ToList();
             ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
         }
 
         public void ListadoRazas(){
             var razas=_context.RazaPerro.ToList();
-            ViewBag.Razas= new SelectList(razas,"Id","Tipo");
+            ViewBag.Razas= new SelectList(razas,"Id","Raza");
         }
 
         public void ListadoHembras(){
@@ -81,6 +81,7 @@ namespace LKBHistorial.Controllers
             ListadoCriadores();
             ListadoRazas();
             ListadoPerros();
+            ListadoEstatura();
             return View();
         }
         public IActionResult RegistrarLunada(){
@@ -139,6 +140,7 @@ namespace LKBHistorial.Controllers
             ListadoCriadores();
             ListadoRazas();
             ListadoPerros();
+            ListadoEstatura();
             return View(perro);
         }
 

@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LKBHistorial.Models
 {
+    [Table("Raza_Perro")]
     public class RazaPerro
     {
         [Key]

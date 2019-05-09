@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label>Microchip</label>
                         <input type="text" asp-for="Id" class="form-control">
-                        <span asp-asp-validation-for="Id" class="text-danger"></span>
+                        <span asp-validation-for="Id" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -47,18 +47,18 @@
                        <input type="text" asp-for="Nombre" class="form-control">
                        <!--Esto se usa para mostrar algun mensaje de error
                         -->
-                       <span asp-asp-validation-for="Nombre"></span>
+                       <span asp-validation-for="Nombre"></span>
 
                     <div class="form-group">
                         <label>Nombre del criador (Original)</label>
                         <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal"></select>
-                         
+                         <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
                    
                     </div>
                      <div class="form-group">
                         <label>Nombre del criador (Actual)</label>
-                         <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
-                   
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
+                        <span asp-validation-for="IdCriadorActual" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                         <label>Nombre del criadero</label>
@@ -66,23 +66,24 @@
                    
                     </div>
                      <div class="form-group">
-                        <label>Raza</label>
+                         <label>Nombre del criadero</label>
                          <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
-                   
-                    </div>
+                     </div>
 
                     <div class="form-group">
                         <select asp-for="Sexo">
                             <option value="M">Macho</option>
                              <option value="H">Hembra</option>
                         </select>
+                         <span asp-validation-for="Sexo" class="text-danger"></span>
                         
                     </div>
 
                     <div class="form-group">
                         <label>Fecha de Nacimiento</label>
                         <input type="date" asp-for="FechaNacimiento" class="form-control">
-                       
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+
                     </div>
 
                 
@@ -102,10 +103,10 @@
                     <div class="form-group">
                         <label>Temperamento</label>
                         <select asp-for="Temperamento">
-                            <option value="Docil"></option>
-                            <option value="Relajado"></option>
-                            <option value="Moderado"></option>
-                            <option value="Agresivo"></option>
+                            <option value="Docil">Docil</option>
+                            <option value="Relajado">Relajado</option>
+                            <option value="Moderado">Moderado</option>
+                            <option value="Agresivo">Agresivo</option>
                             <option value=""></option>
                         </select>
                     </div>
