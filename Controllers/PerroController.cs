@@ -40,10 +40,27 @@ namespace LKBHistorial.Controllers
 
         //Se genera la lista de perros mediante la llave foranea
         public void ListarPerros(){
-            perros= new SelectList(_context.Perro,"Id","");
+            var perros= _context.Perros.ToListAsync();
+            ViewBag.ListPerros= new SelectList(perros,"Id","Nombre");
             
             //Como se hacia esto?
             //ViewBag.ListaPerros= new SelectList("d","Pro");
+        }
+
+
+        public void ListadoCriaderos(){
+            var criaderos=_context.Criadero.ToListAsync();
+            ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
+        }
+
+        public void ListadoCriadores(){
+            var criador=_context.Criadero.ToListAsync();
+            ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
+        }
+
+        public void ListadoRazas(){
+            var razas=_context.RazaPerro.ToListAsync();
+            ViewBag.Razas= new SelectList(razas,"Id","Tipo");
         }
 
         /*Las paginas en si (que no son de listado) */
