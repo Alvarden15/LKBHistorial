@@ -24,6 +24,7 @@ namespace LKBHistorial.Models
         [Column("numero_celos")]
         public int NumeroCelos { get; set; }
 
+        [ForeignKey("IdPerro")]
         public Perro Perro{get; set;}
 
         [Column("id_Perro")]
