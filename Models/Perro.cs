@@ -71,7 +71,8 @@ namespace LKBHistorial.Models
         public List<Prenada> Prenada{get; set;}
 
         [InverseProperty("Padre")]
-        public List<Perro> IdetificarPadre{get; set;}
+        public List<Perro> IdentificarPadre{get; set;}
+
 
         [InverseProperty("IdentificarPadre")]
         public Perro Padre{get; set;}
