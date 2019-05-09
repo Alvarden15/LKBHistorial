@@ -10,6 +10,7 @@ namespace LKBHistorial.Models
     public class Criadero
     {
         [Key]
+        [Column("id")]
         public int Id { get; set; }
 
         [Required]
@@ -30,8 +31,11 @@ namespace LKBHistorial.Models
 
         public List<Perro> Perro {get; set;}
 
+        public List<Criador> Criador{get; set;}
+
         public Criadero(){
            Perro=new List<Perro>();
+           Criador= new List<Criador>();
         }
         
 
