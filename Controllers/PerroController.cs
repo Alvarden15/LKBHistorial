@@ -37,7 +37,7 @@ namespace LKBHistorial.Controllers
         }
 
         //Se genera la lista de perros mediante la llave foranea
-        public void ListarPerros(){
+        public void ListadoPerros(){
             var perros= _context.Perro.ToList();
             ViewBag.ListPerros= new SelectList(perros,"Id","Nombre");
         }
@@ -63,13 +63,16 @@ namespace LKBHistorial.Controllers
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
+            ListadoPerros();
             return View();
         }
         public IActionResult RegistrarLunada(){
+            ListadoPerros();
             return View();
         }
 
         public IActionResult RegistrarPrenada(){
+            ListadoPerros();
             return View();
         }
         public IActionResult BorrarPerro(){
@@ -77,6 +80,7 @@ namespace LKBHistorial.Controllers
         }
 
         public IActionResult RegistrarCriador(){
+            ListadoCriaderos();
             return View();
         }
 
@@ -117,6 +121,7 @@ namespace LKBHistorial.Controllers
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
+            ListadoPerros();
             return View(perro);
         }
 
@@ -126,19 +131,21 @@ namespace LKBHistorial.Controllers
             if(ModelState.IsValid){
                 _context.Criador.Add(criador);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("");
+                return RedirectToAction("Index","Home");
             }
+            ListadoCriaderos();
             return View(criador);
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarPrenada([Bind("Id,IdMonta,CantidadInseminada,FechaInicio,FechaFin,IdParto,FechaCesaria,NumeroCamadas")]Prenada prenada){
+        public async Task<IActionResult> RegistrarPrenada([Bind("Id,CantidadInseminada,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
             if(ModelState.IsValid){
                 _context.Prenada.Add(prenada);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("");
+                return RedirectToAction("Index","Home");
             }
+            ListadoPerros();
             return View(prenada);
         }
 
@@ -150,6 +157,7 @@ namespace LKBHistorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
             }
+            ListadoPerros();
             return View(lunada);
         }
 
