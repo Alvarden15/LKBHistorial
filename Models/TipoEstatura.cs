@@ -17,7 +17,7 @@ namespace LKBHistorial.Models
         [Required]
         [Column("tipo_estatura")]
         [StringLength(10)]
-        public string TipoEstatura { get; set; }
+        public string Estatura { get; set; }
 
         public List<Perro> Perro{get; set;}
 

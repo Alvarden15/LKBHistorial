@@ -13,7 +13,6 @@ namespace LKBHistorial.Models
         [Key]
         public int Id { get; set; }
 
-        public TipoMonta TipoMonta{get; set;}
         [Column("id_monta")]
         public int IdMonta {get; set;}
         [Column("cantidad_inseminadas")]
@@ -25,18 +24,14 @@ namespace LKBHistorial.Models
          [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
         public DateTime FechaFin { get; set; }
 
-        public TipoParto TipoParto { get; set; }
-        [Column("id_parto")]
-        public int IdParto{ get; set; }
         [Column("fecha_cesarea", TypeName = "date")]
         public DateTime FechaCesaria { get; set; }
         [Column("numero_camadas")]
         public int NumeroCamadas { get; set; }
 
-        public List<PerroPrenada> PerroPrenada { get; set; }
 
         public Prenada(){
-            PerroPrenada= new List<PerroPrenada>();
+            
         }
 
     }

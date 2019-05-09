@@ -21,10 +21,8 @@ namespace LKBHistorial.Models
         [Column("numero_celos")]
         public int NumeroCelos { get; set; }
 
-        public List<PerroLunada> PerroLunada { get; set; }
-
         public Lunada(){
-            PerroLunada= new List<PerroLunada>();
+          
         }
 
 

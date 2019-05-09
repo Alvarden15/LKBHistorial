@@ -36,7 +36,7 @@ namespace LKBHistorial.Models
         [Column("id_Criadero")]
         public int IdCriadero{get; set;}      
 
-        public Dueno(){
+        public Criador(){
            PerroOriginal= new List<Perro>();
            PerroActual= new List<Perro>();
         }

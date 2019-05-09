@@ -32,31 +32,28 @@ namespace LKBHistorial.Controllers
         */ 
         private readonly MvcContext _context;
 
-        private SelectList perros;
-
         public PerroController(MvcContext context){
             _context=context;
         }
 
         //Se genera la lista de perros mediante la llave foranea
         public void ListarPerros(){
-            var perros= _context.Perros.ToListAsync();
+            var perros= _context.Perro.ToList();
             ViewBag.ListPerros= new SelectList(perros,"Id","Nombre");
         }
 
-
         public void ListadoCriaderos(){
-            var criaderos=_context.Criadero.ToListAsync();
+            var criaderos=_context.Criadero.ToList();
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
         public void ListadoCriadores(){
-            var criador=_context.Criadero.ToListAsync();
+            var criador=_context.Criadero.ToList();
             ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
         }
 
         public void ListadoRazas(){
-            var razas=_context.RazaPerro.ToListAsync();
+            var razas=_context.RazaPerro.ToList();
             ViewBag.Razas= new SelectList(razas,"Id","Tipo");
         }
 
@@ -131,7 +128,7 @@ namespace LKBHistorial.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("");
             }
-            return View(dueno);
+            return View(criador);
         }
         
         [HttpPost]
@@ -169,9 +166,9 @@ namespace LKBHistorial.Controllers
 
         /*Desde aquí estan los listados */
 
-        public async Task<IActionResult> ListaPerros(String nombre, int raza){
+        public async Task<IActionResult> ListaPerros(String nombre, int? raza){
             var perros= from m in _context.Perro select m;
-            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
+            if(!String.IsNullOrEmpty(nombre) || raza!=null){
 
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
                 perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
@@ -194,8 +191,8 @@ namespace LKBHistorial.Controllers
             return View(await _context.Lunada.ToListAsync());
         }
 
-         public async Task<IActionResult> ListarDuenos(){
-            return View(await _context.Dueno.ToListAsync());
+         public async Task<IActionResult> ListarCriaderos(){
+            return View(await _context.Criadero.ToListAsync());
         }
         
         /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
