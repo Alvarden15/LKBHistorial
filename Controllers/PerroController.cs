@@ -317,6 +317,14 @@ namespace LKBHistorial.Controllers
             return _context.Perro.Any(m=>m.Id==id);
         }
 
+        bool VerificarCriador(int id){
+            return _context.Criador.Any(m=>m.Id==id);
+        }
+         bool VerificarCriadero(int id){
+            return _context.Criadero.Any(m=>m.Id==id);
+        }
+
+
         //Comando que puede que esten o no en el entregable
 
          /*

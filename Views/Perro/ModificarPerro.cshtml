@@ -1,0 +1,105 @@
+@model LKBHistorial.Models.Perro
+
+
+@{
+    ViewData["Title"]="Modificación de Perro";
+}
+
+<body>
+    <div class="row">
+        <div class="col-md-5">
+             <form asp-action="ModificarPerro" asp-controller="Perro" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                     <div class="form-group">
+                        <select asp-for="Madurez">
+                            <option value="C">Cachorro</option>
+                            <option value="A">Adulto</option>
+                        </select>
+                        <span asp-validation-for="Madurez" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre de perro</label>
+                        <!--pon aqui un input, defines que tipo de input es, 
+                         pones el asp-for para enlazarlo con un atributo, y le asignas una clase
+                         -->
+                       <input type="text" asp-for="Nombre" class="form-control">
+                       <!--Esto se usa para mostrar algun mensaje de error
+                        -->
+                       <span asp-validation-for="Nombre"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nombre del criador (Original)</label>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal"></select>
+                         <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
+                   
+                    </div>
+                     <div class="form-group">
+                        <label>Nombre del criador (Actual)</label>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
+                        <span asp-validation-for="IdCriadorActual" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                        <label>Nombre del criadero</label>
+                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
+                        <span asp-validation-for="IdCriadero" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                         <label>Nombre del criadero</label>
+                         <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
+                         
+                     </div>
+
+                    <div class="form-group">
+                        <select asp-for="Sexo">
+                            <option value="M">Macho</option>
+                            <option value="H">Hembra</option>
+                        </select>
+                         <span asp-validation-for="Sexo" class="text-danger"></span>
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" asp-for="FechaNacimiento" class="form-control">
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                    </div>
+
+                
+                    
+                    
+
+                    <div class="form-group">
+                        <label>Temperamento</label>
+                        <select asp-for="Temperamento">
+                            <option value="Docil">Docil</option>
+                            <option value="Relajado">Relajado</option>
+                            <option value="Moderado">Moderado</option>
+                            <option value="Agresivo">Agresivo</option>
+                            <option value=""></option>
+                        </select>
+                        <span asp-validation-for="Temperamento" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Estatura</label>
+                        <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
+                        <span asp-validation-for="IdEstatura" class="text-danger"></span>
+                    </div>
+
+                     <div class="form-group">
+                        <input type="submit" value="Registrar Perro" class="btn btn-default">
+                    </div>
+
+                </form>
+
+        </div>
+
+    </div>
+
+     <form asp-action="Index" asp-controller="Home" >
+            <input type="button" value="Regresar" class="btn btn-secondary">
+        </form>
+</body>
