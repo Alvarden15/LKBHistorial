@@ -20,7 +20,7 @@ namespace LKBHistorial.Controllers
     {
         private MvcContext _context;
 
-        public HembraController(HembraController hc){
+        public HembraController(MvcContext hc){
             _context=hc;
         }
          public void ListadoHembras(){

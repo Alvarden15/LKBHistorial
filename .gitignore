@@ -110,3 +110,7 @@ obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriador.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarCriador.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarLunada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/RegistrarPrenada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/ListarPerros.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/RegistrarLunada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/RegistrarPrenada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/ModificarPerro.g.cshtml.cs
