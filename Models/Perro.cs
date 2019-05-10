@@ -53,11 +53,14 @@ namespace LKBHistorial.Models
 
         [Column("id_Criadero")]
         public int IdCriadero{ get; set; }
-        [Column("id_Perro_Padre")]
+        /*
+         [Column("id_Perro_Padre")]
         public int IdPadre { get; set; }
         [Column("id_Perro_Madre")]
         public int IdMadre { get; set; }
 
+         */
+       
         [ForeignKey("IdCriadero")]
         public Criadero Criadero{get; set;}
 
@@ -76,7 +79,8 @@ namespace LKBHistorial.Models
 
         public List<Prenada> Prenada{get; set;}
 
-        [InverseProperty("Padre")]
+        /*
+         [InverseProperty("Padre")]
         public List<Perro> IdentificarPadre{get; set;}
 
         [ForeignKey("IdPadre")]
@@ -85,16 +89,21 @@ namespace LKBHistorial.Models
 
         [InverseProperty("Madre")]
         public List<Perro> IdentificarMadre{get; set;}
-        
+
         [ForeignKey("IdMadre")]
         [InverseProperty("IdentificarMadre")]
         public Perro Madre{get; set;}  
+         */
+
         
         public Perro(){
             Lunada= new List<Lunada>();
             Prenada= new List<Prenada>();
+            /*
             IdentificarPadre= new List<Perro>();
             IdentificarMadre= new List<Perro>();
+             */
+           
 
         }
 
