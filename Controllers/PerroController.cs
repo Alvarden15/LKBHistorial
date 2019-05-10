@@ -128,6 +128,7 @@ namespace LKBHistorial.Controllers
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
+            ListadoPerros();
             ListadoEstatura();
             return View(perro);
         }
@@ -167,7 +168,7 @@ namespace LKBHistorial.Controllers
             return View(await _context.Perro.ToListAsync());
         }
 
-        public async Task<IActionResult> ListarCriadero(){
+        public async Task<IActionResult> ListaCriaderos(){
 
             
             return View(await _context.Criadero.ToListAsync());
@@ -180,8 +181,7 @@ namespace LKBHistorial.Controllers
         /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
 
         //Para las pagina de eliminar
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> EliminarPerro(int? id){
 
             // Se verifica si una entidad esta registrada en la base de datos o no
@@ -223,9 +223,16 @@ namespace LKBHistorial.Controllers
             if(perro==null){
                 return NotFound();
             }
+            ListadoCriaderos();
+            ListadoCriadores();
+            ListadoRazas();
+            ListadoPerros();
+            ListadoEstatura();
 
             return View(perro);
         }
+
+
 
         /*Las operaciones en si */
 
@@ -237,8 +244,10 @@ namespace LKBHistorial.Controllers
             var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("ListaPerros","Perro");
         }
+
+
 
         //Modificacion
         [HttpPost]
@@ -261,9 +270,14 @@ namespace LKBHistorial.Controllers
                     throw;
                 }
                }
-                 return RedirectToAction("ArbolGeneologico","Perro");
+                 return RedirectToAction("ListaPerros","Perro");
 
             }
+            ListadoCriaderos();
+            ListadoCriadores();
+            ListadoRazas();
+            ListadoPerros();
+            ListadoEstatura();
             return View(perro);
 
            

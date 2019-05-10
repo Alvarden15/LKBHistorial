@@ -18,17 +18,13 @@
                         }
 
                     </h4>
+                   
+                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">Eliminar</a>
+                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">Modificar</a>
 
                 </div>
 
-                <form asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">
-                        <input type="submit" value="Modificar Perro">
-                </form>
-                <form asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">
-                        <input type="submit" value="Eliminar Perro">
-                </form>
-                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">Eliminar</a>
-                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">Modificar</a>
+                
             }
         </div>
 

@@ -1,0 +1,50 @@
+@model Perro
+
+
+@{
+    ViewData["Title"]="Eliminación de Perro";
+}
+
+<body>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Advertencia</h2>
+            <p></p>Estas a punto de eliminar este ejemplar de la base de datos</p>
+            <div>
+                @Html.DisplayFor(model=>model.Nombre)
+            </div>
+            <div>
+                 @Html.DisplayFor(model=>model.Sexo)
+            </div>
+            <div>
+                 @Html.DisplayFor(model=>model.FechaNacimiento)
+            </div>
+            <div>
+                 @Html.DisplayFor(model=>model.Madurez)
+            </div>
+            <div>
+                
+            </div>
+            <div>
+                
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <p>¿Estas seguro/a que quieres continuar?</p>
+        </div>
+    </div>
+    <form asp-for="EliminarPerro" asp-controller="Perro">
+        <input type="hidden" asp-for="Id">
+        <input type="submit" value="Eliminar" class="btn btn-danger">
+    </form>
+    <form asp-for="ListaPerros" asp-controller="Perro">
+
+    </form>
+    
+</body>
