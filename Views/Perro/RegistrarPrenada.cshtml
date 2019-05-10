@@ -5,7 +5,7 @@
 @{
     ViewData["Title"]="Registro de lunada";
 }
-
+<html>
 <head>
 
 </head>
@@ -13,25 +13,29 @@
 <body>
     <div class="row">
         <div class="col-md-5">
-             <form asp-action="RegistrarPrenada" asp-controller="Perro">   
-                <div class="form-control">
+             <form asp-action="RegistrarPrenada" asp-controller="Perro">  
+                  <div class="form-group">
+                    <label>Codigo de lunada:</label>
+                    <input type="number" asp-for="Id">
+                </div> 
+                <div class="form-group">
                      <label>Selecciona hembra:</label>
                     <select asp-items="ViewBag.Hembras" asp-for="IdPerro"></select>
                 </div>
                
-                <div class="form-control">
+                <div class="form-group">
                     <label>Cantidad de inseminadas:</label>
                     <input type="number" asp-for="CantidadInseminadas" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Fecha de inicio de inseminación:</label>
                     <input type="date" asp-for="FechaInicio" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Fecha final de inseminación:</label>
                     <input type="date" asp-for="FechaFin" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Tipo de parto:</label>
                     <select asp-for="TipoParto">
                         <option value="Cesarea">Cesárea</option>
@@ -39,19 +43,19 @@
                         <option value="Indefinido">Por Definir</option>
                     </select>
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Fecha de cesárea:</label>
                     <input type="date" asp-for="FechaCesaria" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Fecha de parto normal:</label>
                     <input type="date" asp-for="FechaPartoNormal" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <label>Numero de camadas:</label>
                     <input type="number" asp-for="NumeroCamadas" class="form-control">
                 </div>
-                <div class="form-control">
+                <div class="form-group">
                     <input type="submit" value="Registrar preñada" class="btn btn-primary">
                 </div>
             </form>
@@ -60,3 +64,5 @@
 
 
 </body>
+
+</html>
