@@ -84,15 +84,6 @@ namespace LKBHistorial.Controllers
             ListadoEstatura();
             return View();
         }
-        public IActionResult RegistrarLunada(){
-            ListadoHembras();
-            return View();
-        }
-
-        public IActionResult RegistrarPrenada(){
-            ListadoHembras();
-            return View();
-        }
         public IActionResult BorrarPerro(){
             return View();
         }
@@ -152,30 +143,6 @@ namespace LKBHistorial.Controllers
             ListadoCriaderos();
             return View(criador);
         }
-        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarPrenada([Bind("Id,CantidadInseminada,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
-            if(ModelState.IsValid){
-                _context.Prenada.Add(prenada);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            ListadoHembras();
-            return View(prenada);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarLunada([Bind("Id,FechaInicio,FechaFin,NumeroCelos,IdPerro")]Lunada lunada){
-            if(ModelState.IsValid){
-                _context.Lunada.Add(lunada);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            ListadoHembras();
-            return View(lunada);
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -204,15 +171,6 @@ namespace LKBHistorial.Controllers
 
             
             return View(await _context.Criadero.ToListAsync());
-        }
-
-        public async Task<IActionResult> ListarPrenadas(){
-            return View(await _context.Prenada.ToListAsync());
-        }
-
-        
-        public async Task<IActionResult> ListarLunadas(){
-            return View(await _context.Lunada.ToListAsync());
         }
 
          public async Task<IActionResult> ListarCriaderos(){

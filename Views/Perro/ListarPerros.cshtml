@@ -1,4 +1,4 @@
-@model IEnumerable<Perro>
+@model IEnumerable<LKBHistorial.Models.Perro>
 
 @{
     ViewData["Title"]="Listado de Perros";
@@ -9,8 +9,26 @@
             @foreach (var i in Model)
             {
                 <div class="col-md-3">
+                    <p>@Html.DisplayFor(modelItem=>i.Nombre)</p>
+                    <h4>
+                        @if(i.Sexo=="M"){
+                            @Html.Display("Macho")
+                        }else{
+                            @Html.Display("Hembra")
+                        }
+
+                    </h4>
 
                 </div>
+
+                <form asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">
+                        <input type="submit" value="Modificar Perro">
+                </form>
+                <form asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">
+                        <input type="submit" value="Eliminar Perro">
+                </form>
+                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">Eliminar</a>
+                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">Modificar</a>
             }
         </div>
 
