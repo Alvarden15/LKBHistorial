@@ -13,30 +13,43 @@
 <body>
     <div class="row">
         <div class="col-md-5">
-             <form asp-action="RegistrarPrenada" asp-controller="Perro">
+             <form asp-action="RegistrarPrenada" asp-controller="Perro">   
                 <div class="form-control">
-
+                     <label>Selecciona hembra:</label>
+                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro"></select>
+                </div>
+               
+                <div class="form-control">
+                    <label>Cantidad de inseminadas:</label>
+                    <input type="number" asp-for="CantidadInseminadas" class="form-control">
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha de inicio de inseminación:</label>
+                    <input type="date" asp-for="FechaInicio" class="form-control">
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha final de inseminación:</label>
+                    <input type="date" asp-for="FechaFin" class="form-control">
                 </div>
                 <div class="form-control">
-
+                    <label>Tipo de parto:</label>
+                    <select asp-for="TipoParto">
+                        <option value="Cesarea">Cesárea</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Indefinido">Por Definir</option>
+                    </select>
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha de cesárea:</label>
+                    <input type="date" asp-for="FechaCesaria" class="form-control">
                 </div>
                 <div class="form-control">
-
+                    <label>Fecha de parto normal:</label>
+                    <input type="date" asp-for="FechaPartoNormal" class="form-control">
                 </div>
                 <div class="form-control">
-
-                </div>
-                <div class="form-control">
-
+                    <label>Numero de camadas:</label>
+                    <input type="number" asp-for="NumeroCamadas" class="form-control">
                 </div>
                 <div class="form-control">
                     <input type="submit" value="Registrar preñada" class="btn btn-primary">
