@@ -1,0 +1,41 @@
+@model IEnumerable<Lunada>
+
+@{
+    ViewData["Title"]="Listado de lunadas";
+}
+
+
+<body>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="ListaPrenada">
+
+            </a>
+            <a asp-action="ListaLunada">
+
+            </a>
+        </div>
+        @foreach (var i in Model)
+        {
+            <div class="col-md-3">
+                <p>
+                    @Html.DisplayFor(modelItem=>i.IdPerro)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem=>i.FechaInicio)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem=>i.FechaFin)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem=>i.NumeroCelos)
+                </p>
+
+            </div>
+            
+        }
+
+
+    </div>
+</body>
