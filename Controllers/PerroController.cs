@@ -97,6 +97,10 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
+        public IActionResult ConfirmacionPerros(){
+            return RedirectToAction("ListaPerros","Perro");
+        }
+
         /*
         public async Task<IActionResult> ListaHembras(){
             return View(await _context.Reproductora.ToListAsync());
@@ -202,7 +206,7 @@ namespace LKBHistorial.Controllers
         }
         
         //Para las paginas de los detalles
-        public async Task<IActionResult> DetallesPerro(int? id){
+        public async Task<IActionResult> Arbol(int? id){
             if(id==null){
                 return NotFound();
             }
