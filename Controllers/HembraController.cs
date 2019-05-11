@@ -68,12 +68,12 @@ namespace LKBHistorial.Controllers
         }
 
 
-          public async Task<IActionResult> ListarPrenadas(){
+          public async Task<IActionResult> ListaPrenada(){
             return View(await _context.Prenada.ToListAsync());
         }
 
         
-        public async Task<IActionResult> ListarLunadas(){
+        public async Task<IActionResult> ListaLunada(){
             return View(await _context.Lunada.ToListAsync());
         }
 
