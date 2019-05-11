@@ -252,7 +252,7 @@ namespace LKBHistorial.Controllers
         //Modificacion
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarPerro(int? id, [Bind("IDPerro,NombrePerro,Edad")]Perro perro){
+        public async Task<IActionResult> ModificarPerro(int? id, [Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero")]Perro perro){
             if(id!=perro.Id){
                 return NotFound();
             }
