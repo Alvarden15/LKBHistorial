@@ -160,6 +160,7 @@ namespace LKBHistorial.Controllers
 
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
             var perros= from m in _context.Perro select m;
+            
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
                  ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos

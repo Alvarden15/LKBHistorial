@@ -24,8 +24,11 @@
                         }else{
                             @Html.Display("Hembra")
                         }
-
                     </h4>
+                    <p>@Html.DisplayFor(modelItem=>i.RazaPerro.Raza)
+                    </p>
+                    <p>@Html.DisplayFor(modelItem=>i.Criadero.Nombre)
+                    </p>
                    
                 <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">Eliminar</a>
                 <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">Modificar</a>

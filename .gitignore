@@ -116,3 +116,4 @@ obj/Debug/netcoreapp2.2/Razor/Views/Hembra/RegistrarPrenada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/ModificarPerro.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/ListaPerros.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/EliminarPerro.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Perro/Arbol.g.cshtml.cs
