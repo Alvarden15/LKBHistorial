@@ -17,10 +17,8 @@
                 
             </div>
             <div class="col-md-12">
-                <form asp-action="RegistrarPerro" asp-controller="Perro">
-                    <input type="submit" value="Registrar Perros" class="form-control">
-
-                </form>
+                <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
+              
             </div>
         </div>
         <div class="row">
@@ -37,6 +35,8 @@
                         }
                     </h4>
                     <p>@Html.DisplayFor(modelItem=>i.RazaPerro.Raza)
+                    </p>
+                    <p>@Html.DisplayFor(modelItem=>i.RazaPerro.Id)
                     </p>
                     
                     <p>@Html.DisplayFor(modelItem=>i.Criadero.Nombre)
