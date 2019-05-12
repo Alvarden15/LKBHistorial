@@ -43,13 +43,20 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-           [HttpPost]
+        public IActionResult ConfirmacionPrenada(){
+            return RedirectToAction("ListaPrenada");
+        }
+        public IActionResult ConfirmacionLunada(){
+            return RedirectToAction("ListaLunada");
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarPrenada([Bind("Id,CantidadInseminada,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
             if(ModelState.IsValid){
                 _context.Prenada.Add(prenada);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("ConfirmacionPrenada");
             }
             ListadoHembras();
             return View(prenada);
@@ -61,21 +68,23 @@ namespace LKBHistorial.Controllers
             if(ModelState.IsValid){
                 _context.Lunada.Add(lunada);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("ConfirmacionLunada");
             }
             ListadoHembras();
             return View(lunada);
         }
 
-
-          public async Task<IActionResult> ListaPrenada(){
+        [HttpGet]
+        public async Task<IActionResult> ListaPrenada(){
             return View(await _context.Prenada.ToListAsync());
         }
 
-        
+        [HttpGet]
         public async Task<IActionResult> ListaLunada(){
             return View(await _context.Lunada.ToListAsync());
         }
+
+
 
     }
 }

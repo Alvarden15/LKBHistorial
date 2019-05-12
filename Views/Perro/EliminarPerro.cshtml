@@ -39,10 +39,12 @@
             <p>¿Estas seguro/a que quieres continuar?</p>
         </div>
     </div>
-    <form asp-for="EliminarPerro" asp-controller="Perro">
+    <form asp-action="EliminarPerro" asp-controller="Perro">
         <input type="hidden" asp-for="Id">
         <input type="submit" value="Eliminar" class="btn btn-danger">
     </form>
 
-    <a asp-for="ListaPerros" asp-controller="Perro">Regresar a la lista</a>
+    <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-default">
+            Regresar a la Lista
+        </a>
 </body>

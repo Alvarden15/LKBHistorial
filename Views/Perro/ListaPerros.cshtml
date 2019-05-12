@@ -45,9 +45,9 @@
                      @Html.DisplayFor(modelItem=>i.TipoEstatura.Estatura)
                     </p>
                    
-                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id">Eliminar</a><br>
-                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id">Modificar</a><br>
-                <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id">Mostrar Arbol</a>
+                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning">Eliminar</a><br>
+                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light">Modificar</a><br>
+                <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary">Mostrar Arbol</a>
 
                 </div>
 

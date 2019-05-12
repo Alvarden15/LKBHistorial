@@ -100,6 +100,9 @@ namespace LKBHistorial.Controllers
         public IActionResult ConfirmacionPerros(){
             return RedirectToAction("ListaPerros","Perro");
         }
+        public IActionResult ConfirmacionNormal(){
+            return RedirectToAction("Index","Home");
+        }
 
         /*
         public async Task<IActionResult> ListaHembras(){
@@ -127,7 +130,7 @@ namespace LKBHistorial.Controllers
                    await _context.SaveChangesAsync();
                    // El RedirectToAction te envia a una pagina en especifico una vez hecha la operación
                    // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
-                   return RedirectToAction("Index","Home");
+                   return RedirectToAction("ConfirmacionPerros");
                 }
             ListadoCriaderos();
             ListadoCriadores();
@@ -143,7 +146,7 @@ namespace LKBHistorial.Controllers
             if(ModelState.IsValid){
                 _context.Criador.Add(criador);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("ConfirmacionNormal");
             }
             ListadoCriaderos();
             return View(criador);
@@ -155,13 +158,14 @@ namespace LKBHistorial.Controllers
             if(ModelState.IsValid){
                 _context.Criadero.Add(criadero);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("ConfirmacionNormal");
             }
             return View(criadero);
         }
 
         /*Desde aquí estan los listados */
 
+        [HttpGet]
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
             var perros= from m in _context.Perro select m;
 
@@ -252,7 +256,7 @@ namespace LKBHistorial.Controllers
             var perro= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
             _context.Perro.Remove(perro);
             await _context.SaveChangesAsync();
-            return RedirectToAction("ListaPerros","Perro");
+            return RedirectToAction("ConfirmacionPerros");
         }
 
 
@@ -278,7 +282,7 @@ namespace LKBHistorial.Controllers
                     throw;
                 }
                }
-                 return RedirectToAction("ListaPerros","Perro");
+                 return RedirectToAction("ConfirmacionPerros");
 
             }
             ListadoCriaderos();
