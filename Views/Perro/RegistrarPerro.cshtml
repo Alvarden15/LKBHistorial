@@ -7,18 +7,34 @@
 
 <html>
 
-    <script type="text/javascript">
-        function confirmar(){
-            
-        }
-
-    </script>
     <head>
     
 
     </head>
 
     <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script type="text/javascript">
+
+        $( function() {
+         
+         $("#madurez").change(function() {
+            if ($(this).val() === "C") {
+               $(".temperamiento").prop("disabled", true);
+               $(".estatura").prop("disabled", true);
+               document.getElementById('ad').style.display="none";
+              
+            }else {
+               $(".temperamiento").prop("disabled", false);
+               $(".estatura").prop("disabled", false);
+               document.getElementById('ad').style.display="block";
+
+            }
+            
+         });
+        });
+
+     </script>
         <h2>
             Registrar Perro
         </h2>
@@ -28,7 +44,7 @@
                 <form asp-action="RegistrarPerro" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                      <div class="form-group">
-                        <select asp-for="Madurez">
+                        <select asp-for="Madurez" id="madurez">
                             <option value="C">Cachorro</option>
                             <option value="A">Adulto</option>
                         </select>
@@ -83,27 +99,29 @@
                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                          <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                     </div>    
-
-                    <div class="form-group">
-                        <label>Temperamento</label>
-                        <select asp-for="Temperamento">
-                            <option value="Docil">Docil</option>
-                            <option value="Relajado">Relajado</option>
-                            <option value="Moderado">Moderado</option>
-                            <option value="Agresivo">Agresivo</option>
-                            <option value=""></option>
-                        </select>
-                        <span asp-validation-for="Temperamento" class="text-danger"></span>
-                    </div>
+                    <div id="ad" style="display:none">
+                         <div class="form-group ">
+                            <label>Temperamento</label>
+                            <select asp-for="Temperamento" class="temperamiento" disabled>
+                             <option value="Docil">Docil</option>
+                             <option value="Relajado">Relajado</option>
+                             <option value="Moderado">Moderado</option>
+                             <option value="Agresivo">Agresivo</option>
+                            
+                            </select>
+            
+                         </div>
                     
-                    <div class="form-group">
-                        <label>Estatura</label>
-                        <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
-                        <span asp-validation-for="IdEstatura" class="text-danger"></span>
-                    </div>
+                        <div class="form-group estatura">
+                         <label>Estatura</label>
+                         <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura" class="estatura" disabled></select>
+                       
+                        </div>
+
+                    </div>    
 
                      <div class="form-group">
-                        <input type="submit" value="Registrar Perro" class="btn btn-default">
+                        <input type="submit" value="Registrar Perro" class="btn btn-default" id="boton">
                     </div>
 
                 </form>

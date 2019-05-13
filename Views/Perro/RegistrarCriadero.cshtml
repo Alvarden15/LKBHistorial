@@ -5,13 +5,7 @@
 
 
 <html>
-    <script type="text/javascript">
-        $("#Boton").confirm("Quieres realizar el registro?");
-        function confirmar(){
-            
-        }
-
-    </script>
+    
 
     <head>
 
@@ -19,6 +13,12 @@
     </head>
 
     <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+           
+          
+
+         </script>
         <div class="row">
             <div class="col-md-4"> 
                 <form asp-action="RegistrarCriadero" asp-controller="Perro" >
@@ -49,7 +49,7 @@
 
                     </div>
                     <div class="form-group">
-                      <input type="submit" id="Boton" value="Registrar Criadero" class="btn btn-primary">                   
+                      <input type="submit" id="boton" value="Registrar Criadero" class="btn btn-primary">                   
                     </div>
 
                 </form>
@@ -59,9 +59,8 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <form asp-action="Index" asp-controller="Home">
-                    <input type="submit" value="Regresar">
-                </form>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Regresar</a>
+                
             </div>
         </div>
       

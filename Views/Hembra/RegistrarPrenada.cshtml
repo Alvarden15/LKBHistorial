@@ -16,6 +16,7 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       $( function() {
+         
          $("#parto").change( function() {
             if ($(this).val() === "Cesarea") {
                $(".cesarea").prop("disabled", false);
@@ -71,20 +72,20 @@
                         <option value="Indefinido">Por Definir</option>
                     </select>
                 </div>
-                <div class="form-group cesarea" id="c">
+                <div class="form-group " id="c">
                     <label>Fecha de cesárea:</label>
-                    <input type="date" asp-for="FechaCesaria" class="form-control">
+                    <input type="date" asp-for="FechaCesaria" class="form-control cesarea">
                 </div>
-                <div class="form-group normal" id="n" style="display:none">
+                <div class="form-group " id="n" style="display:none">
                     <label>Fecha de parto normal:</label>
-                    <input type="date" asp-for="FechaPartoNormal" class="form-control" disabled>
+                    <input type="date" asp-for="FechaPartoNormal" class="form-control normal" disabled>
                 </div>
                 <div class="form-group">
                     <label>Numero de camadas:</label>
                     <input type="number" asp-for="NumeroCamadas" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Registrar preñada" class="btn btn-primary">
+                    <input type="submit" value="Registrar preñada" class="btn btn-primary" id="boton">
                 </div>
             </form>
         </div>
