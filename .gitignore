@@ -121,3 +121,7 @@ obj/Debug/netcoreapp2.2/Razor/Views/Perro/ConfirmacionNormal.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ConfirmacionLunada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ConfirmacionPrenada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Perro/ConfirmacionPerro.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaPrenada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaLunada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaPrenada.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaLunada.g.cshtml.cs

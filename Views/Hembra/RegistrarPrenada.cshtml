@@ -6,11 +6,39 @@
     ViewData["Title"]="Registro de lunada";
 }
 <html>
+
+
 <head>
 
 </head>
 
 <body>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $( function() {
+         $("#parto").change( function() {
+            if ($(this).val() === "Cesarea") {
+               $(".cesarea").prop("disabled", false);
+               $(".normal").prop("disabled", true);
+               document.getElementById('c').style.display="block";
+               document.getElementById('n').style.display="none";
+            }else if($(this).val() === "Normal"){
+               $(".cesarea").prop("disabled", true);
+               $(".normal").prop("disabled", false);
+               document.getElementById('c').style.display="none";
+               document.getElementById('n').style.display="block";
+            }else{
+               $(".cesarea").prop("disabled", true);
+               $(".normal").prop("disabled", true);
+               document.getElementById('n').style.display="none";
+               document.getElementById('c').style.display="none";
+            }
+            
+         });
+      });
+   </script>
+
+
     <div class="row">
         <div class="col-md-5">
              <form asp-action="RegistrarPrenada" asp-controller="Hembra">  
@@ -37,19 +65,19 @@
                 </div>
                 <div class="form-group">
                     <label>Tipo de parto:</label>
-                    <select asp-for="TipoParto">
+                    <select asp-for="TipoParto" id="parto">
                         <option value="Cesarea">Cesárea</option>
                         <option value="Normal">Normal</option>
                         <option value="Indefinido">Por Definir</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group cesarea" id="c">
                     <label>Fecha de cesárea:</label>
                     <input type="date" asp-for="FechaCesaria" class="form-control">
                 </div>
-                <div class="form-group">
+                <div class="form-group normal" id="n" style="display:none">
                     <label>Fecha de parto normal:</label>
-                    <input type="date" asp-for="FechaPartoNormal" class="form-control">
+                    <input type="date" asp-for="FechaPartoNormal" class="form-control" disabled>
                 </div>
                 <div class="form-group">
                     <label>Numero de camadas:</label>
@@ -63,7 +91,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <a asp-action="ListaPrenada" asp-controller="Hembra" class="btn btn-info"></a>
+            <a asp-action="ListaPrenada" asp-controller="Hembra" class="btn btn-info">Lista de Preñadas</a>
         </div>
     </div>
 
