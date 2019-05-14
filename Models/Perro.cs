@@ -25,8 +25,9 @@ namespace LKBHistorial.Models
         public string Sexo { get; set; }
 
         [Required]
-        [DisplayFormat(DataFormatString="{0:dd/mm/yyyy}",ApplyFormatInEditMode=true)]
+        [DisplayFormat(DataFormatString="{0:dd/MM/yyyy}",ApplyFormatInEditMode=true)]
         [Column("fecha_nacimiento", TypeName = "date")]
+        [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
 
         [Required]

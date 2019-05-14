@@ -19,14 +19,15 @@
         @foreach (var i in Model)
         {
             <div class="col-md-3">
+                
                 <p>
-                    @Html.DisplayFor(modelItem=>i.IdPerro)
+                    @Html.DisplayFor(modelItem=>i.Perro.Nombre)
                 </p>
                 <p>
-                    @Html.DisplayFor(modelItem=>i.FechaInicio)
+                    @Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")
                 </p>
                 <p>
-                    @Html.DisplayFor(modelItem=>i.FechaFin)
+                    @Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")
                 </p>
                 <p>
                     @Html.DisplayFor(modelItem=>i.NumeroCelos)

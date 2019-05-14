@@ -180,7 +180,7 @@ namespace LKBHistorial.Controllers
                  ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
                 perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
-                return View(perros);
+                return View();
             }
             ListadoRazas();
             return View(await _context.Perro.ToListAsync());
