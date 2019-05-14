@@ -43,6 +43,10 @@ namespace LKBHistorial.Controllers
             //Luego se crea un ViewBag tipo SelectList, con el campo que leerá y en campo que mostrará
             ViewBag.ListaPerros= new SelectList(perros,"Id","Nombre");
         }
+        public void ListadoEstatura2(){
+            var estaturas= _context.TipoEstatura.Where(m=>m.Id!=4);
+            ViewBag.Estaturas2=new SelectList(estaturas,"Id","Estatura");
+        }
 
         public void ListadoEstatura(){
             var estaturas= _context.TipoEstatura.ToList();
@@ -81,7 +85,7 @@ namespace LKBHistorial.Controllers
             ListadoCriadores();
             ListadoRazas();
             ListadoPerros();
-            ListadoEstatura();
+            ListadoEstatura2();
             return View();
         }
         public IActionResult BorrarPerro(){
@@ -125,6 +129,9 @@ namespace LKBHistorial.Controllers
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
+                    if(perro.Madurez.Equals("C")){
+                        perro.IdCriadero=4;
+                    }
                    _context.Add(perro);
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función
                    await _context.SaveChangesAsync();
@@ -136,7 +143,7 @@ namespace LKBHistorial.Controllers
             ListadoCriadores();
             ListadoRazas();
             ListadoPerros();
-            ListadoEstatura();
+            ListadoEstatura2();
             return View(perro);
         }
 

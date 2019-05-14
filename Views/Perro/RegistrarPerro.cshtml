@@ -17,7 +17,13 @@
      <script type="text/javascript">
 
         $( function() {
-         
+                $("#boton").click(function(e){
+                        
+                        if(!window.confirm("¿Seguro/a?")){
+                            e.preventDefault();
+                        }
+                    }); 
+
          $("#madurez").change(function() {
             if ($(this).val() === "C") {
                $(".temperamiento").prop("disabled", true);
@@ -114,7 +120,7 @@
                     
                         <div class="form-group estatura">
                          <label>Estatura</label>
-                         <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura" class="estatura" disabled></select>
+                         <select asp-items="ViewBag.Estaturas2" asp-for="IdEstatura" class="estatura" disabled></select>
                        
                         </div>
 

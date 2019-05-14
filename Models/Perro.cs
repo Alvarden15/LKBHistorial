@@ -44,7 +44,7 @@ namespace LKBHistorial.Models
         public string Temperamento { get; set; }
 
         [Column("id_Tipo_Estatura")]
-        public int IdEstatura { get; set; }
+        public int? IdEstatura { get; set; }
         [Column("id_Criador_Actual")]
         public int IdCriadorActual { get; set; }
 

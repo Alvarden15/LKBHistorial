@@ -6,6 +6,18 @@
 }
 
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#Boton").click(function(e){
+                        
+                        if(!window.confirm("Estas advertido/a: despues de esto, no hay marcha atrás. ¿De verdad quieres continuar?")){
+                            e.preventDefault();
+                        }
+                    }); 
+                });
+               
+            </script>
 
     <div class="row">
         <div class="col-md-4">
@@ -41,10 +53,10 @@
     </div>
     <form asp-action="EliminarPerro" asp-controller="Perro">
         <input type="hidden" asp-for="Id">
-        <input type="submit" value="Eliminar" class="btn btn-danger">
+        <input type="submit" value="Eliminar" class="btn btn-danger" id="Boton">
     </form>
 
-    <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-default">
+    <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-default" >
             Regresar a la Lista
         </a>
 </body>

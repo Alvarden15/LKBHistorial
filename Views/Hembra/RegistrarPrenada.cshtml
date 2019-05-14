@@ -16,7 +16,12 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       $( function() {
-         
+                    $("#boton").click(function(e){
+                        
+                        if(!window.confirm("¿Seguro/a?")){
+                            e.preventDefault();
+                        }
+                    }); 
          $("#parto").change( function() {
             if ($(this).val() === "Cesarea") {
                $(".cesarea").prop("disabled", false);
