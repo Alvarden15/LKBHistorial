@@ -14,7 +14,7 @@ namespace LKBHistorial.Models
         public int Id { get; set; }
 
         [ForeignKey("IdRaza")]
-        public RazaPerro RazaPerro { get; set; }
+        public virtual RazaPerro RazaPerro { get; set; }
 
         [Column("id_raza")]
         public int IdRaza { get; set; }
@@ -32,7 +32,7 @@ namespace LKBHistorial.Models
 
         [Required]
         [Column("nombre")]
-        [StringLength(20)]
+        [StringLength(20,ErrorMessage="El nombre del perro no puede tener más de 20 caracteres")]
         public string Nombre {get; set;}
         
         [Required]
@@ -63,22 +63,22 @@ namespace LKBHistorial.Models
          */
        
         [ForeignKey("IdCriadero")]
-        public Criadero Criadero{get; set;}
+        public virtual Criadero Criadero{get; set;}
 
         [ForeignKey("IdCriadorActual")]
         [InverseProperty("PerroActual")]
-        public Criador CriadorActual{get;set;}
+        public virtual Criador CriadorActual{get;set;}
 
         [ForeignKey("IdCriadorOriginal")]
         [InverseProperty("PerroOriginal")]
-        public Criador CriadorOriginal{get; set;}
+        public virtual Criador CriadorOriginal{get; set;}
 
         [ForeignKey("IdEstatura")]
-        public TipoEstatura TipoEstatura{get; set;}
+        public virtual TipoEstatura TipoEstatura{get; set;}
 
-        public List<Lunada> Lunada{ get; set;}
+        public virtual List<Lunada> Lunada{ get; set;}
 
-        public List<Prenada> Prenada{get; set;}
+        public virtual List<Prenada> Prenada{get; set;}
 
         /*
          [InverseProperty("Padre")]

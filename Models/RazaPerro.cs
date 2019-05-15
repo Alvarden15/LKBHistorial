@@ -19,7 +19,7 @@ namespace LKBHistorial.Models
         public string Raza { get; set; }
 
         
-        public List<Perro> Perro {get; set;}
+        public virtual List<Perro> Perro {get; set;}
 
         public RazaPerro(){
             Perro=new List<Perro>();

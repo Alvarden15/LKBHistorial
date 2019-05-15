@@ -27,14 +27,14 @@ namespace LKBHistorial.Models
         public string Telefono{get; set;}
 
         [InverseProperty("CriadorActual")]
-        public List<Perro> PerroActual{get; set;}
+        public virtual List<Perro> PerroActual{get; set;}
         
         [InverseProperty("CriadorOriginal")]
-        public List<Perro> PerroOriginal{get; set;}
+        public virtual List<Perro> PerroOriginal{get; set;}
 
         //Esto evitará que se duplique los datos al momento de registar en una llave foranea
-       [ForeignKey("IdCriadero")] 
-        public Criadero Criadero{get; set;}
+        [ForeignKey("IdCriadero")] 
+        public virtual Criadero Criadero{get; set;}
 
         [Column("id_Criadero")]
         public int IdCriadero{get; set;}      

@@ -20,7 +20,7 @@ namespace LKBHistorial.Models
         [StringLength(10)]
         public string Estatura { get; set; }
 
-        public List<Perro> Perro{get; set;}
+        public virtual List<Perro> Perro{get; set;}
 
 
         public TipoEstatura(){
