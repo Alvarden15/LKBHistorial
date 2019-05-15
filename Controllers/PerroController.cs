@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.IO;
-using System.Threading.Tasks;
 using System.Globalization;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using LKBHistorial.Models;
@@ -13,6 +13,7 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using System.Dynamic;
 
 namespace LKBHistorial.Controllers
 {
@@ -58,6 +59,13 @@ namespace LKBHistorial.Controllers
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
+        public void ListaCriadorCriadero(int id){
+            var cria=_context.Criador.FirstOrDefault(m=>m.Id==id);
+            int i=cria.IdCriadero;
+            var cc=_context.Criador.AsNoTracking().Where(c=>c.IdCriadero==i);
+            ViewBag.CC=new SelectList(cc,"Id","Nombre");
+        }
+
         public void ListadoCriadores(){
             var criador=_context.Criador.AsNoTracking().ToList();
             ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
@@ -81,6 +89,7 @@ namespace LKBHistorial.Controllers
         /*Las paginas en si (que no son de listado) */
 
         public IActionResult RegistrarPerro(){
+            
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
@@ -100,6 +109,7 @@ namespace LKBHistorial.Controllers
         public IActionResult RegistrarCriadero(){
             return View();
         }
+
 
         public IActionResult ConfirmacionPerros(){
             return RedirectToAction("ListaPerros","Perro");
@@ -125,13 +135,13 @@ namespace LKBHistorial.Controllers
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero")]Perro perro){
-            
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
                     if(perro.Madurez.Equals("C")){
                         perro.IdCriadero=4;
                     }
+                    //perro.IdCriadero=SeleccionarCriadero(perro.IdCriadorActual);
                    _context.Add(perro);
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función
                    await _context.SaveChangesAsync();
@@ -139,6 +149,7 @@ namespace LKBHistorial.Controllers
                    // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
                    return RedirectToAction("ConfirmacionPerros");
                 }
+            
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
@@ -172,18 +183,21 @@ namespace LKBHistorial.Controllers
 
         /*Desde aquí estan los listados */
 
-        [HttpGet]
+        
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
+            ListadoPerros();
+            ListadoCriaderos();
+            ListadoCriadores();
+            ListadoRazas();
             var perros= from m in _context.Perro select m;
-
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
-                 ListadoRazas();
+                ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.AsNoTracking().Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
-                return View();
+                perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza );
+               
             }
             ListadoRazas();
-            return View(await _context.Perro.AsNoTracking().ToListAsync());
+            return View(await perros.AsNoTracking().ToListAsync());
 
         }
 
@@ -320,6 +334,13 @@ namespace LKBHistorial.Controllers
 
 
         //Comando que puede que esten o no en el entregable
+         /*
+        public void ListadoCriaderoNormal(int id){
+            var criaderos=_context.Criadero.AsNoTracking().Where(c=>c.Id==id);
+            ViewBag.CriaderoCriador=new SelectList(criaderos,"Id","Nombre");
+
+        }
+         */
 
          /*
          [HttpGet]
@@ -336,18 +357,6 @@ namespace LKBHistorial.Controllers
         }
          */
 
-          /*
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarReproductora([Bind("IDReproductora,IDPerro, Fecha")]Reproductora Reproductora){
-            if(ModelState.IsValid){
-                _context.Reproductora.Add(Reproductora);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            return View();
-        }
-         */ 
 
         // Transforma los bytes almacenados en la base de datos en un link de la imagen
         /*

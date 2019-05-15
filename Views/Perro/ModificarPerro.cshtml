@@ -38,7 +38,7 @@
              <form asp-action="ModificarPerro" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                      <div class="form-group">
-                        <select asp-for="Madurez">
+                        <select asp-for="Madurez" id="madurez">
                             <option value="C">Cachorro</option>
                             <option value="A">Adulto</option>
                         </select>
@@ -97,20 +97,20 @@
                     <div id="ad">
                         <div class="form-group">
                          <label>Temperamento</label>
-                         <select asp-for="Temperamento">
+                         <select asp-for="Temperamento" class="temperamiento">
                             <option value="Docil">Docil</option>
                             <option value="Relajado">Relajado</option>
                             <option value="Moderado">Moderado</option>
                             <option value="Agresivo">Agresivo</option>
                            
                          </select>
-                         <span asp-validation-for="Temperamento" class="text-danger"></span>
+                        
                         </div>
                     
                         <div class="form-group">
                             <label>Estatura</label>
-                            <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
-                            <span asp-validation-for="IdEstatura" class="text-danger"></span>
+                            <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura" class="estatura"></select>
+                           
                         </div>
 
                     </div>
