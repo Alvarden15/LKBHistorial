@@ -59,6 +59,12 @@ namespace LKBHistorial.Controllers
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
+        public void VistaLista(){
+            ViewBag.Cria=_context.Criadero.AsNoTracking().ToList();
+            ViewBag.Perros=_context.Perro.AsNoTracking().ToList();
+            ViewBag.TiposRaza=_context.RazaPerro.AsNoTracking().ToList();
+        }
+
         public void ListaCriadorCriadero(int id){
             var cria=_context.Criador.FirstOrDefault(m=>m.Id==id);
             int i=cria.IdCriadero;
@@ -185,17 +191,28 @@ namespace LKBHistorial.Controllers
 
         
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
-            ListadoPerros();
-            ListadoCriaderos();
-            ListadoCriadores();
-            ListadoRazas();
+            VistaLista();
+           
+            /*
+            dynamic obj = new ExpandoObject();
+            obj.Perros=new List<Perro>();
+            obj.Razas= new List<RazaPerro>();
+            obj.Criaderos= new List<Criadero>();
+            */
+            Filtro f= new Filtro();
+            f.Perro= _context.Perro.AsNoTracking().ToList();
+            f.RazaPerro=_context.RazaPerro.AsNoTracking().ToList();
+            f.Criadero=_context.Criadero.AsNoTracking().ToList();
+            
             var perros= from m in _context.Perro select m;
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
+                VistaLista();
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
                 perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza );
                
             }
+            VistaLista();
             ListadoRazas();
             return View(await perros.AsNoTracking().ToListAsync());
 

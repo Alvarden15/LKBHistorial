@@ -13,6 +13,7 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using System.Dynamic;
 
 namespace LKBHistorial.Controllers
 {
@@ -76,11 +77,13 @@ namespace LKBHistorial.Controllers
 
         [HttpGet]
         public async Task<IActionResult> ListaPrenada(){
+            
             return View(await _context.Prenada.AsNoTracking().ToListAsync());
         }
 
         [HttpGet]
         public async Task<IActionResult> ListaLunada(){
+          
             return View(await _context.Lunada.AsNoTracking().ToListAsync());
         }
 

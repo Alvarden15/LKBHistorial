@@ -39,7 +39,25 @@
                 
             }
         </div>
+       
+        <div class="row">
+            @foreach (var i in ViewBag.ListaPerros)
+            {
+                <div class="col-md-3 border border-secondary">
+                    <br>
+                    
+                   
+                    
+                   
+                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning">Eliminar</a><br>
+                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light">Modificar</a><br>
+                <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary">Mostrar Arbol</a>
 
+                </div>
+
+                
+            }
+        </div>
     </body>
 
 
