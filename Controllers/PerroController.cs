@@ -39,42 +39,42 @@ namespace LKBHistorial.Controllers
         //Se genera los listados de los registros mediante la llave foranea
         public void ListadoPerros(){
             //Se hace un listado primero
-            var perros= _context.Perro.ToList();
+            var perros= _context.Perro.AsNoTracking().ToList();
             //Luego se crea un ViewBag tipo SelectList, con el campo que leerá y en campo que mostrará
             ViewBag.ListaPerros= new SelectList(perros,"Id","Nombre");
         }
         public void ListadoEstatura2(){
-            var estaturas= _context.TipoEstatura.Where(m=>m.Id!=4);
+            var estaturas= _context.TipoEstatura.AsNoTracking().Where(m=>m.Id!=4);
             ViewBag.Estaturas2=new SelectList(estaturas,"Id","Estatura");
         }
 
         public void ListadoEstatura(){
-            var estaturas= _context.TipoEstatura.ToList();
+            var estaturas= _context.TipoEstatura.AsNoTracking().ToList();
             ViewBag.Estaturas=new SelectList(estaturas,"Id","Estatura");
         }
 
         public void ListadoCriaderos(){
-            var criaderos=_context.Criadero.ToList();
+            var criaderos=_context.Criadero.AsNoTracking().ToList();
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
         public void ListadoCriadores(){
-            var criador=_context.Criador.ToList();
+            var criador=_context.Criador.AsNoTracking().ToList();
             ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
         }
 
         public void ListadoRazas(){
-            var razas=_context.RazaPerro.ToList();
+            var razas=_context.RazaPerro.AsNoTracking().ToList();
             ViewBag.Razas= new SelectList(razas,"Id","Raza");
         }
 
         public void ListadoHembras(){
-            var hembras=_context.Perro.Where(m=>m.Sexo.Contains("H"));
+            var hembras=_context.Perro.AsNoTracking().Where(m=>m.Sexo.Contains("H"));
             ViewBag.Hembras=new SelectList(hembras,"Id","Nombre");
         }
 
         public void ListadoMachos(){
-            var machos=_context.Perro.Where(o=>o.Sexo.Contains("M"));
+            var machos=_context.Perro.AsNoTracking().Where(o=>o.Sexo.Contains("M"));
             ViewBag.Machos=new SelectList(machos,"Id","Nombre");
         }
 

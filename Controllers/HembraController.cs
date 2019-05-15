@@ -24,12 +24,12 @@ namespace LKBHistorial.Controllers
             _context=hc;
         }
          public void ListadoHembras(){
-            var hembras=_context.Perro.Where(m=>m.Sexo.Contains("H"));
+            var hembras=_context.Perro.AsNoTracking().Where(m=>m.Sexo.Contains("H"));
             ViewBag.Hembras=new SelectList(hembras,"Id","Nombre");
         }
 
         public void ListadoMachos(){
-            var machos=_context.Perro.Where(o=>o.Sexo.Contains("M"));
+            var machos=_context.Perro.AsNoTracking().Where(o=>o.Sexo.Contains("M"));
             ViewBag.Machos=new SelectList(machos,"Id","Nombre");
         }
 
