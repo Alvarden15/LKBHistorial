@@ -44,13 +44,13 @@
         <h2>
             Registrar Perro
         </h2>
-
+        <br>
         <div class="row">
             <div class="col-md-6">
                 <form asp-action="RegistrarPerro" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                      <div class="form-group">
-                        <select asp-for="Madurez" id="madurez">
+                        <select asp-for="Madurez" id="madurez" class="form-control">
                             <option value="C">Cachorro</option>
                             <option value="A">Adulto</option>
                         </select>
@@ -70,28 +70,29 @@
                     
                     <div class="form-group">
                         <label>Nombre del criador (Original)</label>
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal"></select>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal" class="form-control"></select>
                          <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
                    
                     </div>
                      <div class="form-group">
                         <label>Nombre del criador (Actual)</label>
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual" class="form-control"></select>
                         <span asp-validation-for="IdCriadorActual" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                         <label>Nombre del criadero</label>
-                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
+                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero" class="form-control"></select>
                         <span asp-validation-for="IdCriadero" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                          <label>Raza</label>
-                         <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
+                         <select asp-items="ViewBag.Razas" asp-for="IdRaza" class="form-control"></select>
                          
                      </div>
 
                     <div class="form-group">
-                        <select asp-for="Sexo">
+                        <label>Sexo</label>
+                        <select asp-for="Sexo" class="form-control">
                             <option value="M">Macho</option>
                             <option value="H">Hembra</option>
                         </select>

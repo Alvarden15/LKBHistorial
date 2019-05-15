@@ -49,12 +49,12 @@
         <div class="col-md-5">
              <form asp-action="RegistrarPrenada" asp-controller="Hembra">  
                   <div class="form-group">
-                    <label>Codigo de lunada:</label>
+                    <label>Codigo de preñada:</label>
                     <input type="number" asp-for="Id">
                 </div> 
                 <div class="form-group">
                      <label>Selecciona hembra:</label>
-                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro"></select>
+                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro" class="form-control"></select>
                 </div>
                
                 <div class="form-group">
@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label>Tipo de parto:</label>
-                    <select asp-for="TipoParto" id="parto">
+                    <select asp-for="TipoParto" id="parto" class="form-control">
                         <option value="Cesarea">Cesárea</option>
                         <option value="Normal">Normal</option>
                         <option value="Indefinido">Por Definir</option>

@@ -29,19 +29,19 @@
                
                 <div class="form-group">
                     <label>Selecciona hembra:</label>
-                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro"></select>
+                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro" class="form-control"></select>
                 </div>
                 <div class="form-group">
                     <label>Fecha de inicio</label>
-                    <input type="date" asp-for="FechaInicio">
+                    <input type="date" asp-for="FechaInicio" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Fecha final</label>
-                    <input type="date" asp-for="FechaFin">
+                    <input type="date" asp-for="FechaFin" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Numero de celos (sin contar actual)</label>
-                    <input type="number" asp-for="NumeroCelos">
+                    <input type="number" asp-for="NumeroCelos" class="form-control">
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Registrar Lunada" class="btn btn-primary" id="boton">
