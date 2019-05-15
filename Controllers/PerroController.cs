@@ -179,11 +179,11 @@ namespace LKBHistorial.Controllers
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
                  ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
+                perros= perros.AsNoTracking().Where(m=>m.Nombre.Contains(nombre) ||m.IdRaza==raza );
                 return View();
             }
             ListadoRazas();
-            return View(await _context.Perro.ToListAsync());
+            return View(await _context.Perro.AsNoTracking().ToListAsync());
 
         }
 
@@ -222,7 +222,7 @@ namespace LKBHistorial.Controllers
                 return NotFound();
             }
             //Se verifica si esta presente en la tabla
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==(id));
+            var perros= await _context.Perro.AsNoTracking().SingleOrDefaultAsync(m=>m.Id==(id));
             if(perros==null){
                 return NotFound();
             }
@@ -280,6 +280,9 @@ namespace LKBHistorial.Controllers
 
                 //El try-catch es por si existe algún fallo en la base de datos o por si ya se ha modificado algun campo por otro
                try{
+                if(perro.Madurez.Equals("C")){
+                    perro.IdCriadero=4;
+                }
                 _context.Perro.Update(perro);
                 await _context.SaveChangesAsync();
                }catch(DbUpdateConcurrencyException){

@@ -14,6 +14,21 @@
                         if(!window.confirm("¿Seguro/a?")){
                             e.preventDefault();
                         }
+                    });
+
+                     $("#madurez").change(function() {
+                        if ($(this).val() === "C") {
+                            $(".temperamiento").prop("disabled", true);
+                            $(".estatura").prop("disabled", true);
+                            document.getElementById('ad').style.display="none";
+              
+                         }else {
+                            $(".temperamiento").prop("disabled", false);
+                            $(".estatura").prop("disabled", false);
+                            document.getElementById('ad').style.display="block";
+
+                        }
+            
                     }); 
                 });
                
@@ -78,27 +93,26 @@
                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                          <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                     </div>
-
-                
                     
-                    
-
-                    <div class="form-group">
-                        <label>Temperamento</label>
-                        <select asp-for="Temperamento">
+                    <div id="ad">
+                        <div class="form-group">
+                         <label>Temperamento</label>
+                         <select asp-for="Temperamento">
                             <option value="Docil">Docil</option>
                             <option value="Relajado">Relajado</option>
                             <option value="Moderado">Moderado</option>
                             <option value="Agresivo">Agresivo</option>
-                            <option value=""></option>
-                        </select>
-                        <span asp-validation-for="Temperamento" class="text-danger"></span>
-                    </div>
+                           
+                         </select>
+                         <span asp-validation-for="Temperamento" class="text-danger"></span>
+                        </div>
                     
-                    <div class="form-group">
-                        <label>Estatura</label>
-                        <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
-                        <span asp-validation-for="IdEstatura" class="text-danger"></span>
+                        <div class="form-group">
+                            <label>Estatura</label>
+                            <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura"></select>
+                            <span asp-validation-for="IdEstatura" class="text-danger"></span>
+                        </div>
+
                     </div>
 
                      <div class="form-group">
