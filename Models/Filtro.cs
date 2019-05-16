@@ -14,6 +14,13 @@ namespace LKBHistorial.Models
 
         public IEnumerable<Criadero> Criadero { get; set; }
 
+        public IEnumerable<Criador> Criador { get; set; }
+
+        public IEnumerable<Prenada> Prenada { get; set; }
+
+        public IEnumerable<Lunada> Lunada { get; set; }
+
+        public IEnumerable<TipoEstatura> TipoEstatura { get; set; }
         
     }
 
