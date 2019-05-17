@@ -64,18 +64,6 @@ namespace LKBHistorial.Controllers
             ViewBag.Cria=cria;
         }
 
-        public void VistaLista(){
-            ViewBag.Cria=_context.Criadero.AsNoTracking().ToList();
-            ViewBag.Perros=_context.Perro.AsNoTracking().ToList();
-            ViewBag.TiposRaza=_context.RazaPerro.AsNoTracking().ToList();
-        }
-
-        public void ListaCriadorCriadero(int d){
-            var cria=_context.Criador.FirstOrDefault(m=>m.Id==d);
-            int i=cria.IdCriadero;
-            var cc=_context.Criador.AsNoTracking().Where(c=>c.IdCriadero==i);
-            ViewBag.CC=new SelectList(cc,"Id","Nombre");
-        }
 
         public void ListadoCriadores(){
             var criador=_context.Criador.AsNoTracking().ToList();
@@ -88,12 +76,12 @@ namespace LKBHistorial.Controllers
         }
 
         public void ListadoHembras(){
-            var hembras=_context.Perro.AsNoTracking().Where(m=>m.Sexo.Contains("H"));
+            var hembras=_context.Perro.AsNoTracking().Where(m=>m.Sexo.Contains("H") && m.Madurez.Contains("A"));
             ViewBag.Hembras=new SelectList(hembras,"Id","Nombre");
         }
 
         public void ListadoMachos(){
-            var machos=_context.Perro.AsNoTracking().Where(o=>o.Sexo.Contains("M"));
+            var machos=_context.Perro.AsNoTracking().Where(o=>o.Sexo.Contains("M") && o.Madurez.Contains("A"));
             ViewBag.Machos=new SelectList(machos,"Id","Nombre");
         }
 
@@ -104,8 +92,10 @@ namespace LKBHistorial.Controllers
             ListadoCriaderos();
             ListadoCriadores();
             ListadoRazas();
-            ListadoPerros();
             ListadoEstatura2();
+            ListadoHembras();
+            ListadoMachos();
+            ListadoPerros();
             return View();
         }
         public IActionResult BorrarPerro(){
@@ -145,7 +135,7 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero")]Perro perro){
+        public async Task<IActionResult> RegistrarPerro([Bind("IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
@@ -153,12 +143,15 @@ namespace LKBHistorial.Controllers
                     if(perro.Madurez.Equals("C")){
                         perro.IdCriadero=4;
                     }
+                    
                     //perro.IdCriadero=SeleccionarCriadero(perro.IdCriadorActual);
                    _context.Add(perro);
                    // Con el await, el comando se carga de forma paralela sin necesidad de bloquear ninguna otra función
                    await _context.SaveChangesAsync();
+                    
                    // El RedirectToAction te envia a una pagina en especifico una vez hecha la operación
                    // Los parametros son "El nombre de la pagina","El nombre del controlador a la que esta unida (si esta en otro)"
+
                    return RedirectToAction("ConfirmacionPerros");
                 }
             
@@ -167,6 +160,8 @@ namespace LKBHistorial.Controllers
             ListadoRazas();
             ListadoPerros();
             ListadoEstatura2();
+            ListadoHembras();
+            ListadoMachos();
             return View(perro);
         }
 
@@ -204,13 +199,13 @@ namespace LKBHistorial.Controllers
             
             var perros= from m in _context.Perro select m;
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
-                VistaLista();
+                
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
                 perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza );
                
             }
-            VistaLista();
+           
             ListadoRazas();
             return View(await perros.AsNoTracking().ToListAsync());
 
@@ -276,6 +271,8 @@ namespace LKBHistorial.Controllers
             ListadoRazas();
             ListadoPerros();
             ListadoEstatura();
+            ListadoHembras();
+            ListadoMachos();
 
             return View(perro);
         }
@@ -300,7 +297,7 @@ namespace LKBHistorial.Controllers
         //Modificacion
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarPerro(int? id, [Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero")]Perro perro){
+        public async Task<IActionResult> ModificarPerro(int? id, [Bind("IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
             if(id!=perro.Id){
                 return NotFound();
             }
@@ -329,6 +326,8 @@ namespace LKBHistorial.Controllers
             ListadoRazas();
             ListadoPerros();
             ListadoEstatura();
+            ListadoHembras();
+            ListadoMachos();
             return View(perro);
 
            

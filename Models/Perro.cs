@@ -11,7 +11,7 @@ namespace LKBHistorial.Models
     {
         [Key]
         [Column("id")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+       
         public int Id { get; set; }
 
         [ForeignKey("IdRaza")]
@@ -55,11 +55,12 @@ namespace LKBHistorial.Models
 
         [Column("id_Criadero")]
         public int IdCriadero{ get; set; }
+         [Column("id_padre")]
+        public int? IdPadre { get; set; }
+        [Column("id_madre")]
+        public int? IdMadre { get; set; }
         /*
-         [Column("id_Perro_Padre")]
-        public int IdPadre { get; set; }
-        [Column("id_Perro_Madre")]
-        public int IdMadre { get; set; }
+        
 
          */
        
@@ -81,29 +82,32 @@ namespace LKBHistorial.Models
 
         public virtual List<Prenada> Prenada{get; set;}
 
-        /*
-         [InverseProperty("Padre")]
-        public List<Perro> IdentificarPadre{get; set;}
+        [InverseProperty("Padre")]
+        public virtual List<Perro> IdentificarPadre{get; set;}
 
         [ForeignKey("IdPadre")]
         [InverseProperty("IdentificarPadre")]
-        public Perro Padre{get; set;}
+        public virtual Perro Padre{get; set;}
 
         [InverseProperty("Madre")]
-        public List<Perro> IdentificarMadre{get; set;}
+        public virtual List<Perro> IdentificarMadre{get; set;}
 
         [ForeignKey("IdMadre")]
         [InverseProperty("IdentificarMadre")]
-        public Perro Madre{get; set;}  
+        public virtual Perro Madre{get; set;}  
+
+        /*
+         
          */
 
         
         public Perro(){
+            IdentificarPadre= new List<Perro>();
+            IdentificarMadre= new List<Perro>();
             Lunada= new List<Lunada>();
             Prenada= new List<Prenada>();
             /*
-            IdentificarPadre= new List<Perro>();
-            IdentificarMadre= new List<Perro>();
+           
              */
            
 
