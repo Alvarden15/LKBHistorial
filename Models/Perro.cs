@@ -11,6 +11,7 @@ namespace LKBHistorial.Models
     {
         [Key]
         [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [ForeignKey("IdRaza")]

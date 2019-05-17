@@ -59,13 +59,18 @@ namespace LKBHistorial.Controllers
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
+        public void LCriaderos(int idnom){
+            var cria=_context.Criaderos.AsNoTracking.FirstOrDefault(m=>m.Id==idnom);
+            ViewBag.Cria=new SelectList(cria,"Id","Nombre");
+        }
+
         public void VistaLista(){
             ViewBag.Cria=_context.Criadero.AsNoTracking().ToList();
             ViewBag.Perros=_context.Perro.AsNoTracking().ToList();
             ViewBag.TiposRaza=_context.RazaPerro.AsNoTracking().ToList();
         }
 
-        public void ListaCriadorCriadero(int id){
+        public void ListaCriadorCriadero(int d){
             var cria=_context.Criador.FirstOrDefault(m=>m.Id==id);
             int i=cria.IdCriadero;
             var cc=_context.Criador.AsNoTracking().Where(c=>c.IdCriadero==i);
@@ -144,6 +149,7 @@ namespace LKBHistorial.Controllers
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
+                    
                     if(perro.Madurez.Equals("C")){
                         perro.IdCriadero=4;
                     }
@@ -191,14 +197,6 @@ namespace LKBHistorial.Controllers
 
         
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
-            VistaLista();
-           
-            /*
-            dynamic obj = new ExpandoObject();
-            obj.Perros=new List<Perro>();
-            obj.Razas= new List<RazaPerro>();
-            obj.Criaderos= new List<Criadero>();
-            */
             Filtro f= new Filtro();
             f.Perro= _context.Perro.AsNoTracking().ToList();
             f.RazaPerro=_context.RazaPerro.AsNoTracking().ToList();
