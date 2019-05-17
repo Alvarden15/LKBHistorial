@@ -60,8 +60,8 @@ namespace LKBHistorial.Controllers
         }
 
         public void LCriaderos(int idnom){
-            var cria=_context.Criaderos.AsNoTracking.FirstOrDefault(m=>m.Id==idnom);
-            ViewBag.Cria=new SelectList(cria,"Id","Nombre");
+            var cria=_context.Criadero.AsNoTracking().FirstOrDefault(m=>m.Id==idnom);
+            ViewBag.Cria=cria;
         }
 
         public void VistaLista(){
@@ -71,7 +71,7 @@ namespace LKBHistorial.Controllers
         }
 
         public void ListaCriadorCriadero(int d){
-            var cria=_context.Criador.FirstOrDefault(m=>m.Id==id);
+            var cria=_context.Criador.FirstOrDefault(m=>m.Id==d);
             int i=cria.IdCriadero;
             var cc=_context.Criador.AsNoTracking().Where(c=>c.IdCriadero==i);
             ViewBag.CC=new SelectList(cc,"Id","Nombre");
