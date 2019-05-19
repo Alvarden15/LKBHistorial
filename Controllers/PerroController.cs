@@ -135,10 +135,11 @@ namespace LKBHistorial.Controllers
         // Con el Bind se asegura que al momento de registrar se toma en cuenta los campos asignados (util si ninguna admite vacios)
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
-        public async Task<IActionResult> RegistrarPerro([Bind("IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
+        public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
                 if(ModelState.IsValid){
+                    
                     
                     if(perro.Madurez.Equals("C")){
                         perro.IdCriadero=4;
@@ -202,12 +203,12 @@ namespace LKBHistorial.Controllers
                 
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza );
+                perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza ).OrderByDescending(d=>d.Id);
                
             }
            
             ListadoRazas();
-            return View(await perros.AsNoTracking().ToListAsync());
+            return View(await perros.AsNoTracking().OrderByDescending(s=>s.Id).ToListAsync());
 
         }
 
@@ -297,7 +298,7 @@ namespace LKBHistorial.Controllers
         //Modificacion
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarPerro(int? id, [Bind("IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
+        public async Task<IActionResult> ModificarPerro(int? id, [Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
             if(id!=perro.Id){
                 return NotFound();
             }
