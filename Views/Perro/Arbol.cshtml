@@ -8,6 +8,9 @@
     <div class="row">
         
         <div class="col-2-md">
+            <br>
+            <br>
+            <br>
             <p>
                  @Html.DisplayFor(modelItem=>modelItem.Nombre)
             </p>
@@ -23,39 +26,30 @@
         <div class="col-2-md">
             <h3>Padres</h3> 
             <p>
+                @Html.DisplayFor(modelItem=>modelItem.IdPadre)
+            </p>
+            
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre)
             </p>
             <br>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.IdMadre)
+            </p>
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Nombre)
             </p>
 
         </div>
         <div class="col-2-md">
-            <h3>Abuelos</h3> 
-            <p>
-                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Nombre)
-            </p>
-            <br>
-            <p>
-                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Nombre)
-            </p>
-            <br>
-            <p>
-                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Nombre)
-            </p>
-            <br>
-            <p>
-                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Nombre)
-            </p>
-
+          
         </div>
 
     </div>
     <div class="row">
         <div class="col-2-md">
             
-            <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-secondary"></a>
+            <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-secondary">Regresar a la lista</a>
 
             
         </div>

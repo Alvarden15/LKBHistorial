@@ -55,7 +55,7 @@
                 <form asp-action="RegistrarPerro" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
-                        <label>Microchip</label>
+                        <label>Microchip*</label>
                         <input type="number" asp-for="Id" class="form-control">
                         <span asp-validation-for="Id" class="text-danger"></span>
                          
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Nombre de perro</label>
+                        <label>Nombre de perro*</label>
                         <!--pon aqui un input, defines que tipo de input es, 
                          pones el asp-for para enlazarlo con un atributo, y le asignas una clase
                          -->
@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Fecha de Nacimiento</label>
+                        <label>Fecha de Nacimiento*</label>
                         <input type="date" asp-for="FechaNacimiento" class="form-control">
                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                          
@@ -149,7 +149,7 @@
                     <div class="form-group">
                         
                     </div>
-
+                    <h6>*: Campos obligatorios</h6>
                      <div class="form-group">
                         <input type="submit" value="Registrar Perro" class="btn btn-default" id="boton">
                     </div>
@@ -162,9 +162,12 @@
 
         </div>
 
-         <form asp-action="Index" asp-controller="Home" >
-            <input type="button" value="Regresar" class="btn btn-secondary">
-        </form>
+         <div class="row">
+            <div class="col-md-2">
+                
+                <a asp-action="Index" asp-controller="Home" class="btn btn-info">Regresar</a>
+            </div>
+        </div>
         
         <br>
 
