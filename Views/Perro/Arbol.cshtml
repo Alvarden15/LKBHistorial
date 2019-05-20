@@ -12,82 +12,167 @@
             <br>
             <br>
             <br>
-            <p>
+            <div class="border border-secondary">
+                 <p>
                  @Html.DisplayFor(modelItem=>modelItem.Nombre)
-            </p>
-            <p>
+                </p>
+                <p>
                 @Html.DisplayFor(modelItem=>modelItem.RazaPerro.Id)
-            </p>
-            <p>
+                </p>
+                <p>
                  @Html.DisplayFor(modelItem=>modelItem.Criadero.Nombre)
-            </p>
+                </p>
+            </div>
+           
             
 
         </div>
         <div class="col-2-md">
             <h3>Padres</h3> 
+            <!-- Si se quiere hacer el arbol màs interactivo, aqui esta una muestra-->
+            <!--
+            <p>
+                 <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@Model.Padre.Id">
+                 @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre)
+                 </a>
+            </p>
+            <p>
+                 <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@Model.Madre.Id">
+                 @Html.DisplayFor(modelItem=>modelItem.Madre.Nombre)
+                 </a>
+            </p>
+
+            -->
          
-            <br>
-            <p>
-                @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre)
-            </p>
-            <br>
            
-            <p>
+            
+            <br>
+            <div class="border border-secondary">
+                <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre)
+                </p>
+                <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Criadero.Nombre)
+                </p>
+            </div>
+           <br>
+            <div class="border border-secondary">
+                <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Nombre)
-            </p>
+                </p>
+                <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Criadero.Nombre)
+                </p>
+            </div>
+           
+            
+           
+           
 
         </div>
         <div class="col-2-md">
           <h3>Abuelos</h3> 
-           <p>
+          <div class="border border-secondary">
+            <p >
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Nombre)
             </p>
-            
-           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Criadero.Nombre)
+            </p>
+          </div>
+           <div class="border border-secondary">
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Nombre)
             </p>
-             <p>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Criadero.Nombre)
+            </p>
+          </div>
+           <div class="border border-secondary">
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Nombre)
             </p>
-            
-           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Criadero.Nombre)
+            </p>
+          </div>
+           <div class="border border-secondary">
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Nombre)
             </p>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Criadero.Nombre)
+            </p>
 
+          </div>
+            
         </div>
         <div class="col-2-md">
           <h3>Bisabuelos</h3> 
-           <p>
+          <div class="border border-secondary">
+              <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Padre.Nombre)
-            </p>
-
+             </p>
+              <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Padre.Criadero.Nombre)
+             </p>
+          </div>
+           <div class="border border-secondary">
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Madre.Nombre)
             </p>
-           
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Madre.Criadero.Nombre)
+            </p>
+          </div>
+          <div class="border border-secondary">
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Padre.Nombre)
             </p>
-             <p>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Padre.Criadero.Nombre)
+            </p>
+          </div>
+          <div class="border border-secondary">
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Madre.Nombre)
             </p>
              <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Madre.Criadero.Nombre)
+            </p>
+          </div>
+          <div class="border border-secondary">
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Padre.Nombre)
             </p>
              <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Padre.Criadero.Nombre)
+            </p>
+          </div>
+          <div class="border border-secondary">
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Madre.Nombre)
             </p>
-            
-           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Madre.Criadero.Nombre)
+            </p>
+          </div>
+          <div class="border border-secondary">
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Padre.Nombre)
             </p>
-             <p>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Padre.Criadero.Nombre)
+            </p>
+          </div>
+           <div class="border border-secondary">
+            <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Madre.Nombre)
             </p>
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Madre.Criadero.Nombre)
+            </p>
+          </div>
 
         </div>
 
