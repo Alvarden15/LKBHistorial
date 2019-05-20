@@ -257,7 +257,14 @@ namespace LKBHistorial.Controllers
             //Se verifica si esta presente en la tabla
             var perros= await _context.Perro.AsNoTracking()
             .Include(m=>m.Padre)
-            .Include(d=>d.Madre).SingleOrDefaultAsync(m=>m.Id==(id));
+                .ThenInclude(m=>m.Padre)
+            .Include(m=>m.Padre)
+                .ThenInclude(m=>m.Madre)
+            .Include(d=>d.Madre)
+                .ThenInclude(m=>m.Padre)
+            .Include(d=>d.Madre)
+                .ThenInclude(m=>m.Madre)
+            .SingleOrDefaultAsync(m=>m.Id==(id));
             if(perros==null){
                 return NotFound();
             }

@@ -27,11 +27,11 @@
         <div class="col-2-md">
             <h3>Padres</h3> 
          
-            
+            <br>
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre)
             </p>
-            
+            <br>
            
             <p>
                 @Html.DisplayFor(modelItem=>modelItem.Madre.Nombre)
@@ -39,7 +39,56 @@
 
         </div>
         <div class="col-2-md">
-          
+          <h3>Abuelos</h3> 
+           <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Nombre)
+            </p>
+            
+           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Nombre)
+            </p>
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Nombre)
+            </p>
+            
+           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Nombre)
+            </p>
+
+        </div>
+        <div class="col-2-md">
+          <h3>Bisabuelos</h3> 
+           <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Padre.Nombre)
+            </p>
+
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Madre.Nombre)
+            </p>
+           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Padre.Nombre)
+            </p>
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Madre.Nombre)
+            </p>
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Padre.Nombre)
+            </p>
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Madre.Nombre)
+            </p>
+            
+           
+            <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Padre.Nombre)
+            </p>
+             <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Madre.Nombre)
+            </p>
+
         </div>
 
     </div>
