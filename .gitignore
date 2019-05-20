@@ -131,3 +131,5 @@ obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaLunada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaPrenada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaLunada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaPrenada.g.cshtml.cs
+.vscode/tasks.json
+.vscode/launch.json

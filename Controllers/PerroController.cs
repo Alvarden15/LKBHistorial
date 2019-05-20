@@ -216,7 +216,7 @@ namespace LKBHistorial.Controllers
             }
            
             ListadoRazas();
-            return View(await perros.AsNoTracking().OrderByDescending(s=>s.Id).ToListAsync());
+            return View(await perros.AsNoTracking().OrderByDescending(s=>s.Id).Include(m=>m.Criadero).ThenInclude(d=>d.Perro).ThenInclude(r=>r.RazaPerro).ToListAsync());
 
         }
 
@@ -255,7 +255,9 @@ namespace LKBHistorial.Controllers
                 return NotFound();
             }
             //Se verifica si esta presente en la tabla
-            var perros= await _context.Perro.AsNoTracking().Include("Padre").SingleOrDefaultAsync(m=>m.Id==(id));
+            var perros= await _context.Perro.AsNoTracking()
+            .Include(m=>m.Padre)
+            .Include(d=>d.Madre).SingleOrDefaultAsync(m=>m.Id==(id));
             if(perros==null){
                 return NotFound();
             }
