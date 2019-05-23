@@ -13,7 +13,6 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using System.Dynamic;
 
 namespace LKBHistorial.Controllers
 {
@@ -211,12 +210,12 @@ namespace LKBHistorial.Controllers
                 
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza ).OrderByDescending(d=>d.Id);
+                perros= perros.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza ).OrderByDescending(d=>d.FechaNacimiento);
                
             }
            
             ListadoRazas();
-            return View(await perros.AsNoTracking().OrderByDescending(s=>s.Id).Include(m=>m.Criadero).ThenInclude(d=>d.Perro).ThenInclude(r=>r.RazaPerro).ToListAsync());
+            return View(await perros.AsNoTracking().OrderByDescending(d=>d.FechaNacimiento).Include(m=>m.Criadero).ThenInclude(d=>d.Perro).ThenInclude(r=>r.RazaPerro).ToListAsync());
 
         }
 
@@ -251,10 +250,11 @@ namespace LKBHistorial.Controllers
         
         //Para las paginas de los detalles
         public async Task<IActionResult> Arbol(int? id){
+            //Se verifica si esta presente en la tabla
             if(id==null){
                 return NotFound();
             }
-            //Se verifica si esta presente en la tabla
+            
             //El include permite ver las propiedades de una llave foranea
             //El ThenInclude continua obteniendo otros atributos desde el mismo include
             //Se puede añadir multiples includes
