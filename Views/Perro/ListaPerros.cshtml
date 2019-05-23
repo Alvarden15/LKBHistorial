@@ -5,22 +5,27 @@
 }
 
     <body>
+        
         <div class="row">
             <div class="col-md-12">
+                <h3><label>Listado de perros Registrados</label></h3>
+                <br>
                 <form asp-action="ListaPerros"  asp-controller="Perro">
                     <input type="text" name="nombre" placeholder="Buscar por nombre">
                     <select asp-items="ViewBag.Razas" name="raza"></select>
                     <input type="submit" value="Buscar">
                 </form>
             </div>
+           <br>
+        
             <div class="col-md-12">
-                
-            </div>
-            <div class="col-md-12">
+                <br>
                 <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
               
             </div>
+            <br>
         </div>
+        <hr>
         <div class="row">
             @foreach (var i in Model)
             {
