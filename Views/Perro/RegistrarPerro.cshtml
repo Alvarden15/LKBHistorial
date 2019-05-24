@@ -8,11 +8,6 @@
 <html>
 
     <head>
-    
-
-    </head>
-
-    <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script type="text/javascript">
 
@@ -46,6 +41,11 @@
         });
 
      </script>
+
+    </head>
+
+    <body>
+    
         <h2>
             Registrar Perro
         </h2>
@@ -121,7 +121,7 @@
                     <div id="ad" style="display:none">
                          <div class="form-group ">
                             <label>Temperamento</label>
-                            <select asp-for="Temperamento" class="temperamiento" disabled>
+                            <select asp-for="Temperamento" class="temperamiento form-control" disabled>
                              <option value="Docil">Docil</option>
                              <option value="Relajado">Relajado</option>
                              <option value="Moderado">Moderado</option>
@@ -133,7 +133,7 @@
                     
                         <div class="form-group estatura">
                          <label>Estatura</label>
-                         <select asp-items="ViewBag.Estaturas2" asp-for="IdEstatura" class="estatura" disabled></select>
+                         <select asp-items="ViewBag.Estaturas2" asp-for="IdEstatura" class="estatura form-control" disabled></select>
                        
                         </div>
 

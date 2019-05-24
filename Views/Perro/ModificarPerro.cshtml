@@ -4,9 +4,8 @@
 @{
     ViewData["Title"]="Modificación de Perro";
 }
-
-<body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
                     $("#Boton").click(function(e){
@@ -33,6 +32,12 @@
                 });
                
             </script>
+
+
+</head>
+
+<body>
+  
     <div class="row">
         <div class="col-md-5">
              <form asp-action="ModificarPerro" asp-controller="Perro" >
