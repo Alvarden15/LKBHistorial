@@ -260,36 +260,19 @@ namespace LKBHistorial.Controllers
             //Se puede añadir multiples includes
             var perros= await _context.Perro.AsNoTracking()
             .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
 
             .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
 
-            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
-
-            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
-
+           
             .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
 
+           
             .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
 
-            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
-
-            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
-                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
                     
             .Include(m=>m.Criadero)
             .SingleOrDefaultAsync(m=>m.Id==(id));
@@ -375,7 +358,6 @@ namespace LKBHistorial.Controllers
             ListadoHembras();
             ListadoMachos();
             return View(perro);
-
            
         }
 
@@ -394,6 +376,66 @@ namespace LKBHistorial.Controllers
 
 
         //Comando que puede que esten o no en el entregable
+
+        /* El arbol hasta los bisabuelos
+
+              public async Task<IActionResult> Arbol(int? id){
+            //Se verifica si esta presente en la tabla
+            if(id==null){
+                return NotFound();
+            }
+            
+            //El include permite ver las propiedades de una llave foranea
+            //El ThenInclude continua obteniendo otros atributos desde el mismo include
+            //Se puede añadir multiples includes
+            var perros= await _context.Perro.AsNoTracking()
+            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+
+            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+
+            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+
+            .Include(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+
+            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+
+            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+
+            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Padre).ThenInclude(m=>m.Criadero)
+
+            .Include(d=>d.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero).ThenInclude(m=>m.Perro)
+                    .ThenInclude(m=>m.Madre).ThenInclude(m=>m.Criadero)
+                    
+            .Include(m=>m.Criadero)
+            .SingleOrDefaultAsync(m=>m.Id==(id));
+            if(perros==null){
+                return NotFound();
+            }
+
+            return View(perros);
+        }
+
+        
+        
+        
+         */
+
+
          /*
         public void ListadoCriaderoNormal(int id){
             var criaderos=_context.Criadero.AsNoTracking().Where(c=>c.Id==id);
