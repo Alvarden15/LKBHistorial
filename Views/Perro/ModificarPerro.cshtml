@@ -44,7 +44,7 @@
                          
                     </div>    
                      <div class="form-group">
-                        <select asp-for="Madurez" id="madurez">
+                        <select asp-for="Madurez" id="madurez" class="form-control">
                             <option value="C">Cachorro</option>
                             <option value="A">Adulto</option>
                         </select>
@@ -64,28 +64,28 @@
                     
                     <div class="form-group">
                         <label>Nombre del criador (Original)</label>
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal"></select>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal" class="form-control"></select>
                          <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
                    
                     </div>
                      <div class="form-group">
                         <label>Nombre del criador (Actual)</label>
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual"></select>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual" class="form-control"></select>
                         <span asp-validation-for="IdCriadorActual" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                         <label>Nombre del criadero</label>
-                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero"></select>
+                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero" class="form-control"></select>
                         <span asp-validation-for="IdCriadero" class="text-danger"></span>
                     </div>
                      <div class="form-group">
                          <label>Nombre del criadero</label>
-                         <select asp-items="ViewBag.Razas" asp-for="IdRaza"></select>
+                         <select asp-items="ViewBag.Razas" asp-for="IdRaza" class="form-control"></select>
                          
                      </div>
 
                     <div class="form-group">
-                        <select asp-for="Sexo">
+                        <select asp-for="Sexo" class="form-control">
                             <option value="M">Macho</option>
                             <option value="H">Hembra</option>
                         </select>
@@ -103,7 +103,7 @@
                     <div id="ad">
                         <div class="form-group">
                          <label>Temperamento</label>
-                         <select asp-for="Temperamento" class="temperamiento">
+                         <select asp-for="Temperamento" class="temperamiento form-control">
                             <option value="Docil">Docil</option>
                             <option value="Relajado">Relajado</option>
                             <option value="Moderado">Moderado</option>
@@ -115,7 +115,7 @@
                     
                         <div class="form-group">
                             <label>Estatura</label>
-                            <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura" class="estatura"></select>
+                            <select asp-items="ViewBag.Estaturas" asp-for="IdEstatura" class="estatura form-control"></select>
                            
                         </div>
 
