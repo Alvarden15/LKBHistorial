@@ -7,56 +7,80 @@
     <body>
         
         <div class="row">
-            <div class="col-md-12">
-                <h3><label>Listado de perros Registrados</label></h3>
+            <table style="width:100%">
+           
+            <div class="col-md-12 col-sm-4"><h3><label>LISTADO DE PERROS REGISTRADOS</label></h3>
                 <br>
-                <form asp-action="ListaPerros"  asp-controller="Perro">
+              <td>
+                <form asp-action="ListaPerros"  asp-controller="Perro" style="font-size:15px; height:24px">
                     <input type="text" name="nombre" placeholder="Buscar por nombre">
-                    <select asp-items="ViewBag.Razas" name="raza">
-                        <option value="">Selecciona Raza</option>
+                    <select asp-items="ViewBag.Razas" name="raza" style="font-size:15px; height:25px">
+                        <option value="">Selecciona tipo</option>
                     </select>
                     <input type="submit" value="Buscar">
                 </form>
+                
             </div>
-<<<<<<< HEAD
-           <br>
-        
-            <div class="col-md-12">
-                <br>
-=======
-            <div class="col-md-6">
-                <form asp-action="ListaPerros"  asp-controller="Perro">
+            </td>
+            <th >
+            <div class="col-md-12 col-sm-4">
+                
+                    <form asp-action="ListaPerros"  asp-controller="Perro">
+                    
+                        <input type="submit" value="Eliminar Filtro">
+                    </form>
                    
-                    <input type="submit" value="Eliminar Filtro">
-                </form>
             </div>
-            <div class="col-md-12">
->>>>>>> 5cdfd5a38e3d95d1b671dd41aa1daa837169923f
-                <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
+            </th>
+            
+            <th>
+            <div class="col-md-12 col-sm-4">
+
+              <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
               
             </div>
-            <br>
+            </th>
+            </table style="width:100%">
         </div>
-        <hr>
+        <br>
+        <hr />
+
         <div class="row">
             @foreach (var i in Model)
             {
+            
                 <div class="col-md-3 border border-secondary">
                     <br>
-                    <p>@Html.DisplayFor(modelItem=>i.Nombre)</p>
-                    <p>@Html.DisplayFor(modelItem=>i.Criadero.Nombre)</p>
-                    <p>@Html.DisplayFor(modelItem=>i.RazaPerro.Raza)</p>
+                
+            <table style="width:100%" >
+                    <tr> 
+                    <th>Nombre</th>     
+                    <td><p> @Html.DisplayFor(modelItem=>i.Nombre) </p>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th>Criadero</th>     
+                    <td><p> @Html.DisplayFor(modelItem=>i.Criadero.Nombre)</p>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th>Tipo</th>
+                    <td><p>@Html.DisplayFor(modelItem=>i.RazaPerro.Raza)</p>
+                    </td>
+                    </tr>
                    
-                    
-                   
-                <a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning">Eliminar</a><br>
-                <a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light">Modificar</a><br>
-                <a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary">Mostrar Arbol</a>
-
+             </table>       
+             <table style="width:100%">     
+                <th><a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning btn-sm">Eliminar</a><br></th>
+                <td><a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light btn-sm">Modificar</a><br></td>
+                <td><a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary btn-sm">Mostrar Arbol</a><br></td>
+            </table>
+                <br>
                 </div>
-
+            
                 
             }
+            <br>
         </div>
        
         <div class="row">
