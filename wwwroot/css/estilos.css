@@ -1,0 +1,81 @@
+body{
+	background-size: 100% 100%;
+	background-attachment: fixed;
+}
+
+#cuerpo {
+margin-bottom: 20px;
+height: 100%;
+border: 1px black;
+}
+#titulo{
+	padding: 2% 0% 0% 0%;
+	text-align: center;
+}
+.caja {
+   margin:20px auto 40px auto;	
+   border:1px solid #d9d9d9;
+   height:30px;
+   overflow: hidden;
+   width: 230px;
+   position:relative;
+}
+select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 30px;
+   padding: 5px;
+   width: 250px;
+}
+select:focus{ outline: none;}
+
+.caja::after{
+	content:"\025be";
+	display:table-cell;
+	padding-top:7px;
+	text-align:center;
+	width:30px;
+	height:30px;
+	background-color:#d9d9d9;
+	position:absolute;
+	top:0;
+	right:0px;	
+	pointer-events: none;
+}
+
+.marco{
+	padding: 1em;
+	color: #0B0200;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+}
+
+.marcoInputs{
+	padding: 10px 50px 20px;
+}
+
+.marcoRadio{
+	padding: 5px 5px 10px 15px; 
+}
+
+.selectDesign{
+	font-family: Arial, Helvetica, sans-serif;
+	border: 2px black solid;
+}
+
+.inputSize{
+	width: 50%;
+}
+
+.navPosition{
+	display: inline-block;
+}
+
+.sizeLetters{
+	font-size: px;
+}
+
+.paddingOptions{
+	padding: 0px 8px 0px 0px;
+}
