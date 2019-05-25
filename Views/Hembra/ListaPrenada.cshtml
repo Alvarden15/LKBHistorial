@@ -1,0 +1,37 @@
+@model IEnumerable<Prenada>
+
+@{
+    ViewData["Title"]="Listado de Preñadas";
+}
+
+<body>
+   
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="ListaPrenada" class="btn btn-light">
+                Preñadas
+            </a>
+            <a asp-action="ListaLunada" class="btn btn-primary">
+                Lunadas
+            </a>
+        </div>
+        @foreach (var i in Model)
+        {
+             <div class="col-md-3">
+                 <p>
+                    @Html.DisplayFor(modelItem=>i.Perro.Nombre)
+                </p>
+                <p>@Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
+                <p>@Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
+                <p>@Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
+                <p>@Html.DisplayFor(modelItem=>i.TipoParto)</p>
+            </div>
+        }
+
+        <div class="col-md-12">
+            <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
+        </div>
+           
+        </div>
+
+</body>
