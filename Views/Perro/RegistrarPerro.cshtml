@@ -8,18 +8,7 @@
 <html>
 
     <head>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/css/bootstrap.css">
-    <link rel="stylesheet" href="~/css/estilos.css">
 
-    <!-- CSS Font awesome -->
-    <link rel="stylesheet" href="~/css/font-awesome.min.css">
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script type="text/javascript">
 
         $( function() {
@@ -55,100 +44,122 @@
 
     </head>
 
-    <body style="background-image: url(https://cdn.tn.com.ar/sites/default/files/styles/1366x765/public/2019/04/10/pitbull.jpg);">
-		<div class="container">
-		    <div id="titulo">
-			    <h2 style="color: #fff;">Registro de Perro</h2>
-		    </div>
+    <body>
+
+        <h2>
+            Registrar Perro
+        </h2>
         <br>
-        <div id="cuerpo">
-            <div class="caja selectDesign">
-                <select asp-for="Madurez" id="madurez" class="font-weight-bold">
-                    <option value="C" onclick="ocultar();">Cachorro</option>
-                    <option value="A" onclick="mostrar();">Adulto</option>
-                </select>
-                <span asp-validation-for="Madurez" class="text-danger"></span>
-            </div>
-            <form asp-action="RegistrarPerro" asp-controller="Perro" >
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <p class="marco font-weight-bold">Microchip:</p>
-				    <div class="marcoInputs">
-					<input type="text" asp-for="Id" class="form-control inputSize"><br>
-                    <span asp-validation-for="Id" class="text-danger"></span>
-				</div>   
-                <p class="marco font-weight-bold">Nombre de perro*</p>
-                    <div class="marcoInputs">
-                    <!--pon aqui un input, defines que tipo de input es, 
-                    pones el asp-for para enlazarlo con un atributo, y le asignas una clase
-                    -->
-                        <input type="text" asp-for="Nombre" class="form-control inputSize">
-                    <!--Esto se usa para mostrar algun mensaje de error....
-                    -->
-                        <span asp-validation-for="Nombre"></span>
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="RegistrarPerro" asp-controller="Perro" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label>Microchip*</label>
+                        <input type="number" asp-for="Id" class="form-control">
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                         
+                    </div>    
+                    
+                     <div class="form-group">
+                        <select asp-for="Madurez" id="madurez" class="form-control">
+                            <option value="C">Cachorro</option>
+                            <option value="A">Adulto</option>
+                        </select>
+                        <span asp-validation-for="Madurez" class="text-danger"></span>
                     </div>
-                <p class="marco font-weight-bold">Nombre del criador (Original)</p>  
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal" class="form-control inputSize"></select>
-                        <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
+
+                    <div class="form-group">
+                        <label>Nombre de perro*</label>
+                        <!--pon aqui un input, defines que tipo de input es, 
+                         pones el asp-for para enlazarlo con un atributo, y le asignas una clase
+                         -->
+                       <input type="text" asp-for="Nombre" class="form-control">
+                       <!--Esto se usa para mostrar algun mensaje de error....
+                        -->
+                       <span asp-validation-for="Nombre"></span>
                     </div>
-                <p class="marco font-weight-bold">Nombre del criador (Actual)</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual" class="form-control inputSize" id="criador"></select>
+                    
+                    <div class="form-group">
+                        <label>Nombre del criador (Original)</label>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorOriginal" class="form-control"></select>
+                         <span asp-validation-for="IdCriadorOriginal" class="text-danger"></span>
+                   
+                    </div>
+                     <div class="form-group">
+                        <label>Nombre del criador (Actual)</label>
+                        <select asp-items="ViewBag.Criadores" asp-for="IdCriadorActual" class="form-control" id="criador"></select>
                         <span asp-validation-for="IdCriadorActual" class="text-danger"></span>
                     </div>
-                <p class="marco font-weight-bold">Nombre del criadero</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero" class="form-control inputSize" id="criadero"></select>
+                     <div class="form-group">
+                        <label>Nombre del criadero</label>
+                        <select asp-items="ViewBag.Criaderos" asp-for="IdCriadero" class="form-control" id="criadero"></select>
                         <span asp-validation-for="IdCriadero" class="text-danger"></span>
                     </div>
-                <p class="marco font-weight-bold">Raza</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Razas" asp-for="IdRaza" class="form-control inputSize"></select>      
-                    </div>
-                <p class="marco font-weight-bold">Sexo</p>
-                    <div class="marcoInputs">
-                        <select asp-for="Sexo" class="form-control inputSize">
+                     <div class="form-group">
+                         <label>Raza</label>
+                         <select asp-items="ViewBag.Razas" asp-for="IdRaza" class="form-control"></select>
+                         
+                     </div>
+
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select asp-for="Sexo" class="form-control">
                             <option value="M">Macho</option>
                             <option value="H">Hembra</option>
                         </select>
-                        <span asp-validation-for="Sexo" class="text-danger"></span>   
-                    </div>
-                <p class="marco font-weight-bold">Fecha de Nacimiento*</p>
-                    <div class="marcoInputs">
-                        <input type="date" asp-for="FechaNacimiento" class="form-control inputSize">
-                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>     
-                    </div>
-                <p class="marco font-weight-bold">Temperamento</p>
-                    <div id="ad" style="display:none">
-                        <div class="marcoInputs">
-                            <select asp-for="Temperamento" class="temperamiento form-control inputSize" disabled>
-                                <option value="Docil">Docil</option>
-                                <option value="Relajado">Relajado</option>
-                                <option value="Moderado">Moderado</option>
-                                <option value="Agresivo">Agresivo</option> 
-                            </select>
-                        </div>
-                <p class="marco font-weight-bold">Estatura</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Estaturas2" asp-for="IdEstatura" class="estatura form-control inputSize" disabled></select>                       
-                    </div>
-                </div>
-                <p class="marco font-weight-bold">Padre</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Machos" asp-for="IdPadre" class="form-control inputSize"></select>
-                    </div>
-                <p class="marco font-weight-bold">Madre</p>
-                    <div class="marcoInputs">
-                        <select asp-items="ViewBag.Hembras" asp-for="IdMadre" class="form-control inputSize"></select>
+                         <span asp-validation-for="Sexo" class="text-danger"></span>
+                        
                     </div>
 
-   			</div>
-                <h6>*: Campos obligatorios</h6>
-                <div class="marco" style="text-align: center;">
-                    <input type="submit" value="Registrar Perro" class="btn btn-info" id="boton">
-                </div>
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento*</label>
+                        <input type="date" asp-for="FechaNacimiento" class="form-control">
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                         
+                    </div>    
+                    <div id="ad" style="display:none">
+                         <div class="form-group ">
+                            <label>Temperamento</label>
+                            <select asp-for="Temperamento" class="temperamiento form-control" disabled>
+                             <option value="Docil">Docil</option>
+                             <option value="Relajado">Relajado</option>
+                             <option value="Moderado">Moderado</option>
+                             <option value="Agresivo">Agresivo</option>
+                            
+                            </select>
+            
+                         </div>
+                    
+                        <div class="form-group estatura">
+                         <label>Estatura</label>
+                         <select asp-items="ViewBag.Estaturas2" asp-for="IdEstatura" class="estatura form-control" disabled></select>
+                       
+                        </div>
+
+                    </div>   
+                    <div class="form-group">
+                        <label>Padre</label>
+                        <select asp-items="ViewBag.Machos" asp-for="IdPadre" class="form-control"></select>
+                    </div> 
+                    <div class="form-group">
+                        <label>Madre</label>
+                        <select asp-items="ViewBag.Hembras" asp-for="IdMadre" class="form-control"></select>
+                    </div> 
+                    <div class="form-group">
+                        
+                    </div>
+                    <h6>*: Campos obligatorios</h6>
+                     <div class="form-group">
+                        <input type="submit" value="Registrar Perro" class="btn btn-default" id="boton">
+                    </div>
 
                 </form>
+
+
+            </div>
+
+
         </div>
 
          <div class="row">
@@ -166,9 +177,7 @@
                 <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-info">Listado Perros</a>
             </div>
         </div>
-
-		</div>
-       
+		
     </body>
      
 
