@@ -1,0 +1,76 @@
+@model LKBHistorial.Models.Perro
+
+@{
+    ViewData["Title"]="Arbol geneologico";
+}
+
+<body>
+  <div class="family-tree">
+  <div class="tree-nodo">
+    <div class="tree-ejemplar">
+        <p>@Html.DisplayFor(modelItem=>modelItem.Nombre), (    
+        @Html.DisplayFor(modelItem=>modelItem.Criadero.Nombre) )
+
+        </p>
+    </div>
+  </div>
+  <div class="tree-nodo">
+    <div class="tree-padres">
+       <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre), (
+                
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Criadero.Nombre) )
+                </p>
+    </div>
+    <div class="tree-padres">
+      <p>@Html.DisplayFor(modelItem=>modelItem.Madre.Nombre), (
+                
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Criadero.Nombre) )
+                </p>
+    </div>
+  </div>
+  <div class="tree-nodo">
+    <div class="tree-abuelos">
+       <p >
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Nombre), (
+            
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Criadero.Nombre) )
+            </p>
+    </div>
+    <div class="tree-abuelos">
+      <p>
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Nombre), (
+            
+                @Html.DisplayFor(modelItem=>modelItem.Padre.Madre.Criadero.Nombre) )
+            </p>
+    </div>
+    <div class="tree-abuelos">
+       <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Nombre), (
+           
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Padre.Criadero.Nombre) )
+            </p>
+    </div>
+    <div class="tree-abuelos">
+      <p>
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Nombre),(
+            
+                @Html.DisplayFor(modelItem=>modelItem.Madre.Madre.Criadero.Nombre))
+            </p>
+    </div>
+  </div>
+</div>
+  
+    <div class="row">
+        <div class="col-12-md">
+            
+            <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-secondary">Regresar a la lista</a>
+
+            
+        </div>
+
+    </div>
+
+
+
+</body>

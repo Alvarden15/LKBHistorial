@@ -1,0 +1,106 @@
+@model Prenada
+
+
+
+@{
+    ViewData["Title"]="Registro de lunada";
+}
+<html>
+
+
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $( function() {
+                    $("#boton").click(function(e){
+                        
+                        if(!window.confirm("¿Seguro/a?")){
+                            e.preventDefault();
+                        }
+                    }); 
+         $("#parto").change( function() {
+            if ($(this).val() === "Cesarea") {
+               $(".cesarea").prop("disabled", false);
+               $(".normal").prop("disabled", true);
+               document.getElementById('c').style.display="block";
+               document.getElementById('n').style.display="none";
+            }else if($(this).val() === "Normal"){
+               $(".cesarea").prop("disabled", true);
+               $(".normal").prop("disabled", false);
+               document.getElementById('c').style.display="none";
+               document.getElementById('n').style.display="block";
+            }else{
+               $(".cesarea").prop("disabled", true);
+               $(".normal").prop("disabled", true);
+               document.getElementById('n').style.display="none";
+               document.getElementById('c').style.display="none";
+            }
+            
+         });
+      });
+   </script>
+
+</head>
+
+<body>
+    
+
+    <div class="row">
+        <div class="col-md-5">
+             <form asp-action="RegistrarPrenada" asp-controller="Hembra">  
+                  <div class="form-group">
+                    <label>Codigo de preñada:</label>
+                    <input type="number" asp-for="Id">
+                </div> 
+                <div class="form-group">
+                     <label>Selecciona hembra:</label>
+                    <select asp-items="ViewBag.Hembras" asp-for="IdPerro" class="form-control"></select>
+                </div>
+               
+                <div class="form-group">
+                    <label>Cantidad de inseminadas:</label>
+                    <input type="number" asp-for="CantidadInseminadas" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Fecha de inicio de inseminación:</label>
+                    <input type="date" asp-for="FechaInicio" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Fecha final de inseminación:</label>
+                    <input type="date" asp-for="FechaFin" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Tipo de parto:</label>
+                    <select asp-for="TipoParto" id="parto" class="form-control">
+                        <option value="Cesarea">Cesárea</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Indefinido">Por Definir</option>
+                    </select>
+                </div>
+                <div class="form-group " id="c">
+                    <label>Fecha de cesárea:</label>
+                    <input type="date" asp-for="FechaCesaria" class="form-control cesarea">
+                </div>
+                <div class="form-group " id="n" style="display:none">
+                    <label>Fecha de parto normal:</label>
+                    <input type="date" asp-for="FechaPartoNormal" class="form-control normal" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Numero de camadas:</label>
+                    <input type="number" asp-for="NumeroCamadas" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Registrar preñada" class="btn btn-primary" id="boton">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a asp-action="ListaPrenada" asp-controller="Hembra" class="btn btn-info">Lista de Preñadas</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
