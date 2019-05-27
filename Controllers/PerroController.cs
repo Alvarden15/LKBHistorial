@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {
+    [Authorize]
     public class PerroController:Controller
     {
         //private IMemoryCache cache;
@@ -38,6 +39,7 @@ namespace LKBHistorial.Controllers
         }
 
         //Se genera los listados de los registros mediante la llave foranea
+        
         public void ListadoPerros(){
             //Se hace un listado primero
             var perros= _context.Perro.AsNoTracking().ToList();
@@ -191,7 +193,7 @@ namespace LKBHistorial.Controllers
 
         /*Desde aquí estan los listados */
 
-        
+        [AllowAnonymous]
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
             Filtro f= new Filtro();
             /*

@@ -44,21 +44,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Árbol Geneologico</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
                         </li>
+                        @if(User.Identity.IsAuthenticated){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriadero">Registrar Criadero</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriador">Registrar Criador</a>
+                            </li>
+                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarPerro">Registrar Ejemplar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="ListaPerros">Listado de perros</a>
                         </li>
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriadero">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriador">Contáctenos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Hembra" asp-action="ListaLunada">Lista de lunadas</a>
                         </li>
 
                     </ul>

@@ -23,6 +23,7 @@ namespace LKBHistorial.Controllers
         public HembraController(MvcContext hc){
             _context=hc;
         }
+        
          public void ListadoHembras(){
             var hembras=_context.Perro.AsNoTracking().Where(m=>m.Sexo.Contains("H"));
             ViewBag.Hembras=new SelectList(hembras,"Id","Nombre");
@@ -75,12 +76,14 @@ namespace LKBHistorial.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> ListaPrenada(){
             
             return View(await _context.Prenada.AsNoTracking().Include(p=>p.Perro).ToListAsync());
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> ListaLunada(){
           
             return View(await _context.Lunada.AsNoTracking().Include(p=>p.Perro).ToListAsync());
