@@ -25,7 +25,7 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-        public IActionResult ListaDeudor(){
+        public IActionResult ListadoDeudor(){
 
             return View();
         }
@@ -37,6 +37,11 @@ namespace LKBHistorial.Controllers
 
 
         public IActionResult ModificarDeudor(){
+
+            return View();
+        }
+
+        public IActionResult ConfirmacionDeudor(){
 
             return View();
         }

@@ -27,6 +27,18 @@ namespace LKBHistorial.Controllers{
             return View();
         }
 
+        public IActionResult ModificarSocio(){
+
+            return View();
+        }
+
+
+        public IActionResult ConfirmacionSocio(){
+
+            return View();
+        }
+
+
         
 
     }
