@@ -20,6 +20,28 @@ namespace LKBHistorial.Controllers
             _context=context;
         }
 
+        public IActionResult RegistrarDeudor(){
+
+            return View();
+        }
+
+        public IActionResult ListaDeudor(){
+
+            return View();
+        }
+
+        public IActionResult Estadisticas(){
+
+            return View();
+        }
+
+
+        public IActionResult ModificarDeudor(){
+
+            return View();
+        }
+
+
 
 
 
