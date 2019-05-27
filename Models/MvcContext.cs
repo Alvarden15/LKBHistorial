@@ -28,6 +28,8 @@ namespace Models.MvcContext
         public DbSet<RazaPerro> RazaPerro{get; set;}
 
         public DbSet<TipoEstatura> TipoEstatura{get; set;}
+
+        public DbSet<Usuario> Usuario { get; set; }
         
     }
 }

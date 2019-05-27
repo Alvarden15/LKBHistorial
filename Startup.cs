@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Models.MvcContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace LKBHistorial
 {
@@ -40,6 +43,35 @@ namespace LKBHistorial
             services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",providerOptions=>providerOptions.EnableRetryOnFailure()));
                             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //services.AddDefaultIdentity<MvcContext>();
+
+            services.Configure<IdentityOptions>(o=>
+            {
+                o.Password.RequireDigit=true;
+                o.Password.RequiredLength=6;
+                o.Password.RequiredUniqueChars=1;
+
+
+                o.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromMinutes(10);
+                o.Lockout.MaxFailedAccessAttempts=5;
+                o.Lockout.AllowedForNewUsers=true;
+
+
+                o.User.AllowedUserNameCharacters=
+                "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                o.User.RequireUniqueEmail=false;
+
+
+            });
+
+            services.ConfigureApplicationCookie(o=>{
+                o.Cookie.HttpOnly=true;
+                o.ExpireTimeSpan=TimeSpan.FromMinutes(10);
+                
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +91,7 @@ namespace LKBHistorial
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
             
             app.UseMvc(routes =>
             {
