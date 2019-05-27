@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.IO;
 using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +12,8 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LKBHistorial.Controllers{
     public class SocioController:Controller{

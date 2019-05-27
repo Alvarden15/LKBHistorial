@@ -13,6 +13,8 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LKBHistorial.Controllers
 {

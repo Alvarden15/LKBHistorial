@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.IO;
 using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +12,7 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using System.Dynamic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {

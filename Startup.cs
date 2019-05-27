@@ -37,7 +37,7 @@ namespace LKBHistorial
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
            
-
+            services.AddMemoryCache();
             services.AddMvc();
             
             //services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",providerOptions=>providerOptions.EnableRetryOnFailure()));
@@ -65,12 +65,6 @@ namespace LKBHistorial
 
             });
 
-            services.ConfigureApplicationCookie(o=>{
-                o.Cookie.HttpOnly=true;
-                o.ExpireTimeSpan=TimeSpan.FromMinutes(10);
-
-
-            });
 
         }
 
