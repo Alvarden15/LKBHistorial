@@ -40,8 +40,8 @@ namespace LKBHistorial
 
             services.AddMvc();
             
-            services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",providerOptions=>providerOptions.EnableRetryOnFailure()));
-                            
+            //services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",providerOptions=>providerOptions.EnableRetryOnFailure()));
+            services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),providerOptions=>providerOptions.EnableRetryOnFailure()));           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //services.AddDefaultIdentity<MvcContext>();
@@ -68,7 +68,7 @@ namespace LKBHistorial
             services.ConfigureApplicationCookie(o=>{
                 o.Cookie.HttpOnly=true;
                 o.ExpireTimeSpan=TimeSpan.FromMinutes(10);
-                
+
 
             });
 
@@ -91,7 +91,7 @@ namespace LKBHistorial
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            app.UseAuthentication();
+            
             
             app.UseMvc(routes =>
             {

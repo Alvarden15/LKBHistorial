@@ -21,15 +21,15 @@ namespace LKBHistorial.Controllers{
     [Authorize]
     [Route("[controller]([action]")]
     public class UsuarioController:Controller{
-        private readonly UserManager<Usuario> manager;
-        private readonly SignInManager<Usuario> signin;
+        //private readonly UserManager<Usuario> manager;
+        //private readonly SignInManager<Usuario> signin;
 
-        private readonly MvcContext _context;
-        private readonly ILogger<UsuarioController> logger;
+       // private readonly MvcContext _context;
+        //private readonly ILogger<UsuarioController> logger;
         
 
 
-        
+
 
 
 

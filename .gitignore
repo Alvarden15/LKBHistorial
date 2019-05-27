@@ -133,3 +133,14 @@ obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaLunada.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Hembra/ListaPrenada.g.cshtml.cs
 .vscode/tasks.json
 .vscode/launch.json
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/ConfirmacionSocio.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/ConfirmacionDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/ListadoDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/ModificarDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/RegistrarDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/ModificarSocio.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/RegistrarSocio.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Usuario/ConfirmarEmail.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Denegado.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Login.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Registro.g.cshtml.cs
