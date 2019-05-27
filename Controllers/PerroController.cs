@@ -195,21 +195,9 @@ namespace LKBHistorial.Controllers
 
         [AllowAnonymous]
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
-            Filtro f= new Filtro();
-            /*
-             f.Perro= _context.Perro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             f.RazaPerro=_context.RazaPerro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             f.Criadero=_context.Criadero.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             */
-           
-            
+
             var perros= from m in _context.Perro select m;
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
-                /*
-                f.Perro= _context.Perro.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza ).OrderByDescending(d=>d.Id);
-                f.RazaPerro=_context.RazaPerro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-                f.Criadero=_context.Criadero.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-                 */
                 
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
