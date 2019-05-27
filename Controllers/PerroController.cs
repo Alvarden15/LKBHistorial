@@ -252,6 +252,7 @@ namespace LKBHistorial.Controllers
         }
         
         //Para las paginas de los detalles
+        [AllowAnonymous]
         public async Task<IActionResult> Arbol(int? id){
             //Se verifica si esta presente en la tabla
             if(id==null){

@@ -29,7 +29,10 @@
         }
 
         <div class="col-md-12">
-            <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
+            @if(User.Identity.IsAuthenticated){
+                 <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
+            }
+           
         </div>
            
         </div>

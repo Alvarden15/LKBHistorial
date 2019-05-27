@@ -37,7 +37,10 @@
             
         }
         <div class="col-md-12">
-            <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
+            @if(User.Identity.IsAuthenticated){
+                <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
+            }
+            
         </div>
 
     </div>

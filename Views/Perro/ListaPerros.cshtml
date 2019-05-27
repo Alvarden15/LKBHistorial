@@ -35,9 +35,9 @@
             
             <th>
             <div class="col-md-12 col-sm-4">
-
-              <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
-              
+                @if(User.Identity.IsAuthenticated){
+                     <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
+                }     
             </div>
             </th>
             </table style="width:100%">
@@ -75,9 +75,11 @@
                     </tr>
                    
              </table>       
-             <table style="width:100%">     
-                <th><a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning btn-sm">Eliminar</a><br></th>
+             <table style="width:100%"> 
+                 @if(User.Identity.IsAuthenticated){
+                     <th><a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning btn-sm">Eliminar</a><br></th>
                 <td><a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light btn-sm">Modificar</a><br></td>
+                 }     
                 <td><a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary btn-sm">Mostrar Arbol</a><br></td>
             </table>
                 <br>
