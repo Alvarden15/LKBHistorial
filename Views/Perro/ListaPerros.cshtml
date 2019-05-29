@@ -81,6 +81,32 @@
                     <td><p>@Html.DisplayFor(modelItem=>i.FechaNacimiento)</p>
                     </td>
                     </tr>
+                    <tr>
+                    <th>Sexo</th>
+                    <td>
+                        @if (i.Sexo.Equals("M"))
+                        {
+                            <p>Macho</p> 
+                        }else{
+                            <p>Hembra</p>
+                        }
+                    </td>
+                    </tr>
+                    @if(i.Madurez.Equals("A")){
+                         <tr>
+                         <th>Temperamento</th>
+                        <td><p>@Html.DisplayFor(modelItem=>i.Temperamento)</p>
+                         </td>
+                        </tr>
+                        <tr>
+                         <th>Estatura</th>
+                        <td><p>@Html.DisplayFor(modelItem=>i.TipoEstatura.Estatura)</p>
+                         </td>
+                        </tr>
+                    } 
+                   
+                   
+                   
                    
              </table>       
              <table style="width:100%"> 

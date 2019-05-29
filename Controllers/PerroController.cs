@@ -214,7 +214,7 @@ namespace LKBHistorial.Controllers
             }
            
             ListadoRazas();
-            return View(await perros.AsNoTracking().OrderByDescending(d=>d.FechaNacimiento).Include(m=>m.Criadero).ThenInclude(d=>d.Perro).ThenInclude(r=>r.RazaPerro).ToListAsync());
+            return View(await perros.AsNoTracking().OrderByDescending(d=>d.FechaNacimiento).Include(m=>m.Criadero).Include(r=>r.RazaPerro).Include(d=>d.TipoEstatura).ToListAsync());
 
         }
 

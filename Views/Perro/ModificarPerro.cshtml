@@ -29,6 +29,10 @@
                         }
             
                     }); 
+
+                    $('[type="date"].max-today').prop('max', function(){
+                        return new Date().toJSON().split('T')[0];
+                     });
                 });
                
             </script>
@@ -100,7 +104,7 @@
 
                     <div class="form-group">
                         <label>Fecha de Nacimiento</label>
-                        <input type="date" asp-for="FechaNacimiento" class="form-control">
+                        <input type="date" asp-for="FechaNacimiento" class="form-control max-today">
                         <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                          <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
                     </div>
