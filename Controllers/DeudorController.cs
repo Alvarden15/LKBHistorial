@@ -25,12 +25,17 @@ namespace LKBHistorial.Controllers
             _context=context;
         }
 
+        public void ListadoPerros(){
+            var perros= _context.Perro.AsNoTracking().ToList();
+            ViewBag.Perros=new SelectList(perros,"Id","Nombre");
+        }
+
         public IActionResult RegistrarDeudor(){
 
             return View();
         }
 
-        public IActionResult ListadoDeudor(){
+        public IActionResult ListaDeudores(){
 
             return View();
         }

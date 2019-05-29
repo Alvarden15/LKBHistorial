@@ -23,6 +23,11 @@ namespace LKBHistorial.Controllers{
             _context=cont;
         }
 
+        public void ListadoPerros(){
+            var perros= _context.Perro.AsNoTracking().ToList();
+            ViewBag.Perros=new SelectList(perros,"Id","Nombre");
+        }
+
         public IActionResult RegistrarSocio(){
 
             return View();
@@ -35,6 +40,12 @@ namespace LKBHistorial.Controllers{
 
 
         public IActionResult ConfirmacionSocio(){
+
+            return View();
+        }
+
+
+        public IActionResult ListaSocios(){
 
             return View();
         }

@@ -61,12 +61,6 @@ namespace LKBHistorial.Controllers
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
 
-        public void LCriaderos(int idnom){
-            var cria=_context.Criadero.AsNoTracking().FirstOrDefault(m=>m.Id==idnom);
-            ViewBag.Cria=cria;
-        }
-
-
         public void ListadoCriadores(){
             var criador=_context.Criador.AsNoTracking().ToList();
             ViewBag.Criadores=new SelectList(criador,"Id","Nombre");
