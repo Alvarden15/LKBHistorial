@@ -138,8 +138,10 @@ namespace LKBHistorial.Controllers
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
+             bool idP=VerificarPerro(perro.Id);
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
+            //if(ModelState.IsValid && !idP)
                 if(ModelState.IsValid){
                     
                     
@@ -157,6 +159,12 @@ namespace LKBHistorial.Controllers
 
                    return RedirectToAction("ConfirmacionPerros");
                 }
+                /*
+                if(idP){
+                    ModelState.AddModelError(string.Empty,"El microchip ya existe");
+                }
+                 */
+                
             
             ListadoCriaderos();
             ListadoCriadores();
@@ -369,6 +377,8 @@ namespace LKBHistorial.Controllers
 
         //Comando que puede que esten o no en el entregable
 
+        /* */
+
         /* El arbol hasta los bisabuelos
 
               public async Task<IActionResult> Arbol(int? id){
@@ -429,26 +439,7 @@ namespace LKBHistorial.Controllers
 
 
          /*
-        public void ListadoCriaderoNormal(int id){
-            var criaderos=_context.Criadero.AsNoTracking().Where(c=>c.Id==id);
-            ViewBag.CriaderoCriador=new SelectList(criaderos,"Id","Nombre");
-
-        }
-         */
-
-         /*
-         [HttpGet]
-        public async Task<IActionResult> ArbolGeneologico(int? id,String nombre, String tipo){
-            // Se verifica que todo este en orden en la base de datos
-            var perros= from m in _context.Perro select m;
-            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
-
-                // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.Id==id 
-               );
-            }
-           return View(await _context.Perro.ToListAsync());
-        }
+      
          */
 
 

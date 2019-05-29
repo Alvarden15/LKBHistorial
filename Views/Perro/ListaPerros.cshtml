@@ -52,7 +52,15 @@
                 <div class="col-md-3 border border-secondary">
                     <br>
                 
-            <table style="width:100%" >
+                    <table style="width:100%" >
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr> 
+                        <th>Microchip</th>     
+                        <td><p> @Html.DisplayFor(modelItem=>i.Id) </p>
+                        </td>
+                        </tr>
+                    } 
                     <tr> 
                     <th>Nombre</th>     
                     <td><p> @Html.DisplayFor(modelItem=>i.Nombre) </p>
