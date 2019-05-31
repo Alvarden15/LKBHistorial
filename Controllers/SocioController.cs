@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 
 namespace LKBHistorial.Controllers{
+    [Authorize("LKB Historial")]
     public class SocioController:Controller{
         private readonly MvcContext _context;
 

@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {
+    [Authorize("LKB Historial")]
     public class DeudorController:Controller
     {
         private readonly MvcContext _context;

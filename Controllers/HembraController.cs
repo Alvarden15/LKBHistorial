@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {
+    [Authorize("LKB Historial")]
     public class HembraController:Controller
     {
         private MvcContext _context;
@@ -33,12 +34,12 @@ namespace LKBHistorial.Controllers
             var machos=_context.Perro.AsNoTracking().Where(o=>o.Sexo.Contains("M"));
             ViewBag.Machos=new SelectList(machos,"Id","Nombre");
         }
-
+        [Authorize("LKB Historial")]
           public IActionResult RegistrarLunada(){
             ListadoHembras();
             return View();
         }
-
+        [Authorize("LKB Historial")]
         public IActionResult RegistrarPrenada(){
             ListadoHembras();
             return View();

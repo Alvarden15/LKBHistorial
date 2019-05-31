@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {
-    [Authorize]
+    [Authorize("LKB Historial")]
     public class PerroController:Controller
     {
         //private IMemoryCache cache;
@@ -82,7 +82,7 @@ namespace LKBHistorial.Controllers
         }
 
         /*Las paginas en si (que no son de listado) */
-
+        [Authorize("LKB Historial")]
         public IActionResult RegistrarPerro(){
             
             ListadoCriaderos();
@@ -194,7 +194,7 @@ namespace LKBHistorial.Controllers
         }
 
         /*Desde aquí estan los listados */
-
+        [Authorize("LKB Historial")]
         [AllowAnonymous]
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
 
@@ -225,7 +225,7 @@ namespace LKBHistorial.Controllers
         /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
 
         //Para las pagina de eliminar
-
+        [Authorize("LKB Historial")]
         public async Task<IActionResult> EliminarPerro(int? id){
 
             // Se verifica si una entidad esta registrada en la base de datos o no
@@ -278,6 +278,7 @@ namespace LKBHistorial.Controllers
         }
 
         //Para las paginas de modificaciones
+        [Authorize("LKB Historial")]
         public async Task<IActionResult> ModificarPerro(int? id){
 
             // Antes de entrar a la pagina de modificación se valida si esta en la tabla o no

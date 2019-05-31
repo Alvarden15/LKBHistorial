@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LKBHistorial.Controllers
 {
-    [Authorize]
+    [Authorize("LKB Historial")]
     public class HomeController : Controller
     {
         [AllowAnonymous]
