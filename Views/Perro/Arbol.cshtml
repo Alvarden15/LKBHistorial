@@ -7,6 +7,7 @@
 <body>
   <div class="family-tree">
   <div class="tree-nodo">
+    <h2>Perro/a</h2>
     <div class="tree-ejemplar">
         <p>@Html.DisplayFor(modelItem=>modelItem.Nombre), (    
         @Html.DisplayFor(modelItem=>modelItem.Criadero.Nombre) )
@@ -15,6 +16,7 @@
     </div>
   </div>
   <div class="tree-nodo">
+    <h2>Padres</h2>
     <div class="tree-padres">
        <p>
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Nombre), (
@@ -30,6 +32,7 @@
     </div>
   </div>
   <div class="tree-nodo">
+    <h2>Abuelos</h2>
     <div class="tree-abuelos">
        <p >
                 @Html.DisplayFor(modelItem=>modelItem.Padre.Padre.Nombre), (

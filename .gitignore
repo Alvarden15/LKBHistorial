@@ -145,3 +145,5 @@ obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Denegado.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Login.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Registro.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LoginPartial.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/ListaSocios.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/ListaDeudores.g.cshtml.cs

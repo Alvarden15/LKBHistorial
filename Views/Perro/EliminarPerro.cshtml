@@ -31,13 +31,23 @@
                 @Html.DisplayFor(model=>model.Nombre)
             </div>
             <div>
+                 @if(Model.Sexo.Equals("M")){
+                    <p>Macho</p>
+                }else{
+                    <p>Hembra</p>
+                }
                  @Html.DisplayFor(model=>model.Sexo)
             </div>
             <div>
                  @Html.DisplayFor(model=>model.FechaNacimiento)
             </div>
             <div>
-                 @Html.DisplayFor(model=>model.Madurez)
+                @if(Model.Madurez.Equals("A")){
+                    <p>Adulto</p>
+                }else{
+                    <p>Cachorro</p>
+                }
+                
             </div>
             <div>
                 

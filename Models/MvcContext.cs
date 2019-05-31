@@ -29,7 +29,7 @@ namespace Models.MvcContext
 
         public DbSet<TipoEstatura> TipoEstatura{get; set;}
 
-      
+
         
     }
 }
