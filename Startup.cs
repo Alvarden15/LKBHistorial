@@ -68,7 +68,14 @@ namespace LKBHistorial
                 options.Filters.Add(new AuthorizeFilter(policy));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            
+            services.AddHsts(options =>
+            {
+                    options.Preload = true;
+                    options.IncludeSubDomains = true;
+                    options.MaxAge = TimeSpan.FromDays(60);
+                    //options.ExcludedHosts.Add("https://lkbhistorial.azurewebsites.net");
+                    //options.ExcludedHosts.Add("www.example.com");
+            });
 
         }
 
@@ -89,7 +96,6 @@ namespace LKBHistorial
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-           
             app.UseAuthentication();
             app.UseMvc(routes =>
             {
