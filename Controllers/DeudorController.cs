@@ -36,9 +36,10 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-        public IActionResult ListaDeudores(){
+        public async Task<IActionResult> ListaDeudores(){
+            var deudor= from m in _context.Deudor select m;
 
-            return View();
+            return View(await deudor.AsNoTracking().ToListAsync());
         }
 
         public IActionResult Estadisticas(){
@@ -54,7 +55,7 @@ namespace LKBHistorial.Controllers
 
         public IActionResult ConfirmacionDeudor(){
 
-            return View();
+            return RedirectToAction("ListaDeudores");
         }
 
 

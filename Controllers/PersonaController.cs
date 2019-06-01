@@ -28,6 +28,24 @@ namespace LKBHistorial.Controllers{
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistarPersona(Persona persona){
+            if(ModelState.IsValid){
+                _context.Add(persona);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("ConfirmacionPersona");
+
+            }
+
+            return View(persona);
+        }
+
+        public IActionResult ConfirmacionPersona(){
+
+            return RedirectToAction("Index","Home");
+        }
+
 
 
     }
