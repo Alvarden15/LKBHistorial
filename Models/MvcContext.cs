@@ -29,7 +29,13 @@ namespace Models.MvcContext
 
         public DbSet<TipoEstatura> TipoEstatura{get; set;}
 
+        public DbSet<Socio> Socio{get;set;}
 
+        public DbSet<PerroSocio> PerroSocio { get; set; }
+        public DbSet<Persona> Persona { get; set; }
+
+        public DbSet<Deuda> Deuda { get; set; }
+        public DbSet<Deudor> Deudor { get; set; }
         
     }
 }
