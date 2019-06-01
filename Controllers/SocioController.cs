@@ -50,7 +50,7 @@ namespace LKBHistorial.Controllers{
             return View(socio);
         }
 
-        
+
         public async Task<IActionResult> ModificarSocio(int? id){
             if(id==null){
                 return NotFound();
@@ -63,6 +63,8 @@ namespace LKBHistorial.Controllers{
             return View(socio);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ModificarSocio(int? id, Socio socio){
             if(id==null){
                 return NotFound();

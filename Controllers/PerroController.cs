@@ -135,7 +135,7 @@ namespace LKBHistorial.Controllers
              bool idP=VerificarPerro(perro.Id);
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
-            //if(ModelState.IsValid && !idP)
+            //if(ModelState.IsValid && !idP){
                 if(ModelState.IsValid){
                     
                     
