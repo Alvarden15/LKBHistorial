@@ -11,23 +11,38 @@
 </head>
 
 <body>
-     <div class="row">
+    <div class="row">
         <div class="col-md-6">
-            <form asp-action="RegistrarSocio" asp-controller="Socio">
+            <form asp-action="ModificarSocio" asp-controller="Socio">
+                <div asp-validation-summary="ModelOnly"></div>
                 <div class="form-group">
-
+                    <label>Id del socio</label>
+                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control"></select>
+                    <span asp-validation-for="Id"></span>
                 </div>
                 <div class="form-group">
-                    
+                     <label>Departamento</label>
+                    <input type="text" asp-for="Departamento" class="form-control">
+                    <span asp-validation-for="Departamento"></span>
                 </div>
                 <div class="form-group">
-                    
+                    <label>Distrito</label>
+                    <input type="text" asp-for="Distrito" class="form-control">
+                    <span asp-validation-for="Distrito"></span>
                 </div>
                 <div class="form-group">
-                    
+                    <label>Calle</label>
+                    <input type="text" asp-for="Calle" class="form-control">
+                    <span asp-validation-for="Calle"></span>
                 </div>
                 <div class="form-group">
-                    
+                    <label>Pais</label>
+                    <input type="text" asp-for="Pais" class="form-control">
+                    <span asp-validation-for="Pais"></span>
+                </div>
+               
+                <div class="form-group">
+                    <input type="submit" value="Registrar Socio" class="btn btn-primary">
                 </div>
         
             </form>
@@ -35,5 +50,12 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-3">
+            <a asp-action="ListaSocios" asp-controller="Socio" class="btn btn-info">Regresar a la lista</a>
+
+        </div>
+
+    </div>
 
 </body>

@@ -30,7 +30,9 @@ namespace LKBHistorial.Controllers{
         }
 
         public void ListadoPersonas(){
+            
             var personas =_context.Persona.AsNoTracking().ToList();
+            //var p=_context.Persona.AsNoTracking().Any();
             ViewBag.Personas= new SelectList(personas,"Id","Nombre");
         }
 
@@ -44,12 +46,17 @@ namespace LKBHistorial.Controllers{
             return View();
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarSocio([Bind("Id,Departamento,Distrito,Calle,Pais")]Socio socio){
-            if(ModelState.IsValid){
+            var ids=VerificarSocio(socio.Id);
+            if(ModelState.IsValid && !ids){
                 _context.Add(socio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionSocio");
+            }
+            if(ids){
+                ModelState.AddModelError(String.Empty,"Ya esta registrado como Socio. Intenta con otra persona");
             }
             ListadoPersonas();
             return View(socio);
@@ -150,6 +157,10 @@ namespace LKBHistorial.Controllers{
         
         public bool VerificarSocio(int? id){
             return _context.Socio.Any(s=>s.Id==id);
+        }
+
+        public bool VerificarDeudor(int? id){
+            return _context.Deudor.Any(d=>d.Id==id);
         }
 
 

@@ -24,7 +24,6 @@ namespace LKBHistorial.Controllers{
         }
 
         public IActionResult RegistarPersona(){
-
             return View();
         }
 

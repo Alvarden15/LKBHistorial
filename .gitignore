@@ -155,3 +155,4 @@ obj/Debug/netcoreapp2.2/Razor/Views/Persona/ConfirmacionPersona.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Persona/RegistrarPersona.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Socio/AsignarPerroSocio.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Socio/EliminarSocio.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Persona/RegistarPersona.g.cshtml.cs
