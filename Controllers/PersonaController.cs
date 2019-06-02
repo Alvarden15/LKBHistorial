@@ -31,11 +31,15 @@ namespace LKBHistorial.Controllers{
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistarPersona([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno")]Persona persona){
-            if(ModelState.IsValid){
+            var idPersona=verificarPersona(persona.Id);
+            if(ModelState.IsValid && !idPersona){
                 _context.Add(persona);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionPersona");
 
+            }
+            if(idPersona){
+                ModelState.AddModelError(string.Empty,"El ID ya existe");
             }
 
             return View(persona);
@@ -44,6 +48,10 @@ namespace LKBHistorial.Controllers{
         public IActionResult ConfirmacionPersona(){
 
             return RedirectToAction("Index","Home");
+        }
+
+        public bool verificarPersona(int id){
+            return _context.Persona.Any(p=>p.Id==id);
         }
 
 

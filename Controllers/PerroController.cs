@@ -135,8 +135,8 @@ namespace LKBHistorial.Controllers
              bool idP=VerificarPerro(perro.Id);
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
-            //if(ModelState.IsValid && !idP){
-                if(ModelState.IsValid){
+            if(ModelState.IsValid && !idP){
+                //if(ModelState.IsValid){
                     
                     
                     if(perro.Madurez.Equals("C")){
@@ -154,10 +154,12 @@ namespace LKBHistorial.Controllers
                    return RedirectToAction("ConfirmacionPerros");
                 }
                 /*
-                if(idP){
-                    ModelState.AddModelError(string.Empty,"El microchip ya existe");
-                }
+               
                  */
+                 if(idP){
+                     //ViewData["MicrochipAsignado"]="El microchip ya fue asignado";
+                     ModelState.AddModelError(string.Empty,"El microchip ya existe");
+                }
                 
             
             ListadoCriaderos();

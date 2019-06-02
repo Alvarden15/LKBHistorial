@@ -147,3 +147,11 @@ obj/Debug/netcoreapp2.2/Razor/Views/Usuario/Registro.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Shared/_LoginPartial.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Socio/ListaSocios.g.cshtml.cs
 obj/Debug/netcoreapp2.2/Razor/Views/Deudor/ListaDeudores.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/Asignaciones.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/DetallesDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/EliminarDeudor.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Deudor/RegistrarDeuda.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Persona/ConfirmacionPersona.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Persona/RegistrarPersona.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/AsignarPerroSocio.g.cshtml.cs
+obj/Debug/netcoreapp2.2/Razor/Views/Socio/EliminarSocio.g.cshtml.cs

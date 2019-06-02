@@ -10,7 +10,7 @@ namespace LKBHistorial.Models
     public class Perro
     {
         [Key]
-        [Required]
+        [Required (ErrorMessage="Rellene el campo de microchip")]
         [Column("id")]
        
         public int Id { get; set; }
@@ -22,22 +22,22 @@ namespace LKBHistorial.Models
         public int IdRaza { get; set; }
 
         [Column("sexo")]
-        [Required]
+        [Required(ErrorMessage="Por favor, selecciona una de las opciones")]
         [StringLength(1)]
         public string Sexo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Asigna al perro una fecha de nacimiento")]
         [DisplayFormat(DataFormatString="{0:dd/MM/yyyy}",ApplyFormatInEditMode=true)]
         [Column("fecha_nacimiento", TypeName = "date")]
         [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; }
 
-        [Required]
+        [Required(ErrorMessage="Por favor, asigna el nombre")]
         [Column("nombre")]
         [StringLength(20,ErrorMessage="El nombre del perro no puede tener más de 20 caracteres")]
         public string Nombre {get; set;}
         
-        [Required]
+        [Required(ErrorMessage="Define si es cachorro o adulto")]
         [Column("madurez")]
         [StringLength(8)]
         public string Madurez { get; set; }
