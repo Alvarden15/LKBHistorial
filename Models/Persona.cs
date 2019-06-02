@@ -25,9 +25,9 @@ namespace LKBHistorial.Models
         [StringLength(20)]
         public string ApellidoMaterno { get; set; }
 
-        [InverseProperty("IdNavigation")]
+        [InverseProperty("PersonaDeudor")]
         public virtual Deudor Deudor { get; set; }
-        [InverseProperty("IdNavigation")]
+        [InverseProperty("PersonaSocio")]
         public virtual Socio Socio { get; set; }
 
 

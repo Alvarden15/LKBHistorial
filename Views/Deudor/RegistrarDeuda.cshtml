@@ -1,14 +1,13 @@
-@model Persona
+@model Deuda
 
 @{
-    ViewData["Title"]="Registro de personas";
+    ViewData["Title"]="Registro de deuda";
 }
-
 
 <body>
      <div class="row">
         <div class="col-md-6">
-            <form asp-action="RegistrarPersona" asp-controller="Persona">
+            <form asp-action="RegistrarDeuda" asp-controller="Deudor">
                 <div class="form-group">
 
                 </div>
@@ -20,15 +19,18 @@
                 </div>
                 <div class="form-group">
                     
+                    <span asp-validation-for="FechaInicio"></span>
+                    
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Registrar persona">
+                    <input type="submit" value="Registrar Deuda">
                 </div>
         
             </form>
 
         </div>
     </div>
+
 
 
 </body>

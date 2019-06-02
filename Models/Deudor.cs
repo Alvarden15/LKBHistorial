@@ -22,8 +22,8 @@ namespace LKBHistorial.Models
 
         [ForeignKey("Id")]
         [InverseProperty("Deudor")]
-        public virtual Persona IdNavigation { get; set; }
-        [InverseProperty("IdDeudorNavigation")]
+        public virtual Persona PersonaDeudor { get; set; }
+        [InverseProperty("DeudorNavigation")]
         public virtual List<Deuda> Deuda { get; set; }
 
         public Deudor(){

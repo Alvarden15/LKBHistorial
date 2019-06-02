@@ -24,7 +24,7 @@ namespace LKBHistorial.Models{
 
         [ForeignKey("IdSocio")]
         [InverseProperty("PerroSocio")]
-        public virtual Socio IdSocioNavigation { get; set; }
+        public virtual Socio SocioNavigation { get; set; }
 
 
     }

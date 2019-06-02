@@ -30,8 +30,13 @@ namespace LKBHistorial.Controllers{
         }
 
         public void ListadoPersonas(){
-            var personas =_context.Perro.AsNoTracking().ToList();
+            var personas =_context.Persona.AsNoTracking().ToList();
             ViewBag.Personas= new SelectList(personas,"Id","Nombre");
+        }
+
+        public void ListadoSocios(){
+            var socios= _context.Socio.AsNoTracking().ToList();
+            ViewBag.Socios= new SelectList(socios,"Id","Nombre");
         }
 
         public IActionResult RegistrarSocio(){
@@ -40,7 +45,7 @@ namespace LKBHistorial.Controllers{
         }
 
 
-        public async Task<IActionResult> RegistrarSocio(Socio socio){
+        public async Task<IActionResult> RegistrarSocio([Bind("Id,Departamento,Distrito,Calle,Pais")]Socio socio){
             if(ModelState.IsValid){
                 _context.Add(socio);
                 await _context.SaveChangesAsync();
@@ -65,7 +70,7 @@ namespace LKBHistorial.Controllers{
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ModificarSocio(int? id, Socio socio){
+        public async Task<IActionResult> ModificarSocio(int? id,[Bind("Id,Departamento,Distrito,Calle,Pais")] Socio socio){
             if(id==null){
                 return NotFound();
             }
@@ -97,18 +102,26 @@ namespace LKBHistorial.Controllers{
         }
 
         public IActionResult AsignarPerroSocio(){
+            ListadoSocios();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AsignarPerroSocio(PerroSocio perrosocio){
+        public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio")]PerroSocio perrosocio){
             if(ModelState.IsValid){
                 _context.Add(perrosocio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionSocio");
             }
+            ListadoSocios();
             return View(perrosocio);
+        }
+
+        public async Task<IActionResult> Asignaciones(){
+            var asignaciones= from m in _context.PerroSocio select m;
+
+            return View(await asignaciones.AsNoTracking().ToListAsync());
         }
 
         public async Task<IActionResult> EliminarSocio(int? id){
@@ -121,12 +134,12 @@ namespace LKBHistorial.Controllers{
                 return NotFound();
             }
 
-            return View();
+            return View(socio);
         }
 
         [HttpPost,ActionName("EliminarSocio")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmarEliminacion(int? id){
+        public async Task<IActionResult> ConfirmarEliminacionSocio(int? id){
             var socio= await _context.Socio.SingleOrDefaultAsync(s=>s.Id==id);
             _context.Remove(socio);
             await _context.SaveChangesAsync();

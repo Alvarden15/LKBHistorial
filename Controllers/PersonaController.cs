@@ -30,7 +30,7 @@ namespace LKBHistorial.Controllers{
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistarPersona(Persona persona){
+        public async Task<IActionResult> RegistarPersona([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno")]Persona persona){
             if(ModelState.IsValid){
                 _context.Add(persona);
                 await _context.SaveChangesAsync();
