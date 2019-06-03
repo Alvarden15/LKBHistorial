@@ -19,6 +19,29 @@
       @foreach (var i in Model)
       {
         <div class="col-md-4">
+            <p>
+                Nombre:
+                @Html.DisplayFor(modelItem=>i.PersonaDeudor.Nombre)
+            </p>
+            <p>
+                @Html.DisplayFor(modelItem=>i.Correo)
+            </p>
+            @if(i.Estado){
+                <p>
+                ¿Disponible?:
+                Si
+                </p>
+            }else{
+                <p>
+                ¿Disponible?:
+                No
+                </p>
+            }
+            
+            <p>
+                
+            </p>
+            <a asp-action="DetallesDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
 
         </div>
           

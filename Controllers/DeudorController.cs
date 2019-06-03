@@ -88,7 +88,7 @@ namespace LKBHistorial.Controllers
         public async Task<IActionResult> ListaDeudores(){
             var deudor= from m in _context.Deudor select m;
 
-            return View(await deudor.AsNoTracking().ToListAsync());
+            return View(await deudor.AsNoTracking().Include(d=>d.PersonaDeudor).ToListAsync());
         }
 
         public async Task<IActionResult> ListaDeudas(){

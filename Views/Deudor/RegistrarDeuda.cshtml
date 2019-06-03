@@ -1,29 +1,64 @@
 @model Deuda
 
 @{
-    ViewData["Title"]="Registro de deuda";
+    ViewData["Title"]="Registro de deuda ";
 }
 
 <body>
+    <h3>Registro de deuda (en soles)</h3>
      <div class="row">
         <div class="col-md-6">
             <form asp-action="RegistrarDeuda" asp-controller="Deudor">
                 <div class="form-group">
+                    <label>Deudor</label>
+                    <select asp-for="IdDeudor" asp-items="ViewBag.Deudores" class="form-control"></select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Monto inicial</label>
+                    <input type="number" asp-for="MontoInicial" class="form-control">
+                    <span asp-validation-for="MontoInicial" class="text-danger"></span>
+                </div>
 
-                </div>
                 <div class="form-group">
-                    
+                    <label>Monto total</label>
+                    <input type="number" asp-for="MontoTotal" class="form-control">
+                    <span asp-validation-for="MontoTotal"></span>
                 </div>
+                
                 <div class="form-group">
-                    
+                    <label>Numero de cuotas</label>
+                    <input type="number" asp-for="NumeroCuotas" class="form-control">
+                    <span asp-validation-for="NumeroCuotas"></span>
                 </div>
+
                 <div class="form-group">
-                    
+                    <label>Valor de las cuotas</label>
+                    <input type="number" asp-for="Cuotas" class="form-control">
+                    <span asp-validation-for="Cuotas"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Saldo pendiente</label>
+                    <input type="number" asp-for="SaldoPendiente" class="form-control">
+                    <span asp-validation-for="SaldoPendiente"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Cuotas pendientes</label>
+                    <input type="number" asp-for="CuotasPendientes" class="form-control">
+                    <span asp-validation-for="CuotasPendientes"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha de inicio</label>
+                    <input type="date" asp-for="FechaInicio" class="form-control">
                     <span asp-validation-for="FechaInicio"></span>
                     
                 </div>
+
                 <div class="form-group">
-                    <input type="submit" value="Registrar Deuda">
+                    <input type="submit" value="Registrar Deuda" class="btn btn-primary">
                 </div>
         
             </form>
