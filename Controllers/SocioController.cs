@@ -40,8 +40,19 @@ namespace LKBHistorial.Controllers{
         }
 
         public void ListadoSocios(){
-            var socios= _context.Socio.AsNoTracking().ToList();
-            ViewBag.Socios= new SelectList(socios,"Id","Nombre");
+            
+            var so=_context.Socio.AsNoTracking().Select(o=>o.Id).ToArray();
+            var personas=_context.Persona.AsNoTracking().Where(p=>so.Contains(p.Id)).ToList();
+
+            //var socios= _context.Socio.AsNoTracking().Include(s=>s.PersonaSocio).ToList();
+
+            ViewBag.Socios= new SelectList(personas,"Id","Nombre");
+        }
+
+        public void ListadoPersonas2(){
+            var deudores=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
+            var personas= _context.Persona.AsNoTracking().Where(p=>!deudores.Contains(p.Id)).ToList();
+            ViewBag.ListPersona=new SelectList(personas,"Id","Nombre");
         }
 
         public IActionResult RegistrarSocio(){
@@ -74,7 +85,7 @@ namespace LKBHistorial.Controllers{
             if(socio==null){
                 return NotFound();
             }
-            ListadoPersonas();
+            ListadoPersonas2();
             return View(socio);
         }
 
@@ -84,11 +95,12 @@ namespace LKBHistorial.Controllers{
             if(id==null){
                 return NotFound();
             }
+            var sId=VerificarSocio(socio.Id);
             if(ModelState.IsValid){
                 try{
                     _context.Socio.Update(socio);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("ConfirmacionSocio");
+                    
                 }catch(DbUpdateConcurrencyException){
                     if(!VerificarSocio(id)){
                         return NotFound();
@@ -96,8 +108,10 @@ namespace LKBHistorial.Controllers{
                         throw;
                     }
                 }
+                return RedirectToAction("ConfirmacionSocio");
             }
-            ListadoPersonas();
+            
+             ListadoPersonas2();
             return View(socio);
         }
 

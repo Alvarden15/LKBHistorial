@@ -1,0 +1,51 @@
+@model IEnumerable<LKBHistorial.Models.Deuda>
+
+<body>
+    <div class="row">
+        <div class="col-md-12">
+           
+            <a asp-action="RegistrarDeuda" asp-controller="Deudor" class="btn btn-warning">Registrar deuda</a>
+        </div>
+        @foreach (var i in Model)
+        {
+            <div class="col-md-4">
+                <p>
+                    ID de la deuda:
+                    @Html.DisplayFor(modelItem=>i.Id)
+                </p>
+                <p>
+                    Nombre del deudor:
+                    @Html.DisplayFor(modelItem=>i.DeudorNavigation.PersonaDeudor.Nombre)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelItem=>i.MontoInicial)
+                </p>
+                <p>
+                     @Html.DisplayFor(modelItem=>i.NumeroCuotas)
+                </p>
+                <p>
+                     @Html.DisplayFor(modelItem=>i.Cuotas)
+                </p>
+                <p>
+                     @Html.DisplayFor(modelItem=>i.CuotasPendientes)
+                </p>
+                <p>
+                     @Html.DisplayFor(modelItem=>i.SaldoPendiente)
+                </p>
+                <p>
+                     @Html.DisplayFor(modelItem=>i.MontoTotal)
+                </p>
+                <!--
+
+                    <a asp-action="DetallesDedua" asp-controller="Deudor" class="btn btn-info">Detalles de la deuda</a>
+
+                -->
+                
+
+            </div>
+            
+        }
+        
+
+    </div>
+</body>

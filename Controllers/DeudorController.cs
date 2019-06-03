@@ -41,10 +41,22 @@ namespace LKBHistorial.Controllers
             ViewBag.Personas= new SelectList(personas,"Id","Nombre");
         }
 
-        public void ListadoDeudores(){
-            var deudores= _context.Deudor.AsNoTracking().Include(m=>m.PersonaDeudor).ToList();
-            ViewBag.Deudores= new SelectList(deudores,"Id","Nombre");
+        public void ListadoPersonas2(){
+            var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
+            var personas= _context.Persona.AsNoTracking().Where(p=>!socios.Contains(p.Id)).ToList();
+            ViewBag.ListPersona=new SelectList(personas,"Id","Nombre");
         }
+
+        public void ListadoDeudores(){
+            var de=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
+            var personas=_context.Persona.AsNoTracking().Where(p=>de.Contains(p.Id)).ToList();
+
+            //var deudores= _context.Deudor.AsNoTracking().Include(m=>m.PersonaDeudor).ToList();
+            ViewBag.Deudores= new SelectList(personas,"Id","Nombre");
+        }
+
+
+
 
         public IActionResult RegistrarDeudor(){
             ListadoPersonas();
@@ -52,7 +64,7 @@ namespace LKBHistorial.Controllers
         }
 
         public IActionResult RegistrarDeuda(){
-            ListadoPersonas();
+           
             ListadoDeudores();
             return View();
         }
@@ -94,7 +106,7 @@ namespace LKBHistorial.Controllers
         public async Task<IActionResult> ListaDeudas(){
             var deudas= from m in _context.Deuda select m;
 
-            return View(await deudas.AsNoTracking().ToListAsync());
+            return View(await deudas.AsNoTracking().Include(d=>d.DeudorNavigation).ThenInclude(s=>s.PersonaDeudor).ToListAsync());
         }
 
         public IActionResult Estadisticas(){
@@ -126,8 +138,7 @@ namespace LKBHistorial.Controllers
             return View(deuda);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> ModificarDeudor(int? id){
             if(id==null){
                 return NotFound();
@@ -137,6 +148,35 @@ namespace LKBHistorial.Controllers
             if(deudor==null){
                 return NotFound();
             }
+            ListadoPersonas2();
+
+            return View(deudor);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ModificarDeudor(int? id, Deudor deudor){
+            
+            if(id==null){
+                return NotFound();
+            }
+            var d= await _context.Persona.ToListAsync();
+            if(ModelState.IsValid ){
+                try{
+                    _context.Deudor.Update(deudor);
+                    await _context.SaveChangesAsync();
+                    
+                }catch(DbUpdateConcurrencyException){
+                    if(!VerificarDeudor(id)){
+                        return NotFound();
+                    }else{
+                        throw;
+                    }
+                }
+                return RedirectToAction("ConfirmacionDeudor");
+
+            }
+            ListadoPersonas2();
 
             return View(deudor);
         }
@@ -169,6 +209,9 @@ namespace LKBHistorial.Controllers
             return RedirectToAction("ListaDeudores");
         }
 
+        public bool VerificarDeudor(int? id){
+            return _context.Deudor.Any(d=>d.Id==id);
+        }
 
 
 

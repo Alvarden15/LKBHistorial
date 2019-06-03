@@ -17,7 +17,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label>Id del Deudor</label>
-                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control"></select>
+                    <select asp-items="ViewBag.ListPersona" asp-for="Id" class="form-control"></select>
                 </div>
 
                 <div class="form-group">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Registrar deudor" class="btn btn-primary">
+                    <input type="submit" value="Modificar deudor" class="btn btn-primary">
                 </div>
         
             </form>
@@ -41,7 +41,13 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-3">
+            <a asp-action="ListaDeudores" asp-controller="Deudor" class="btn btn-info">Regresar a la lista</a>
 
+        </div>
+
+    </div>
 
 
 </body>

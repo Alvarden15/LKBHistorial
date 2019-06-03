@@ -14,7 +14,8 @@
 <body>
   <div class="row">
       <div class="col-md-12">
-
+          <a asp-action="RegistrarDeudor" asp-controller="Deudor" class="btn btn-primary">Registrar deudor</a>
+          <a asp-action="ListaDeudas" asp-controller="Deudor" class="btn btn-warning">Ver deudas</a>
       </div>
       @foreach (var i in Model)
       {
@@ -42,7 +43,7 @@
                 
             </p>
             <a asp-action="DetallesDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
-
+             <a asp-action="ModificarDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-secondary">Modificar</a>
         </div>
           
       }
