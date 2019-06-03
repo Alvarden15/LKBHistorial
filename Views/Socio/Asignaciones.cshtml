@@ -5,6 +5,41 @@
 }
 
 <body>
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="AsignarPerroSocio" asp-controller="Socio" class="btn btn-primary">Asignar</a>
+            <div>
+
+            </div>
+        </div>
+        @foreach (var i in Model)
+        {
+           <div class="col-md-4">
+               <p>
+                   Nombre:
+                   @Html.DisplayFor(modelItem=>i.Nombre)
+               </p>
+               <p>
+                   Nombre del socio:
+                    @Html.DisplayFor(modelItem=>i.SocioNavigation.PersonaSocio.Nombre)
+               </p>
+               @if(i.Sexo.Equals("H")){
+                    <p>
+                        Hombre
+                    </p>
+               }else{
+                    <p>
+                        Mujer
+                    </p>
+               }
+               
+
+            </div> 
+        }
+        
+
+
+    </div>
 
     
 </body>

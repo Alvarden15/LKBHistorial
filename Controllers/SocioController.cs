@@ -115,7 +115,7 @@ namespace LKBHistorial.Controllers{
             if(socio==null){
                 return NotFound();
             }
-        
+
             return View(socio);
         }
 
@@ -143,7 +143,7 @@ namespace LKBHistorial.Controllers{
         public async Task<IActionResult> Asignaciones(){
             var asignaciones= from m in _context.PerroSocio select m;
 
-            return View(await asignaciones.AsNoTracking().ToListAsync());
+            return View(await asignaciones.AsNoTracking().Include(p=>p.SocioNavigation).ThenInclude(d=>d.PersonaSocio).ToListAsync());
         }
 
         public async Task<IActionResult> EliminarSocio(int? id){
