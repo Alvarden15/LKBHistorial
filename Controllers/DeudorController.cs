@@ -32,8 +32,13 @@ namespace LKBHistorial.Controllers
         }
 
         public void ListadoPersonas(){
-            var personas= _context.Persona.AsNoTracking().ToList();
-            ViewBag.Personas=new SelectList(personas,"Id","Nombre");
+           
+            var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
+            var deudores=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
+            //var personas =_context.Persona.AsNoTracking().ToList();
+            //var per=_context.Persona.Except(socios).ToList();
+            var personas=_context.Persona.AsNoTracking().Where(per=>!socios.Contains(per.Id) && !deudores.Contains(per.Id)).ToList();
+            ViewBag.Personas= new SelectList(personas,"Id","Nombre");
         }
 
         public void ListadoDeudores(){
