@@ -8,11 +8,28 @@
 <body>
     <div class="row">
         <div class="col-md-12">
-            <a asp-action="RegistrarSocio" asp-controller="Socio" class="btn btn-secondary"></a>
+            <a asp-action="RegistrarSocio" asp-controller="Socio" class="btn btn-secondary">Registrar socio</a>
         </div>
-        <div class="col-md-3">
-
-        </div>
+        @foreach(var i in Model){
+         <div class="col-md-3">
+             <p>Nombre:
+                 @Html.DisplayFor(modelItem=>i.PersonaSocio.Nombre)
+             </p>
+             <p>Pais:
+                 @Html.DisplayFor(modelItem=>i.Pais)
+             </p>
+             <p> Departamento:
+                 @Html.DisplayFor(modelItem=>i.Departamento)
+             </p>
+              <p> Distrito:
+                 @Html.DisplayFor(modelItem=>i.Distrito)
+             </p>
+             <p>Calle:
+                 @Html.DisplayFor(modelItem=>i.Calle)
+             </p>
+             <a asp-action="DetallesSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
+         </div>
+        }
 
     </div>
 

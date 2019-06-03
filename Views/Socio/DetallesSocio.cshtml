@@ -1,0 +1,51 @@
+@model Socio
+@{
+    ViewData["Title"]="Detalles del socio";
+}
+
+<head>
+
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <p>Nombre: </p>
+                <p>@Html.DisplayFor(model=>model.PersonaSocio.Nombre) </p>
+            </div>
+            <div>
+                <p>Apellido Paterno: </p>
+                <p>@Html.DisplayFor(model=>model.PersonaSocio.ApellidoPaterno) </p>
+            </div>
+            <div>
+                <p>Apellido Materno: </p>
+                <p>@Html.DisplayFor(model=>model.PersonaSocio.ApellidoMaterno) </p>
+            </div>
+            <div>
+                <p>Pais: </p>
+                <p>@Html.DisplayFor(model=>model.Pais) </p>
+            </div>
+            <div>
+                <p>Departamento: </p>
+                <p>@Html.DisplayFor(model=>model.Departamento) </p>
+            </div>
+            <div>
+                <p>Distrito: </p>
+                <p>@Html.DisplayFor(model=>model.Distrito) </p>
+            </div>
+            <div>
+                <p>Calle: </p>
+                <p>@Html.DisplayFor(model=>model.Calle) </p>
+            </div>
+
+        </div>
+        
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a asp-action="ListaSocios" asp-controller="Socio" class="btn btn-info">Regresar a la lista</a>
+        </div>
+    </div>
+</body>

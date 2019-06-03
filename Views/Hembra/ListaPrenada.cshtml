@@ -18,14 +18,24 @@
         @foreach (var i in Model)
         {
              <div class="col-md-3">
-                 <p>
+                 <p>Nombre: 
                     @Html.DisplayFor(modelItem=>i.Perro.Nombre)
                 </p>
-                <p>@Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
-                <p>@Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
-                <p>@Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
-                <p>@Html.DisplayFor(modelItem=>i.TipoParto)</p>
+                <p>Cantidad de inseminadas: @Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
+                <p>Fecha de inicio: @Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
+                <p>Fecha final:@Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
+                <p>Tipo de parto:@Html.DisplayFor(modelItem=>i.TipoParto)</p>
+                @if(i.TipoParto.Equals("Normal")){
+                    <p>Fecha de parto: @Html.DisplayFor(modelItem=>i.FechaPartoNormal) </p>
+                }
+                else if(i.TipoParto.Equals("Cesarea")){
+                    <p>Fecha de parto: @Html.DisplayFor(modelItem=>i.FechaCesaria) </p>
+                }else{
+                    <p>Sin fecha</p>
+                }
+                <p>Numero de camadas:@Html.DisplayFor(modelItem=>i.NumeroCamadas)</p>
             </div>
+            
         }
 
         <div class="col-md-12">

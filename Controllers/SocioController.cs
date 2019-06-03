@@ -104,7 +104,19 @@ namespace LKBHistorial.Controllers{
 
         public async Task<IActionResult> ListaSocios(){
             var socio= from m in _context.Socio select m;
-            return View(await socio.AsNoTracking().ToListAsync());
+            return View(await socio.AsNoTracking().Include(s=>s.PersonaSocio).ToListAsync());
+        }
+
+        public async Task<IActionResult> DetallesSocio(int? id){
+            if(id==null){
+                return NotFound();
+            }
+            var socio=await _context.Socio.AsNoTracking().Include(p=>p.PersonaSocio).SingleOrDefaultAsync(s=>s.Id==id);
+            if(socio==null){
+                return NotFound();
+            }
+        
+            return View(socio);
         }
 
         public IActionResult ConfirmacionSocio(){
