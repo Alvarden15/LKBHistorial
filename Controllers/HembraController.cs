@@ -55,10 +55,14 @@ namespace LKBHistorial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarPrenada([Bind("Id,CantidadInseminadas,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
-            if(ModelState.IsValid){
+            if(ModelState.IsValid &&(prenada.FechaFin>prenada.FechaInicio)){
                 _context.Prenada.Add(prenada);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionPrenada");
+            }
+
+            if(prenada.FechaFin<=prenada.FechaInicio){
+                ModelState.AddModelError(string.Empty,"La fecha final debe ser superior a la fecha de inicio");
             }
             ListadoHembras();
             return View(prenada);
@@ -67,11 +71,19 @@ namespace LKBHistorial.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarLunada([Bind("Id,FechaInicio,FechaFin,NumeroCelos,IdPerro")]Lunada lunada){
-            if(ModelState.IsValid){
+
+            if(ModelState.IsValid &&(lunada.FechaFin>lunada.FechaInicio)){
                 _context.Lunada.Add(lunada);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionLunada");
             }
+
+            if(lunada.FechaFin<=lunada.FechaInicio){
+                ModelState.AddModelError(string.Empty,"La fecha final debe ser superior a la fecha de inicio");
+
+            }
+
+
             ListadoHembras();
             return View(lunada);
         }

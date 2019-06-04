@@ -12,17 +12,17 @@ namespace LKBHistorial.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("nombre")]
         public string Nombre { get; set; }
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("apellido_paterno")]
         public string ApellidoPaterno { get; set; }
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("apellido_materno")]
         public string ApellidoMaterno { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("telefono")]
         public string Telefono{get; set;}
 
