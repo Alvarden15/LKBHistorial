@@ -23,13 +23,13 @@ namespace LKBHistorial.Controllers{
             _context=cont;
         }
 
-        public IActionResult RegistarPersona(){
+        public IActionResult RegistrarPersona(){
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistarPersona([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno")]Persona persona){
+        public async Task<IActionResult> RegistrarPersona([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno")]Persona persona){
             var idPersona=verificarPersona(persona.Id);
             if(ModelState.IsValid && !idPersona){
                 _context.Add(persona);

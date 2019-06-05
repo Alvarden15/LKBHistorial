@@ -19,12 +19,13 @@ namespace LKBHistorial.Controllers
             return View();
         }
         
-        [Authorize("LKB Historial")]
+       
         public IActionResult Privacy()
         {
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Contact(){
             return View();
         }

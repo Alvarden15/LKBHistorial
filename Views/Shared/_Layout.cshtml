@@ -49,17 +49,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Nosotros</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contactenos</a>
+                        </li>
                        
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Perros
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu fade" aria-labelledby="navbarDropdown">
                                  <a class="dropdown-item" asp-controller="Perro" asp-action="ListaPerros">Listado de perros</a>
                                 @if(User.Identity.IsAuthenticated){
                                      <a class="dropdown-item" asp-controller="Perro" asp-action="RegistrarCriadero">Registrar Criadero</a>
                                      <a class="dropdown-item" asp-controller="Perro" asp-action="RegistrarCriador">Registrar Criador</a>
-
+                                     <a class="dropdown-item" asp-controller="Perro" asp-action="RegistrarPerro">Registrar Perro</a>
                                 }
           
                             </div>
@@ -68,31 +71,32 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Hembras
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu fade" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" asp-controller="Hembra" asp-action="ListaLunada">Lista de lunadas</a>
                                 <a class="dropdown-item" asp-controller="Hembra" asp-action="ListaPrenada">Lista de preñadas</a>
                                 @if(User.Identity.IsAuthenticated){
-                                    <a class="dropdown-item" asp-controller="Hembra" asp-action="ListaLunada">Lista de lunadas</a>
-                                <a class="dropdown-item" asp-controller="Hembra" asp-action="ListaPrenada">Lista de preñadas</a>
+                                    <a class="dropdown-item" asp-controller="Hembra" asp-action="RegistrarLunada">Registrar Lunada</a>
+                                    <a class="dropdown-item" asp-controller="Hembra" asp-action="RegistrarPrenada">Registrar Preñada</a>
                                 }
                             </div>
                         </li>
                         @if(User.Identity.IsAuthenticated){
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriadero">Registrar Criadero</a>
+                            
+                            <li class="nav-item dropdown">
+                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Personas
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Persona" asp-action="RegistrarPersona">Registrar Persona</a>
+                                    <a class="dropdown-item" asp-controller="Deudor" asp-action="RegistrarDeudor">Registrar Deudor</a>
+                                    <a class="dropdown-item" asp-controller="Deudor" asp-action="ListaDeudores">Lista de Deudores</a>
+                                    <a class="dropdown-item" asp-controller="Socio" asp-action="RegistrarSocio">Registrar Socio</a>
+                                    <a class="dropdown-item" asp-controller="Socio" asp-action="ListaSocios">Lista de Socios</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="RegistrarCriador">Registrar Criador</a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Perro" asp-action="ListaPerros">Listado de perros</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Hembra" asp-action="ListaLunada">Lista de lunadas</a>
-                        </li>
 
+                        }
+                        
                     </ul>
                 </div>
             </div>
