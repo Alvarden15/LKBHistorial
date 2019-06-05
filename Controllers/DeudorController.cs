@@ -57,6 +57,11 @@ namespace LKBHistorial.Controllers
             ViewBag.Deudores= new SelectList(personas,"Id","Nombre");
         }
 
+        public void EscogerDeudor(int? i){
+            var deudas= _context.Persona.AsNoTracking().Where(d=>d.Id==i).ToList();
+            ViewBag.Deudores= new SelectList(deudas,"Id","Nombre");
+        }
+
 
 
 
@@ -65,9 +70,13 @@ namespace LKBHistorial.Controllers
             return View();
         }
 
-        public IActionResult RegistrarDeuda(){
-           
-            ListadoDeudores();
+        public IActionResult RegistrarDeuda(int? id){
+           if(id!=null){
+                EscogerDeudor(id);
+           }else{
+                ListadoDeudores();
+           }
+            
             return View();
         }
         [HttpPost]

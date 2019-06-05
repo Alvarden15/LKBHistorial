@@ -19,7 +19,7 @@
       </div>
       @foreach (var i in Model)
       {
-        <div class="col-md-4">
+        <div class="col-md-4 border border-warning">
             <p>
                 Nombre:
                 @Html.DisplayFor(modelItem=>i.PersonaDeudor.Nombre)
@@ -43,7 +43,8 @@
                 
             </p>
             <a asp-action="DetallesDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
-             <a asp-action="ModificarDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-secondary">Modificar</a>
+             <a asp-action="ModificarDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-secondary">Actualizar</a>
+             <a asp-action="RegistrarDeuda" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-warning">Registrar Deuda</a>
         </div>
           
       }

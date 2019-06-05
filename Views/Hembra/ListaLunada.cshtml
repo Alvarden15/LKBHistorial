@@ -8,6 +8,12 @@
 <body>
 <h2>Listado de lunadas</h2>
     <div class="row">
+        <div class="col-md-12">
+            @if(User.Identity.IsAuthenticated){
+                <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
+            }
+            
+        </div>
         <div class="col-md-12 d-flex justify-content-center">
             <a asp-action="ListaPrenada" class="btn btn-primary">
                 Preñadas
@@ -16,9 +22,10 @@
                 Lunadas
             </a>
         </div>
+        <br>
         @foreach (var i in Model)
         {
-            <div class="col-md-3">
+            <div class="col-md-3 border border-secondary">
                 
                 <p>
                     Nombre: 
@@ -40,12 +47,7 @@
             </div>
             
         }
-        <div class="col-md-12">
-            @if(User.Identity.IsAuthenticated){
-                <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
-            }
-            
-        </div>
+        
 
     </div>
 </body>

@@ -7,6 +7,12 @@
 <body>
    <h2>Listado de preñada</h2>
     <div class="row">
+        <div class="col-md-12">
+            @if(User.Identity.IsAuthenticated){
+                 <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
+            }
+           
+        </div>
         <div class="col-md-12 d-flex justify-content-center">
             <a asp-action="ListaPrenada" class="btn btn-light">
                 Preñadas
@@ -15,16 +21,17 @@
                 Lunadas
             </a>
         </div>
+        <br>
         @foreach (var i in Model)
         {
-             <div class="col-md-3">
+             <div class="col-md-3 border border-info">
                  <p>Nombre: 
                     @Html.DisplayFor(modelItem=>i.Perro.Nombre)
                 </p>
                 <p>Cantidad de inseminadas: @Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
                 <p>Fecha de inicio: @Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
-                <p>Fecha final:@Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
-                <p>Tipo de parto:@Html.DisplayFor(modelItem=>i.TipoParto)</p>
+                <p>Fecha final: @Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
+                <p>Tipo de parto: @Html.DisplayFor(modelItem=>i.TipoParto)</p>
                 @if(i.TipoParto.Equals("Normal")){
                     <p>Fecha de parto: @Html.DisplayFor(modelItem=>i.FechaPartoNormal) </p>
                 }
@@ -33,17 +40,12 @@
                 }else{
                     <p>Sin fecha</p>
                 }
-                <p>Numero de camadas:@Html.DisplayFor(modelItem=>i.NumeroCamadas)</p>
+                <p>Numero de camadas: @Html.DisplayFor(modelItem=>i.NumeroCamadas)</p>
             </div>
             
         }
 
-        <div class="col-md-12">
-            @if(User.Identity.IsAuthenticated){
-                 <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
-            }
-           
-        </div>
+        
            
         </div>
 

@@ -156,8 +156,10 @@ namespace LKBHistorial.Controllers{
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio,IdPerro")]PerroSocio perrosocio){
-            /*
             var cantidad=_context.PerroSocio.Where(s=>s.IdSocio==perrosocio.IdSocio).ToList();
+            /*
+            if(ModelState.IsValid && cantidad.Count()<=2)
+
             if(cantidad.Count()>2){
                 ModelState.AddModelError(string.Empty,"El socio alcanzó el maximo de perros que puede tener. Por favor, asigna a otro");
             }

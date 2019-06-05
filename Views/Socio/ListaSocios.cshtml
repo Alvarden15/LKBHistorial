@@ -11,8 +11,9 @@
             <a asp-action="RegistrarSocio" asp-controller="Socio" class="btn btn-secondary">Registrar socio</a>
             <a asp-action="Asignaciones" asp-controller="Socio" class="btn btn-secondary">Ver asignaciones</a>
         </div>
+        <br>
         @foreach(var i in Model){
-         <div class="col-md-3">
+         <div class="col-md-3 border border-success">
              <p>Nombre:
                  @Html.DisplayFor(modelItem=>i.PersonaSocio.Nombre)
              </p>
