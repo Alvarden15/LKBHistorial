@@ -42,12 +42,14 @@ namespace LKBHistorial.Controllers
         }
 
         public void ListadoPersonas2(){
+            //Este es el listado de personas que no estan en la tabla de socios
             var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
             var personas= _context.Persona.AsNoTracking().Where(p=>!socios.Contains(p.Id)).ToList();
             ViewBag.ListPersona=new SelectList(personas,"Id","Nombre");
         }
 
         public void ListadoDeudores(){
+            //Este es el listado de deudores propiamente dicha
             var de=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
             var personas=_context.Persona.AsNoTracking().Where(p=>de.Contains(p.Id)).ToList();
 
@@ -99,13 +101,17 @@ namespace LKBHistorial.Controllers
 
         public async Task<IActionResult> ListaDeudores(){
             var deudor= from m in _context.Deudor select m;
-
+        
             return View(await deudor.AsNoTracking().Include(d=>d.PersonaDeudor).ToListAsync());
         }
 
-        public async Task<IActionResult> ListaDeudas(){
+        public async Task<IActionResult> ListaDeudas(int? id){
             var deudas= from m in _context.Deuda select m;
-
+            if(id!=null){
+                ListadoDeudores();
+                deudas=deudas.AsNoTracking().Where(o=>o.IdDeudor==id);
+            }
+            ListadoDeudores();
             return View(await deudas.AsNoTracking().Include(d=>d.DeudorNavigation).ThenInclude(s=>s.PersonaDeudor).ToListAsync());
         }
 

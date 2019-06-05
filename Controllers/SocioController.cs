@@ -25,8 +25,9 @@ namespace LKBHistorial.Controllers{
         }
 
         public void ListadoPerros(){
-            var perros= _context.Perro.AsNoTracking().ToList();
-            ViewBag.Perros=new SelectList(perros,"Id","Nombre");
+            var perrosocios=_context.PerroSocio.Select(s=>s.IdPerro).ToArray();
+            var perros= _context.Perro.AsNoTracking().Where(p=>!perrosocios.Contains(p.Id)).ToList();
+            ViewBag.PerrosAsociar=new SelectList(perros,"Id","Nombre");
         }
 
         public void ListadoPersonas(){
@@ -51,8 +52,13 @@ namespace LKBHistorial.Controllers{
 
         public void ListadoPersonas2(){
             var deudores=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
-            var personas= _context.Persona.AsNoTracking().Where(p=>!deudores.Contains(p.Id)).ToList();
-            ViewBag.ListPersona=new SelectList(personas,"Id","Nombre");
+            var persona= _context.Persona.AsNoTracking().Where(p=>!deudores.Contains(p.Id)).ToList();
+            ViewBag.ListPersona=new SelectList(persona,"Id","Nombre");
+        }
+
+        public void EncontrarSocioAsignacion(int? i){
+            var personas=_context.Persona.AsNoTracking().Where(d=>d.Id==i).ToList();
+            ViewBag.Socios=new SelectList(personas,"Id","Nombre");
         }
 
         public IActionResult RegistrarSocio(){
@@ -111,7 +117,7 @@ namespace LKBHistorial.Controllers{
                 return RedirectToAction("ConfirmacionSocio");
             }
             
-             ListadoPersonas2();
+            ListadoPersonas2();
             return View(socio);
         }
 
@@ -137,14 +143,27 @@ namespace LKBHistorial.Controllers{
             return RedirectToAction("ListaSocios");
         }
 
-        public IActionResult AsignarPerroSocio(){
-            ListadoSocios();
+        public IActionResult AsignarPerroSocio(int? id){
+            if(id!=null){
+                EncontrarSocioAsignacion(id);
+            }else{
+                ListadoSocios();
+            }
+            ListadoPerros();
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio")]PerroSocio perrosocio){
+        public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio,IdPerro")]PerroSocio perrosocio){
+            /*
+            var cantidad=_context.PerroSocio.Where(s=>s.IdSocio==perrosocio.IdSocio).ToList();
+            if(cantidad.Count()>2){
+                ModelState.AddModelError(string.Empty,"El socio alcanzó el maximo de perros que puede tener. Por favor, asigna a otro");
+            }
+
+            */ 
+            
             if(ModelState.IsValid){
                 _context.Add(perrosocio);
                 await _context.SaveChangesAsync();
@@ -154,8 +173,11 @@ namespace LKBHistorial.Controllers{
             return View(perrosocio);
         }
 
-        public async Task<IActionResult> Asignaciones(){
+        public async Task<IActionResult> Asignaciones(int? id){
             var asignaciones= from m in _context.PerroSocio select m;
+            if(id!=null){
+                asignaciones=asignaciones.AsNoTracking().Where(a=>a.IdSocio==id);
+            }
 
             return View(await asignaciones.AsNoTracking().Include(p=>p.SocioNavigation).ThenInclude(d=>d.PersonaSocio).ToListAsync());
         }

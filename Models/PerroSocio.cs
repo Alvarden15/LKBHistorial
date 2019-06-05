@@ -21,10 +21,17 @@ namespace LKBHistorial.Models{
         public string Sexo { get; set; }
         [Column("id_socio")]
         public int IdSocio { get; set; }
+        [Column("id_perro")]
+        public int IdPerro { get; set; }
 
         [ForeignKey("IdSocio")]
         [InverseProperty("PerroSocio")]
         public virtual Socio SocioNavigation { get; set; }
+
+        [InverseProperty("Asociacion")]
+        [ForeignKey("IdPerro")]
+
+        public virtual Perro PerroAsociado { get; set; }
 
 
     }

@@ -15,27 +15,28 @@ namespace LKBHistorial.Models{
         [Column("id_deudor")]
         public int IdDeudor { get; set; }
         [Column("cuotas")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui las cuotas")]
         public int Cuotas { get; set; }
         [Column("monto_inicial")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui el monto inicial")]
         public int MontoInicial { get; set; }
         [Column("monto_total")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui el monto total")]
         public int MontoTotal { get; set; }
         [Column("numero_cuotas")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui el monto de las cuotas")]
         public int NumeroCuotas { get; set; }
         [Column("saldo_pendiente")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui el saldo pendiente de la deuda")]
         public int SaldoPendiente { get; set; }
         [Column("cuotas_pendientes")]
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui las cuotas que faltan")]
         public int CuotasPendientes { get; set; }
+
         [Column("fecha_inicio", TypeName = "date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString="{0:dd/MM/yyyy}",ApplyFormatInEditMode=true)]
-        [Required]
+        [Required (ErrorMessage="Por favor, defina cuando empezó la deuda")]
         public DateTime FechaInicio { get; set; }
 
         [ForeignKey("IdDeudor")]

@@ -13,7 +13,7 @@ namespace LKBHistorial.Models
         [Key]
         [Column("id")]
         public int Id { get; set; }
-        [Required]
+        [Required (ErrorMessage="Por favor, escribe aqui el correo")]
         [Column("correo")]
         [StringLength(25)]
         public string Correo { get; set; }

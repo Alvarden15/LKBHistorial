@@ -97,6 +97,8 @@ namespace LKBHistorial.Models
         [InverseProperty("IdentificarMadre")]
         public virtual Perro Madre{get; set;}  
 
+        [InverseProperty("PerroAsociado")]
+        public virtual PerroSocio Asociacion { get; set; }
         /*
          
          */
