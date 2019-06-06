@@ -19,8 +19,10 @@ namespace LKBHistorial.Models{
         [Column("sexo")]
         [StringLength(1)]
         public string Sexo { get; set; }
+        [Required(ErrorMessage="Ejem....¿A quien estas asignado el perro?")]
         [Column("id_socio")]
         public int IdSocio { get; set; }
+        [Required(ErrorMessage="Necesitas de un perro si o si")]
         [Column("id_perro")]
         public int IdPerro { get; set; }
 

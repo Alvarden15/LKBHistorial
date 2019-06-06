@@ -161,6 +161,7 @@ namespace LKBHistorial.Controllers{
         public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio,IdPerro")]PerroSocio perrosocio){
             var cantidad=_context.PerroSocio.Where(s=>s.IdSocio==perrosocio.IdSocio).ToList();
             /*
+             if(ModelState.IsValid)
             if(ModelState.IsValid && cantidad.Count()<=2)
 
             if(cantidad.Count()>2){
@@ -169,16 +170,20 @@ namespace LKBHistorial.Controllers{
             }else{
                 EncontrarSocioAsignacion(perrosocio.IdSocio);
             }
-
-
             */ 
             
-            if(ModelState.IsValid){
+            if(ModelState.IsValid && cantidad.Count()<2){
                 _context.Add(perrosocio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionSocio");
             }
-            ListadoSocios();
+            if(cantidad.Count()>1){
+                ModelState.AddModelError(string.Empty,"El socio o socia alcanzó el maximo de perros que puede tener. Por favor, asigna a otro");
+                ListadoSocios();
+            }else{
+                EncontrarSocioAsignacion(perrosocio.IdSocio);
+            }
+            ListadoPerros();
             return View(perrosocio);
         }
 

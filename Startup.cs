@@ -58,7 +58,7 @@ namespace LKBHistorial
             services.AddMemoryCache();
             services.AddMvc();
             
-            //services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer("Server=tcp:lkb.database.windows.net,1433;Initial Catalog=LKBData;Persist Security Info=False;User ID=lkbadmin;Password=LKBHistorial!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",providerOptions=>providerOptions.EnableRetryOnFailure()));
+           
             services.AddDbContextPool<MvcContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),providerOptions=>providerOptions.EnableRetryOnFailure()));           
             services.AddMvc(options =>
             {
