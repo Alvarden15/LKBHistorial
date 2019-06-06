@@ -23,15 +23,17 @@ namespace LKBHistorial.Controllers{
         public SocioController(MvcContext cont){
             _context=cont;
         }
-
+        //Se listan los perros que aún no esten asignados
         public void ListadoPerros(){
+            
             var perrosocios=_context.PerroSocio.Select(s=>s.IdPerro).ToArray();
             var perros= _context.Perro.AsNoTracking().Where(p=>!perrosocios.Contains(p.Id)).ToList();
             ViewBag.PerrosAsociar=new SelectList(perros,"Id","Nombre");
         }
 
+        //El listado de personas para ver si no estan como socios o deudores
         public void ListadoPersonas(){
-           
+            
             var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
             var deudores=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
             //var personas =_context.Persona.AsNoTracking().ToList();
@@ -39,7 +41,7 @@ namespace LKBHistorial.Controllers{
             var personas=_context.Persona.AsNoTracking().Where(per=>!socios.Contains(per.Id) && !deudores.Contains(per.Id)).ToList();
             ViewBag.Personas= new SelectList(personas,"Id","Nombre");
         }
-
+        //El listado de socios para seleccionar
         public void ListadoSocios(){
             
             var so=_context.Socio.AsNoTracking().Select(o=>o.Id).ToArray();
@@ -49,13 +51,14 @@ namespace LKBHistorial.Controllers{
 
             ViewBag.Socios= new SelectList(personas,"Id","Nombre");
         }
-
+        //Para listar las personas que no son deudores
         public void ListadoPersonas2(){
             var deudores=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
             var persona= _context.Persona.AsNoTracking().Where(p=>!deudores.Contains(p.Id)).ToList();
             ViewBag.ListPersona=new SelectList(persona,"Id","Nombre");
         }
 
+        //Se busca el socio de la id buscada
         public void EncontrarSocioAsignacion(int? i){
             var personas=_context.Persona.AsNoTracking().Where(d=>d.Id==i).ToList();
             ViewBag.Socios=new SelectList(personas,"Id","Nombre");
@@ -162,7 +165,11 @@ namespace LKBHistorial.Controllers{
 
             if(cantidad.Count()>2){
                 ModelState.AddModelError(string.Empty,"El socio alcanzó el maximo de perros que puede tener. Por favor, asigna a otro");
+                ListadoSocios();
+            }else{
+                EncontrarSocioAsignacion(perrosocio.IdSocio);
             }
+
 
             */ 
             
@@ -181,7 +188,7 @@ namespace LKBHistorial.Controllers{
                 asignaciones=asignaciones.AsNoTracking().Where(a=>a.IdSocio==id);
             }
 
-            return View(await asignaciones.AsNoTracking().Include(p=>p.SocioNavigation).ThenInclude(d=>d.PersonaSocio).ToListAsync());
+            return View(await asignaciones.AsNoTracking().Include(p=>p.SocioNavigation).ThenInclude(d=>d.PersonaSocio).Include(w=>w.PerroAsociado).ToListAsync());
         }
 
         public async Task<IActionResult> EliminarSocio(int? id){

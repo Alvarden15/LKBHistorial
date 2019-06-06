@@ -1,6 +1,10 @@
 @model IEnumerable<LKBHistorial.Models.Deuda>
+    @{
+        ViewData["Title"]="Lista de deudas";
+    }
 
 <body>
+    <h2>Lista de deudas</h2>
     <div class="row">
         <div class="col-md-12">
            
@@ -10,7 +14,7 @@
         <br>
         @foreach (var i in Model)
         {
-            <div class="col-md-4">
+            <div class="col-md-4 border border-dark rounded">
                 <p>
                     ID de la deuda:
                     @Html.DisplayFor(modelItem=>i.Id)
@@ -20,21 +24,27 @@
                     @Html.DisplayFor(modelItem=>i.DeudorNavigation.PersonaDeudor.Nombre)
                 </p>
                 <p>
+                    Monto Inicial: 
                     @Html.DisplayFor(modelItem=>i.MontoInicial)
                 </p>
                 <p>
+                    Numero de cuotas: 
                      @Html.DisplayFor(modelItem=>i.NumeroCuotas)
                 </p>
                 <p>
+                    Valor de las cuotas: 
                      @Html.DisplayFor(modelItem=>i.Cuotas)
                 </p>
                 <p>
+                    Cuotas Pendientes: 
                      @Html.DisplayFor(modelItem=>i.CuotasPendientes)
                 </p>
                 <p>
+                    Saldo Pendiente: 
                      @Html.DisplayFor(modelItem=>i.SaldoPendiente)
                 </p>
                 <p>
+                    Monto total: 
                      @Html.DisplayFor(modelItem=>i.MontoTotal)
                 </p>
                 <!--

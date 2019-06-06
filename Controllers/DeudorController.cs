@@ -26,11 +26,13 @@ namespace LKBHistorial.Controllers
             _context=context;
         }
 
+        //Un listado de perros por si acaso
         public void ListadoPerros(){
             var perros= _context.Perro.AsNoTracking().ToList();
             ViewBag.Perros=new SelectList(perros,"Id","Nombre");
         }
 
+        //Para crear el listado de personas que no son socios o deudores
         public void ListadoPersonas(){
            
             var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
@@ -40,7 +42,7 @@ namespace LKBHistorial.Controllers
             var personas=_context.Persona.AsNoTracking().Where(per=>!socios.Contains(per.Id) && !deudores.Contains(per.Id)).ToList();
             ViewBag.Personas= new SelectList(personas,"Id","Nombre");
         }
-
+        //Para crear el listado de personas que no estan en socios
         public void ListadoPersonas2(){
             //Este es el listado de personas que no estan en la tabla de socios
             var socios=_context.Socio.AsNoTracking().Select(so=>so.Id).ToArray();
@@ -48,6 +50,7 @@ namespace LKBHistorial.Controllers
             ViewBag.ListPersona=new SelectList(personas,"Id","Nombre");
         }
 
+        //Para listar a las personas que son deudores
         public void ListadoDeudores(){
             //Este es el listado de deudores propiamente dicha
             var de=_context.Deudor.AsNoTracking().Select(d=>d.Id).ToArray();
@@ -57,6 +60,7 @@ namespace LKBHistorial.Controllers
             ViewBag.Deudores= new SelectList(personas,"Id","Nombre");
         }
 
+        //Se escoge a un deudor en base a una id seleccionada
         public void EscogerDeudor(int? i){
             var deudas= _context.Persona.AsNoTracking().Where(d=>d.Id==i).ToList();
             ViewBag.Deudores= new SelectList(deudas,"Id","Nombre");

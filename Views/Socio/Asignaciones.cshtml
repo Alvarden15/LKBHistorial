@@ -16,14 +16,15 @@
         </div>
         @foreach (var i in Model)
         {
-           <div class="col-md-4">
+           <div class="col-md-4 border border-primary rounded">
+               
                <p>
-                   Nombre:
-                   @Html.DisplayFor(modelItem=>i.Nombre)
+                   Nombre del socio/a: 
+                    @Html.DisplayFor(modelItem=>i.SocioNavigation.PersonaSocio.Nombre)
                </p>
                <p>
-                   Nombre del socio:
-                    @Html.DisplayFor(modelItem=>i.SocioNavigation.PersonaSocio.Nombre)
+                   Apellido del socio/a: 
+                    @Html.DisplayFor(modelItem=>i.SocioNavigation.PersonaSocio.ApellidoPaterno)
                </p>
                @if(i.Sexo.Equals("H")){
                     <p>
@@ -34,7 +35,19 @@
                         Mujer
                     </p>
                }
-               
+               <p>
+                   Nombre del Perro: 
+                   @Html.DisplayFor(modelItem=>i.PerroAsociado.Nombre)
+               </p>
+               <p>
+                   Sexo del Perro: 
+                   @if(i.PerroAsociado.Sexo.Equals("M")){
+                       <span>Macho</span>
+                   }else{
+                       <span>Hembra</span>
+                   }
+                   
+               </p>
 
             </div> 
         }

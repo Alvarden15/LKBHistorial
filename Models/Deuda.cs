@@ -15,7 +15,7 @@ namespace LKBHistorial.Models{
         [Column("id_deudor")]
         public int IdDeudor { get; set; }
         [Column("cuotas")]
-        [Required (ErrorMessage="Por favor, escribe aqui las cuotas")]
+        [Required (ErrorMessage="Por favor, escribe aqui el valor de las cuotas")]
         public int Cuotas { get; set; }
         [Column("monto_inicial")]
         [Required (ErrorMessage="Por favor, escribe aqui el monto inicial")]
@@ -24,7 +24,7 @@ namespace LKBHistorial.Models{
         [Required (ErrorMessage="Por favor, escribe aqui el monto total")]
         public int MontoTotal { get; set; }
         [Column("numero_cuotas")]
-        [Required (ErrorMessage="Por favor, escribe aqui el monto de las cuotas")]
+        [Required (ErrorMessage="Por favor, escribe aqui la cantidad de cuotas")]
         public int NumeroCuotas { get; set; }
         [Column("saldo_pendiente")]
         [Required (ErrorMessage="Por favor, escribe aqui el saldo pendiente de la deuda")]
