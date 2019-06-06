@@ -234,7 +234,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
+            var perros= await _context.Perro.Include(p=>p.Padre).Include(m=>m.Madre).Include(c=>c.Criadero).SingleOrDefaultAsync(m=>m.Id==id);
 
             if(perros==null){
                 return NotFound();

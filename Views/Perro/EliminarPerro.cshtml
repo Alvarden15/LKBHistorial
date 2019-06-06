@@ -10,7 +10,7 @@
                 $(document).ready(function(){
                     $("#Boton").click(function(e){
                         
-                        if(!window.confirm("Estas advertido/a: despues de esto, no hay marcha atrás. ¿De verdad quieres continuar?")){
+                        if(!window.confirm("Verifique antes que el perro no es padre o madre de ningun perro o este registrado en otro sitio aparte. ¿De verdad quieres continuar?")){
                             e.preventDefault();
                         }
                     }); 
@@ -28,7 +28,10 @@
             <h2>Advertencia</h2>
             <p>Estas a punto de eliminar este ejemplar de la base de datos</p>
             <div>
-                @Html.DisplayFor(model=>model.Nombre)
+                <p> Nombre: 
+                     @Html.DisplayFor(model=>model.Nombre)
+                </p>
+               
             </div>
             <div>
                  @if(Model.Sexo.Equals("M")){
@@ -36,10 +39,13 @@
                 }else{
                     <p>Hembra</p>
                 }
-                 @Html.DisplayFor(model=>model.Sexo)
+                
             </div>
             <div>
-                 @Html.DisplayFor(model=>model.FechaNacimiento)
+                <p> Fecha de Nacimiento: 
+                    @Html.DisplayFor(model=>model.FechaNacimiento)
+                </p>
+                 
             </div>
             <div>
                 @if(Model.Madurez.Equals("A")){
@@ -50,6 +56,14 @@
                 
             </div>
             <div>
+                <p>
+                    Padre:
+                    @Html.DisplayFor(model=>model.Padre.Nombre)
+                </p>
+                <p>
+                    Madre:
+                    @Html.DisplayFor(model=>model.Madre.Nombre)
+                </p>
                 
             </div>
             <div>

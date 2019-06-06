@@ -31,8 +31,9 @@
                  @Html.DisplayFor(modelItem=>i.Calle)
              </p>
              <a asp-action="DetallesSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
-             <a asp-action="ModificarSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-secondary">Modificar</a>
+             <a asp-action="ModificarSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-secondary">Actualizar</a>
              <a asp-action="AsignarPerroSocio" asp-controller="Socio" class="btn btn-outline-primary" asp-route-id="@i.Id">Asignarle un perro</a>
+             <a asp-action="Asignaciones" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-outline-success">Ver Perros Asignados</a>
          </div>
         }
 
