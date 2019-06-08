@@ -160,11 +160,12 @@ namespace LKBHistorial.Controllers{
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AsignarPerroSocio([Bind("Nombre,Sexo,IdSocio,IdPerro")]PerroSocio perrosocio){
             var cantidad=_context.PerroSocio.Where(s=>s.IdSocio==perrosocio.IdSocio).ToList();
+            var iperro=VerificarPerroAsociado(perrosocio.IdPerro);
             /*
              if(ModelState.IsValid)
             */ 
             
-            if(ModelState.IsValid && cantidad.Count()<2){
+            if(ModelState.IsValid && cantidad.Count()<2 && !iperro){
                 _context.Add(perrosocio);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionSocio");
@@ -174,6 +175,9 @@ namespace LKBHistorial.Controllers{
                 ListadoSocios();
             }else{
                 EncontrarSocioAsignacion(perrosocio.IdSocio);
+            }
+            if(iperro){
+                 ModelState.AddModelError(string.Empty,"El perro ya fue asociado por otro socio. Elige otro perro");
             }
             ListadoPerros();
             return View(perrosocio);
@@ -218,6 +222,10 @@ namespace LKBHistorial.Controllers{
 
         public bool VerificarDeudor(int? id){
             return _context.Deudor.Any(d=>d.Id==id);
+        }
+
+        public bool VerificarPerroAsociado(int? id){
+            return _context.PerroSocio.Any(d=>d.IdPerro==id);
         }
 
 

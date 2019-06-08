@@ -4,7 +4,7 @@
     ViewData["Title"]="Asignación de socios";
 }
 
-<body>
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
     <h2>Asignacion de Socio/a con perro</h2>
      <div class="row">
         <div class="col-md-6">
@@ -14,16 +14,7 @@
                     <label>Socio</label>
                     <select asp-for="IdSocio" asp-items="ViewBag.Socios" class="form-control"></select>
                 </div>
-                <div class="form-group">
-                    <input type="text" asp-for="Nombre" class="form-control">
-                    <span asp-validation-for="Nombre"></span>
-                </div>
-                <div class="form-group">
-                    <select asp-for="Sexo" class="form-control">
-                        <option value="H">Hombre</option>
-                        <option value="M">Mujer</option>
-                    </select>
-                </div>
+                
                 <div class="form-group">
                     <label>Perro para asignar</label>
                      <select asp-for="IdPerro" asp-items="ViewBag.PerrosAsociar" class="form-control"></select>

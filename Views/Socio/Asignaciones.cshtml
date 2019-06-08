@@ -4,7 +4,7 @@
     ViewData["Title"]="Asignaciones de socios";
 }
 
-<body>
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
     <h2>Lista de asociaciones</h2>
     <div class="row">
         <div class="col-md-12">
@@ -26,15 +26,7 @@
                    Apellido del socio/a: 
                     @Html.DisplayFor(modelItem=>i.SocioNavigation.PersonaSocio.ApellidoPaterno)
                </p>
-               @if(i.Sexo.Equals("H")){
-                    <p>
-                        Hombre
-                    </p>
-               }else{
-                    <p>
-                        Mujer
-                    </p>
-               }
+              
                <p>
                    Nombre del Perro: 
                    @Html.DisplayFor(modelItem=>i.PerroAsociado.Nombre)
