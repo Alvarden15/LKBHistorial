@@ -5,23 +5,33 @@
 }
 
 <body>
-   <h2>Listado de preñada</h2>
+   <div class="col-md-6 col-sm-3"><h3><label>LISTADO DE PREÑADAS</label></h3></div>
     <div class="row">
-        <div class="col-md-12">
+        <table style="width:80%"></table>
+        <td>
+        <div class="col-md-6">
             @if(User.Identity.IsAuthenticated){
                  <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
             }
            
         </div>
-        <div class="col-md-12 d-flex justify-content-center">
-            <a asp-action="ListaPrenada" class="btn btn-light">
+        </td>
+        <td>
+        <div class="col-md-6 d-flex justify-content-center">
+            <a asp-action="ListaPrenada" class="btn btn-primary">
                 Preñadas
             </a>
-            <a asp-action="ListaLunada" class="btn btn-primary">
+            <a asp-action="ListaLunada" class="btn btn-success">
                 Lunadas
             </a>
         </div>
-        <br>
+        </td>
+        
+       </table> 
+    </div>
+    <br>
+        <hr />
+    <div class="row">
         @foreach (var i in Model)
         {
              <div class="col-md-3 border border-info">

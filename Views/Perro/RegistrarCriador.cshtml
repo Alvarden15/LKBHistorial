@@ -27,9 +27,13 @@
 
     </head>
 
-    <body>
-        <h2>Registrar Criador</h2>
-        <div class="row">
+    <body style="background-image: url(https://static2.lasprovincias.es/www/multimedia/201812/18/media/cortadas/american-bully-kNf-U601912647245OiF-624x500@Las%20Provincias.jpg">
+        <h2 style="color: #fff;">REGISTRAR CRIADERO</h2>
+        <div style="text-align:right">    
+                 <a asp-action="Index" asp-controller="Home" class="btn btn-info" >Regresar</a>
+		</div>
+        <hr />
+        <div class="row" style="color: #fff;font-weight:bold ; font-size:19px; ">
             <div class="col-md-4"> 
                 <form asp-action="RegistrarCriador" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -65,7 +69,7 @@
                       
                     </div>
                     <div class="form-group">
-                      <input type="submit" id="Boton" value="Registrar Criador" class="btn btn-primary">                   
+                      <input type="submit" id="Boton" value="Registrar Criador" class="btn btn-success">                   
                     </div>
 
                 </form>
@@ -73,11 +77,7 @@
             </div>   
 
         </div>
-        <div class="row"> 
-            <div class="col-md-2">
-                <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Regresar</a>
-            </div>
-        </div>
+        
 
 
     </body>
