@@ -54,7 +54,7 @@ namespace LKBHistorial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrarPrenada([Bind("Id,CantidadInseminadas,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
+        public async Task<IActionResult> RegistrarPrenada([Bind("CantidadInseminadas,FechaInicio,FechaFin,TipoParto,FechaCesaria,FechaPartoNormal,NumeroCamadas,IdPerro")]Prenada prenada){
             if(ModelState.IsValid &&(prenada.FechaFin>prenada.FechaInicio)){
                 _context.Prenada.Add(prenada);
                 await _context.SaveChangesAsync();
