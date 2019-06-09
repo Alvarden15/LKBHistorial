@@ -137,7 +137,7 @@ namespace LKBHistorial.Controllers
             if(id==null){
                 return NotFound();
             }
-            var deudor= await _context.Deudor.SingleOrDefaultAsync(d=>d.Id==id);
+            var deudor= await _context.Deudor.Include(i=>i.PersonaDeudor).SingleOrDefaultAsync(d=>d.Id==id);
             if(deudor==null){
                 return NotFound();
             }
@@ -153,6 +153,26 @@ namespace LKBHistorial.Controllers
             if(deuda==null){
                 return NotFound();
             }
+
+            return View(deuda);
+        }
+
+        public async Task<IActionResult> ActualizarDeuda(int? id){
+             if(id==null){
+                return NotFound();
+            }
+            var deuda= await _context.Deuda.SingleOrDefaultAsync(d=>d.Id==id);
+            if(deuda==null){
+                return NotFound();
+            }
+            /*
+            if(id!=null){
+                EscogerDeudor(id);
+           }else{
+                ListadoDeudores();
+           }
+             */
+            ListadoDeudores();
 
             return View(deuda);
         }

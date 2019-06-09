@@ -9,40 +9,29 @@
    <div class="row">
        <div>
            <p>
-               Nombre:
+               Nombre:  @Html.DisplayFor(model=>model.PersonaDeudor.Nombre)
            </p>
+        
            <p>
-               @Html.DisplayFor(model=>model.PersonaDeudor.Nombre)
-               
+               Apellido paterno: @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoPaterno)
            </p>
-           <p>
-               Apellido paterno:
-           </p>
-           <p>
-                @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoPaterno)
-           </p>
+         
             <p>
-               Apellido materno
+               Apellido materno: @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoMaterno)
            </p>
-           <p>
-                @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoMaterno)
-           </p>
+
             <p>
-               Correo:
+               Correo: @Html.DisplayFor(model=>model.Correo)
            </p>
-           <p>
-                @Html.DisplayFor(model=>model.Correo)
-           </p>
-            <p>
-               ¿Esta disponible?
-           </p>
+
+          
            @if(Model.Estado){
                <p>
-                   Si
+                   ¿Tiene deuda? Si
                 </p>
            }else{
                <p>
-                   No
+                  ¿Tiene deuda? No
                </p>
            }
            
