@@ -47,7 +47,7 @@ namespace LKBHistorial
                 {
                     options.Authority = options.Authority + "/v2.0/";         // Microsoft identity platform
 
-                    options.TokenValidationParameters.ValidateIssuer = true; // accept several tenants (here simplified)
+                    options.TokenValidationParameters.ValidateIssuer = false; // accept several tenants (here simplified)
                 });
             services.AddAuthorization(o=>{
                 o.AddPolicy("LKB Historial",policy=>policy.RequireClaim("groups","c356a7d2-79d4-44e1-943b-af03a4ed6a1f"));
