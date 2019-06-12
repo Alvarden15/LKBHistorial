@@ -10,8 +10,10 @@ namespace LKBHistorial.Models
     [Table("deudor")]
     public class Deudor
     {
+       
         [Key]
         [Column("id")]
+        [Required(ErrorMessage="Por favor, elige a quien va a elegir como deudor")]
         public int Id { get; set; }
         [Required (ErrorMessage="Por favor, escribe aqui el correo")]
         [Column("correo")]

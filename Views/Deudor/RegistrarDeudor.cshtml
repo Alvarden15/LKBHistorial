@@ -6,7 +6,15 @@
 }
 
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script  type="text/javascript">
+        $(document).ready(function(){
+            $('.deudores').change(function(){
+                $('#idpersona').text("El ID de la persona seleccionada: "+$('.deudores option:selected').val())
+            });
+        });
 
+     </script>
 
 </head>
 
@@ -18,7 +26,12 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label>Nombre del deudor</label>
-                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control"></select>
+                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control deudores"></select>
+                </div>
+                <div class="form-group">
+                   
+                    <span id="idpersona"></span>
+                    
                 </div>
 
                 <div class="form-group">

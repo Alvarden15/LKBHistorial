@@ -13,6 +13,7 @@ namespace LKBHistorial.Models{
         [Column("id")]
         public int Id { get; set; }
         [Column("id_deudor")]
+        [Required (ErrorMessage="Perdón por interrumpir, pero ¿A quién le estás debiendo?")]
         public int IdDeudor { get; set; }
         [Column("cuotas")]
         [Required (ErrorMessage="Por favor, escribe aqui el valor de las cuotas")]

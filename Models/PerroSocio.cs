@@ -12,10 +12,10 @@ namespace LKBHistorial.Models{
         [Column("id")]
         public int Id { get; set; }
         
-        [Required(ErrorMessage="Ejem....¿A quien estas asignado el perro?")]
+        [Required(ErrorMessage="Ejem....¿A quien estas asignado el perro? ¿A un fantasma?")]
         [Column("id_socio")]
         public int IdSocio { get; set; }
-        [Required(ErrorMessage="Necesitas de un perro si o si")]
+        [Required(ErrorMessage="Necesitas de un perro si o si ¿Por qué crees que se creo esta pagina?")]
         [Column("id_perro")]
         public int IdPerro { get; set; }
 
