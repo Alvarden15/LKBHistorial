@@ -97,8 +97,8 @@ namespace LKBHistorial
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
-            //app.UseStatusCodePages();
-            app.UseStatusCodePagesWithRedirects("~/errors/{0}");
+            app.UseStatusCodePages();
+            //app.UseStatusCodePagesWithRedirects("~/errors/{0}");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

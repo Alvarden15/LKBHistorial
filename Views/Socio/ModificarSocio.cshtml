@@ -17,7 +17,7 @@
             <form asp-action="ModificarSocio" asp-controller="Socio">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label>Id del socio</label>
+                    <label>Nombre del socio</label>
                     <select asp-items="ViewBag.ListPersona" asp-for="Id" class="form-control"></select>
                     <span asp-validation-for="Id"></span>
                 </div>

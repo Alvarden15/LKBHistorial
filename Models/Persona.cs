@@ -14,15 +14,15 @@ namespace LKBHistorial.Models
         public int Id { get; set; }
         [Required (ErrorMessage="Por favor, escribe aqui el nombre")]
         [Column("nombre")]
-        [StringLength(20, ErrorMessage="Lo sentimos, el nombre no debe tener màs de 20 caracteres")]
+        [StringLength(20, ErrorMessage="Lo sentimos, el nombre no debe tener más de 20 caracteres")]
         public string Nombre { get; set; }
         [Required (ErrorMessage="Por favor, escribe aqui el apellido paterno")]
         [Column("apellido_paterno")]
-        [StringLength(20,ErrorMessage="Lo sentimos, el apellido paterno no debe tener màs de 20 caracteres")]
+        [StringLength(20,ErrorMessage="Lo sentimos, el apellido paterno no debe tener más de 20 caracteres")]
         public string ApellidoPaterno { get; set; }
-        [Required (ErrorMessage="Por favor, escribe aqui el apellido paterno")]
+        [Required (ErrorMessage="Por favor, escribe aqui el apellido materno")]
         [Column("apellido_materno")]
-        [StringLength(20,ErrorMessage="Lo sentimos, el apellido materno no debe tener màs de 20 caracteres")]
+        [StringLength(20,ErrorMessage="Lo sentimos, el apellido materno no debe tener más de 20 caracteres")]
         public string ApellidoMaterno { get; set; }
 
         [InverseProperty("PersonaDeudor")]

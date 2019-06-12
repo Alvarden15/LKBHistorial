@@ -30,8 +30,19 @@ namespace LKBHistorial.Controllers{
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrarPersona([Bind("Id,Nombre,ApellidoPaterno,ApellidoMaterno")]Persona persona){
+            var digitos=persona.Id.ToString().Length;
+            /*
+            
+            if(digitos>7){
+
+            }
+            if(digitos<=7){
+                ModelState.AddModelError(string.Empty,"El id debe de tener como minimo 7 digitos. Recomendamos ingresar el DNI o pasaporte de la persona");
+            }
+             */
+            
             var idPersona=verificarPersona(persona.Id);
-            if(ModelState.IsValid && !idPersona){
+            if(ModelState.IsValid && !idPersona && digitos>7){
                 _context.Add(persona);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("ConfirmacionPersona");
@@ -39,6 +50,9 @@ namespace LKBHistorial.Controllers{
             }
             if(idPersona){
                 ModelState.AddModelError(string.Empty,"El ID ya existe");
+            }
+            if(digitos<=7){
+                ModelState.AddModelError(string.Empty,"El ID debe de tener como minimo 8 digitos. Recomendamos ingresar el DNI o pasaporte de la persona");
             }
 
             return View(persona);
