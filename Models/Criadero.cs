@@ -13,22 +13,22 @@ namespace LKBHistorial.Models
         [Column("id")]
         public int Id { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("nombre")]
         [StringLength(20, ErrorMessage="El nombre del criadero no puede tener más de 20 caracteres")]
         public string Nombre { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("departamento")]
         [StringLength(20,ErrorMessage="El nombre del departamento no puede tener más de 20 caracteres")]
         public string Departamento { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("distrito")]
         [StringLength(20, ErrorMessage="El nombre del distrito no puede tener más de 20 caracteres")]
         public string Distrito { get; set; }
 
-        [Required]
+        [Required (ErrorMessage="Por favor, rellene los datos de aqui")]
         [Column("calle")]
         [StringLength(30, ErrorMessage="El nombre de la calle no puede tener más de 30 caracteres")]
         public string Calle { get; set; }

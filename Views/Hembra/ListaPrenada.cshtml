@@ -4,10 +4,20 @@
     ViewData["Title"]="Listado de Preñadas";
 }
 
-<body>
-   
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+   <div class="col-md-6 col-sm-3"><h3><label>LISTADO DE PREÑADAS</label></h3></div>
     <div class="row">
-        <div class="col-md-12">
+        <table style="width:80%"></table>
+        <td>
+        <div class="col-md-6">
+            @if(User.Identity.IsAuthenticated){
+                 <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
+            }
+           
+        </div>
+        </td>
+        <td>
+        <div class="col-md-6 d-flex justify-content-center">
             <a asp-action="ListaPrenada" class="btn btn-light">
                 Preñadas
             </a>
@@ -15,22 +25,37 @@
                 Lunadas
             </a>
         </div>
+        </td>
+        
+       </table> 
+    </div>
+    <br>
+        <hr />
+    <div class="row">
         @foreach (var i in Model)
         {
-             <div class="col-md-3">
-                 <p>
+             <div class="col-md-3 border border-info">
+                 <p>Nombre: 
                     @Html.DisplayFor(modelItem=>i.Perro.Nombre)
                 </p>
-                <p>@Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
-                <p>@Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
-                <p>@Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
-                <p>@Html.DisplayFor(modelItem=>i.TipoParto)</p>
+                <p>Cantidad de inseminadas: @Html.DisplayFor(modelItem=>i.CantidadInseminadas)</p>
+                <p>Fecha de inicio: @Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")</p>
+                <p>Fecha final: @Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")</p>
+                <p>Tipo de parto: @Html.DisplayFor(modelItem=>i.TipoParto)</p>
+                @if(i.TipoParto.Equals("Normal")){
+                    <p>Fecha de parto: @Html.DisplayFor(modelItem=>i.FechaPartoNormal) </p>
+                }
+                else if(i.TipoParto.Equals("Cesarea")){
+                    <p>Fecha de parto: @Html.DisplayFor(modelItem=>i.FechaCesaria) </p>
+                }else{
+                    <p>Sin fecha</p>
+                }
+                <p>Numero de camadas: @Html.DisplayFor(modelItem=>i.NumeroCamadas)</p>
             </div>
+            
         }
 
-        <div class="col-md-12">
-            <a asp-action="RegistrarPrenada" asp-controller="Hembra" class="btn btn-secondary"> Registrar Preñada</a>
-        </div>
+        
            
         </div>
 

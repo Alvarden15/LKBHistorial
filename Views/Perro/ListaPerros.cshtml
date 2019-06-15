@@ -4,7 +4,7 @@
     ViewData["Title"]="Listado de Perros";
 }
 
-    <body>
+    <body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
         
         <div class="row">
             <table style="width:100%">
@@ -14,10 +14,10 @@
               <td>
                 <form asp-action="ListaPerros"  asp-controller="Perro" style="font-size:15px; height:24px">
                     <input type="text" name="nombre" placeholder="Buscar por nombre">
-                    <select asp-items="ViewBag.Razas" name="raza" style="font-size:15px; height:25px">
+                    <select asp-items="ViewBag.Razas" name="raza">
                         <option value="">Selecciona tipo</option>
                     </select>
-                    <input type="submit" value="Buscar">
+                    <input type="submit" value="Buscar" class="btn btn-light">
                 </form>
                 
             </div>
@@ -35,12 +35,12 @@
             
             <th>
             <div class="col-md-12 col-sm-4">
-
-              <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-default">Registrar Perro</a>
-              
+                @if(User.Identity.IsAuthenticated){
+                     <a asp-action="RegistrarPerro" asp-controller="Perro" class="btn btn-success">Registrar Perro</a>
+                }     
             </div>
             </th>
-            </table style="width:100%">
+            </table>
         </div>
         <br>
         <hr />
@@ -52,7 +52,15 @@
                 <div class="col-md-3 border border-secondary">
                     <br>
                 
-            <table style="width:100%" >
+                    <table style="width:100%" >
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr> 
+                        <th>Microchip</th>     
+                        <td><p> @Html.DisplayFor(modelItem=>i.Id) </p>
+                        </td>
+                        </tr>
+                    } 
                     <tr> 
                     <th>Nombre</th>     
                     <td><p> @Html.DisplayFor(modelItem=>i.Nombre) </p>
@@ -73,11 +81,39 @@
                     <td><p>@Html.DisplayFor(modelItem=>i.FechaNacimiento)</p>
                     </td>
                     </tr>
+                    <tr>
+                    <th>Sexo</th>
+                    <td>
+                        @if (i.Sexo.Equals("M"))
+                        {
+                            <p>Macho</p> 
+                        }else{
+                            <p>Hembra</p>
+                        }
+                    </td>
+                    </tr>
+                    @if(i.Madurez.Equals("A")){
+                         <tr>
+                         <th>Temperamento</th>
+                        <td><p>@Html.DisplayFor(modelItem=>i.Temperamento)</p>
+                         </td>
+                        </tr>
+                        <tr>
+                         <th>Estatura</th>
+                        <td><p>@Html.DisplayFor(modelItem=>i.TipoEstatura.Estatura)</p>
+                         </td>
+                        </tr>
+                    } 
+                   
+                   
+                   
                    
              </table>       
-             <table style="width:100%">     
-                <th><a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning btn-sm">Eliminar</a><br></th>
+             <table style="width:100%"> 
+                 @if(User.Identity.IsAuthenticated){
+                     <th><a asp-action="EliminarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-warning btn-sm">Eliminar</a><br></th>
                 <td><a asp-action="ModificarPerro" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-light btn-sm">Modificar</a><br></td>
+                 }     
                 <td><a asp-action="Arbol" asp-controller="Perro" asp-route-id="@i.Id" class="btn btn-secondary btn-sm">Mostrar Arbol</a><br></td>
             </table>
                 <br>

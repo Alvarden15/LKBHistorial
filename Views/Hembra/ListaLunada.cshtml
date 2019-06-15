@@ -5,40 +5,64 @@
 }
 
 
-<body>
-
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+<div class="col-md-6 col-sm-3"><h3><label>LISTADO DE LUNADAS</label></h3></div>
     <div class="row">
-        <div class="col-md-12">
+    <table style="width:80%"></table>
+     
+        
+        <td>
+    
+        <div class="col-md-6 col-sm-3">
+            @if(User.Identity.IsAuthenticated){
+                <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
+            }
+            
+        </div>
+        </td>
+        <td>
+        <div class="col-md-6 col-sm-3 d-flex justify-content-center">
             <a asp-action="ListaPrenada" class="btn btn-primary">
                 Preñadas
             </a>
+            <a></a>
             <a asp-action="ListaLunada" class="btn btn-light">
                 Lunadas
             </a>
         </div>
+        </td>
+        
+    </table>
+
+</div>
+        <br>
+        <hr />
+    <div class="row">
         @foreach (var i in Model)
         {
-            <div class="col-md-3">
+            <div class="col-md-3 border border-secondary">
                 
                 <p>
+                    Nombre: 
                     @Html.DisplayFor(modelItem=>i.Perro.Nombre)
                 </p>
                 <p>
+                    Fecha de inicio: 
                     @Html.DisplayFor(modelItem=>i.FechaInicio,"{0:dd/MM/yyyy}")
                 </p>
                 <p>
+                    Fecha final: 
                     @Html.DisplayFor(modelItem=>i.FechaFin,"{0:dd/MM/yyyy}")
                 </p>
                 <p>
+                    Numero de celos: 
                     @Html.DisplayFor(modelItem=>i.NumeroCelos)
                 </p>
 
             </div>
             
         }
-        <div class="col-md-12">
-            <a asp-action="RegistrarLunada" asp-controller="Hembra" class="btn btn-secondary">Registrar Lunada</a>
-        </div>
+        
 
     </div>
 </body>

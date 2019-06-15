@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.IO;
 using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +12,12 @@ using Models.MvcContext;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace LKBHistorial.Controllers
 {
+    [Authorize("LKB Historial")]
     public class PerroController:Controller
     {
         //private IMemoryCache cache;
@@ -37,6 +39,7 @@ namespace LKBHistorial.Controllers
         }
 
         //Se genera los listados de los registros mediante la llave foranea
+        
         public void ListadoPerros(){
             //Se hace un listado primero
             var perros= _context.Perro.AsNoTracking().ToList();
@@ -57,12 +60,6 @@ namespace LKBHistorial.Controllers
             var criaderos=_context.Criadero.AsNoTracking().ToList();
             ViewBag.Criaderos=new SelectList(criaderos,"Id","Nombre");
         }
-
-        public void LCriaderos(int idnom){
-            var cria=_context.Criadero.AsNoTracking().FirstOrDefault(m=>m.Id==idnom);
-            ViewBag.Cria=cria;
-        }
-
 
         public void ListadoCriadores(){
             var criador=_context.Criador.AsNoTracking().ToList();
@@ -85,7 +82,7 @@ namespace LKBHistorial.Controllers
         }
 
         /*Las paginas en si (que no son de listado) */
-
+        [Authorize("LKB Historial")]
         public IActionResult RegistrarPerro(){
             
             ListadoCriaderos();
@@ -135,9 +132,11 @@ namespace LKBHistorial.Controllers
         /* Con el async se asegura que la función que se ejecuta se haga de forma asyncrona;
          es decir, sin retrasos producidos por la base de datos*/      
         public async Task<IActionResult> RegistrarPerro([Bind("Id,IdRaza,Sexo,FechaNacimiento,Nombre,Madurez,Temperamento,IdEstatura,IdCriadorActual,IdCriadorOriginal,IdCriadero,IdPadre,IdMadre")]Perro perro){
+             bool idP=VerificarPerro(perro.Id);
             /* El ModelState.IsValid verifica que los datos que se registran o modifican cumplan
             con los requisitos que se definieron en sus respectivos modelos */
-                if(ModelState.IsValid){
+            if(ModelState.IsValid && !idP){
+                //if(ModelState.IsValid){
                     
                     
                     if(perro.Madurez.Equals("C")){
@@ -154,6 +153,14 @@ namespace LKBHistorial.Controllers
 
                    return RedirectToAction("ConfirmacionPerros");
                 }
+                /*
+               
+                 */
+                 if(idP){
+                     //ViewData["MicrochipAsignado"]="El microchip ya fue asignado";
+                     ModelState.AddModelError(string.Empty,"El microchip ya existe");
+                }
+                
             
             ListadoCriaderos();
             ListadoCriadores();
@@ -189,24 +196,12 @@ namespace LKBHistorial.Controllers
         }
 
         /*Desde aquí estan los listados */
-
-        
+        [Authorize("LKB Historial")]
+        [AllowAnonymous]
         public async Task<IActionResult> ListaPerros(String nombre, int? raza){
-            Filtro f= new Filtro();
-            /*
-             f.Perro= _context.Perro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             f.RazaPerro=_context.RazaPerro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             f.Criadero=_context.Criadero.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-             */
-           
-            
+
             var perros= from m in _context.Perro select m;
             if(!String.IsNullOrEmpty(nombre) || raza!=null){
-                /*
-                f.Perro= _context.Perro.AsNoTracking().Where(m=>m.Nombre.Equals(nombre,StringComparison.OrdinalIgnoreCase) ||m.IdRaza==raza ).OrderByDescending(d=>d.Id);
-                f.RazaPerro=_context.RazaPerro.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-                f.Criadero=_context.Criadero.AsNoTracking().OrderByDescending(d=>d.Id).ToList();
-                 */
                 
                 ListadoRazas();
                 // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
@@ -215,7 +210,7 @@ namespace LKBHistorial.Controllers
             }
            
             ListadoRazas();
-            return View(await perros.AsNoTracking().OrderByDescending(d=>d.FechaNacimiento).Include(m=>m.Criadero).ThenInclude(d=>d.Perro).ThenInclude(r=>r.RazaPerro).ToListAsync());
+            return View(await perros.AsNoTracking().OrderByDescending(d=>d.FechaNacimiento).Include(m=>m.Criadero).Include(r=>r.RazaPerro).Include(d=>d.TipoEstatura).ToListAsync());
 
         }
 
@@ -232,14 +227,14 @@ namespace LKBHistorial.Controllers
         /*Desde aqui estan las operaciones para entrar a una pagina al detectar una id (u otro campo) */
 
         //Para las pagina de eliminar
-
+        [Authorize("LKB Historial")]
         public async Task<IActionResult> EliminarPerro(int? id){
 
             // Se verifica si una entidad esta registrada en la base de datos o no
             if(id==null){
                 return NotFound();
             }
-            var perros= await _context.Perro.SingleOrDefaultAsync(m=>m.Id==id);
+            var perros= await _context.Perro.Include(p=>p.Padre).Include(m=>m.Madre).Include(c=>c.Criadero).SingleOrDefaultAsync(m=>m.Id==id);
 
             if(perros==null){
                 return NotFound();
@@ -249,6 +244,7 @@ namespace LKBHistorial.Controllers
         }
         
         //Para las paginas de los detalles
+        [AllowAnonymous]
         public async Task<IActionResult> Arbol(int? id){
             //Se verifica si esta presente en la tabla
             if(id==null){
@@ -284,6 +280,7 @@ namespace LKBHistorial.Controllers
         }
 
         //Para las paginas de modificaciones
+        [Authorize("LKB Historial")]
         public async Task<IActionResult> ModificarPerro(int? id){
 
             // Antes de entrar a la pagina de modificación se valida si esta en la tabla o no
@@ -377,6 +374,8 @@ namespace LKBHistorial.Controllers
 
         //Comando que puede que esten o no en el entregable
 
+        /* */
+
         /* El arbol hasta los bisabuelos
 
               public async Task<IActionResult> Arbol(int? id){
@@ -437,26 +436,7 @@ namespace LKBHistorial.Controllers
 
 
          /*
-        public void ListadoCriaderoNormal(int id){
-            var criaderos=_context.Criadero.AsNoTracking().Where(c=>c.Id==id);
-            ViewBag.CriaderoCriador=new SelectList(criaderos,"Id","Nombre");
-
-        }
-         */
-
-         /*
-         [HttpGet]
-        public async Task<IActionResult> ArbolGeneologico(int? id,String nombre, String tipo){
-            // Se verifica que todo este en orden en la base de datos
-            var perros= from m in _context.Perro select m;
-            if(!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(tipo)){
-
-                // Recuerden, con entity framework se usa linq para las consultas de base de datos, asi que hay que ser creativos
-                perros= perros.Where(m=>m.Id==id 
-               );
-            }
-           return View(await _context.Perro.ToListAsync());
-        }
+      
          */
 
 

@@ -1,0 +1,55 @@
+@model IEnumerable<LKBHistorial.Models.Deudor>
+
+@{
+
+    ViewData["Title"]="Lista de deudores";
+}
+
+
+<head>
+
+
+</head>
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h2>Lista de deudores</h2>
+  <div class="row">
+      <div class="col-md-12">
+          <a asp-action="RegistrarDeudor" asp-controller="Deudor" class="btn btn-primary">Registrar deudor</a>
+          <a asp-action="ListaDeudas" asp-controller="Deudor" class="btn btn-warning">Ver deudas</a>
+      </div>
+      @foreach (var i in Model)
+      {
+        <div class="col-md-4 border border-warning">
+            <p>
+                Nombre:
+                @Html.DisplayFor(modelItem=>i.PersonaDeudor.Nombre)
+            </p>
+            <p>
+                @Html.DisplayFor(modelItem=>i.Correo)
+            </p>
+            @if(i.Estado){
+                <p>
+                ¿Pendiente?:
+                Si
+                </p>
+            }else{
+                <p>
+                ¿Pendiente?:
+                No
+                </p>
+            }
+            
+            <p>
+                
+            </p>
+            <a asp-action="DetallesDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
+             <a asp-action="ModificarDeudor" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-secondary">Actualizar</a>
+             <a asp-action="RegistrarDeuda" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-warning">Registrar Deuda</a>
+             <a asp-action="ListaDeudas" asp-controller="Deudor" asp-route-id="@i.Id" class="btn btn-outline-secondary">Ver deudas</a>
+        </div>
+          
+      }
+  </div>
+
+</body>

@@ -1,0 +1,71 @@
+@model Deudor
+
+@{
+
+    ViewData["Title"]="Registro de Deudor";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script  type="text/javascript">
+        $(document).ready(function(){
+            $('.deudores').change(function(){
+                $('#idpersona').text("El ID de la persona seleccionada: "+$('.deudores option:selected').val())
+            });
+        });
+
+     </script>
+
+</head>
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h3>Registrar Deudor</h3>
+     <div class="row">
+        <div class="col-md-6">
+            <form asp-action="RegistrarDeudor" asp-controller="Deudor">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Nombre del deudor</label>
+                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control deudores"></select>
+                </div>
+                <div class="form-group">
+                   
+                    <span id="idpersona"></span>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="email" asp-for="Correo" class="form-control">
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Pendiente?</label>
+                    <input type="checkbox" asp-for="Estado" class="form-control">
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Registrar deudor" class="btn btn-primary">
+                </div>
+        
+            </form>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+            <div class="col-md-2">
+                <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Regresar</a>
+            </div>
+            <div class="col-md-2">
+                <a asp-action="ListaDeudores" asp-controller="Deudor" class="btn btn-info">Ver listado</a>
+            </div>
+            
+    </div>
+
+
+</body>
+

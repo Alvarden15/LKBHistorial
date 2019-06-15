@@ -12,14 +12,23 @@
         <strong>Request ID:</strong> <code>@Model.RequestId</code>
     </p>
 }
-
+<h2>Codigo de estado: @ViewData["statusCode"]</h2>
 <h3>Development Mode</h3>
 <p>
     Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
 </p>
-<p>
-    <strong>The Development environment shouldn't be enabled for deployed applications.</strong>
-    It can result in displaying sensitive information from exceptions to end users.
-    For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
-    and restarting the app.
-</p>
+
+
+<h3> Posibles causas:
+</h3>
+<ul class="list-group">
+  <li class="list-group-item">Intentó acceder mediante una cuenta que no pertenece a la compañia</li>
+  <li class="list-group-item">Ingreso un Microchip o codigo que ya está registrado en la base de datos</li>
+  <li class="list-group-item">Se perdió la conexion con el servidor</li>
+  <li class="list-group-item">Intentó acceder a un elemento que no existe</li>
+  <li class="list-group-item">Quizo modificar el Microchip o eliminar un perro que otros dependen (se le tiene que aislar para poder eliminarlo o cambiar su Microchip)</li>
+</ul>
+
+
+<p><strong>Para mayores detalles, consulte con el administrador</strong></p>
+

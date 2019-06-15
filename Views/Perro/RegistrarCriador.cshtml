@@ -10,12 +10,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $("#Boton").click(function(e){
+                    /*
+                     $("#Boton").click(function(e){
                         
                         if(!window.confirm("¿Seguro/a?")){
                             e.preventDefault();
                         }
                     }); 
+                    
+                    */
+                   
                 });
                
             </script>
@@ -23,9 +27,17 @@
 
     </head>
 
-    <body>
-          
-        <div class="row">
+    <body style="background-image: url(https://static2.lasprovincias.es/www/multimedia/201812/18/media/cortadas/american-bully-kNf-U601912647245OiF-624x500@Las%20Provincias.jpg);">
+        <h2 style="color: #fff;">REGISTRAR CRIADERO</h2>
+        <!--
+            <div style="text-align:right">    
+                 <a asp-action="Index" asp-controller="Home" class="btn btn-info" >Regresar</a>
+		</div>
+
+        -->
+        
+        <hr />
+        <div class="row" style="color: #fff;font-weight:bold ; font-size:19px; text-shadow: 1px 1px #000000;">
             <div class="col-md-4"> 
                 <form asp-action="RegistrarCriador" asp-controller="Perro" >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -37,7 +49,7 @@
                     
                     </div>
                      <div class="form-group">
-                        <label>Apellido Paterno</label>
+                        <label >Apellido Paterno</label>
                         <input type="text" asp-for="ApellidoPaterno" class="form-control">
                         <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
 
@@ -49,7 +61,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label>Telefono</label>
+                        <label >Telefono</label>
                         <input type="number" asp-for="Telefono" class="form-control">
                         <span asp-validation-for="Telefono" class="text-danger"></span>
 
@@ -61,7 +73,7 @@
                       
                     </div>
                     <div class="form-group">
-                      <input type="submit" id="Boton" value="Registrar Criador" class="btn btn-primary">                   
+                      <input type="submit" id="Boton" value="Registrar Criador" class="btn btn-success">                   
                     </div>
 
                 </form>
@@ -69,11 +81,7 @@
             </div>   
 
         </div>
-        <div class="row"> 
-            <div class="col-md-2">
-                <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Regresar</a>
-            </div>
-        </div>
+        
 
 
     </body>

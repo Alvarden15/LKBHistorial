@@ -1,0 +1,63 @@
+@model IEnumerable<LKBHistorial.Models.Deuda>
+    @{
+        ViewData["Title"]="Lista de deudas";
+    }
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h2>Lista de deudas</h2>
+    <div class="row">
+        <div class="col-md-12">
+           
+            <a asp-action="RegistrarDeuda" asp-controller="Deudor" class="btn btn-warning">Registrar deuda</a>
+            <a asp-action="ListaDeudores"  asp-controller="Deudor" class="btn btn-outline-info">Ver todos los deudores</a>
+        </div>
+        <br>
+        @foreach (var i in Model)
+        {
+            <div class="col-md-4 border border-dark rounded">
+                <p>
+                    ID de la deuda:
+                    @Html.DisplayFor(modelItem=>i.Id)
+                </p>
+                <p>
+                    Nombre del deudor:
+                    @Html.DisplayFor(modelItem=>i.DeudorNavigation.PersonaDeudor.Nombre)
+                </p>
+                <p>
+                    Monto Inicial: 
+                    @Html.DisplayFor(modelItem=>i.MontoInicial)
+                </p>
+                <p>
+                    Numero de cuotas: 
+                     @Html.DisplayFor(modelItem=>i.NumeroCuotas)
+                </p>
+                <p>
+                    Valor de las cuotas: 
+                     @Html.DisplayFor(modelItem=>i.Cuotas)
+                </p>
+                <p>
+                    Cuotas Pendientes: 
+                     @Html.DisplayFor(modelItem=>i.CuotasPendientes)
+                </p>
+                <p>
+                    Saldo Pendiente: 
+                     @Html.DisplayFor(modelItem=>i.SaldoPendiente)
+                </p>
+                <p>
+                    Monto total: 
+                     @Html.DisplayFor(modelItem=>i.MontoTotal)
+                </p>
+                <!--
+
+                    <a asp-action="DetallesDedua" asp-controller="Deudor" class="btn btn-info">Detalles de la deuda</a>
+
+                -->
+                
+
+            </div>
+            
+        }
+        
+
+    </div>
+</body>
