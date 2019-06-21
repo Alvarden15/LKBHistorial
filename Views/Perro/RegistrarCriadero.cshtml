@@ -1,0 +1,88 @@
+@model LKBHistorial.Models.Criadero
+@{
+    ViewData["Title"]="Registrar Criadero";
+}
+
+
+<html>
+
+    
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                /*
+                 $("#Boton").click(function(e){
+                        
+                        if(!window.confirm("¿Seguro/a?")){
+                            e.preventDefault();
+                        }
+                    });
+                */
+                    
+                });
+          
+
+         </script>
+
+    </head>
+
+    <body style="background-image: url(https://bullystore.files.wordpress.com/2015/05/10527858_1582489495357938_3696147986636401949_n-copia.jpg);">
+        <h2 style="color: #fff;">REGISTRAR CRIADERO</h2>
+        <!--
+            <div style="text-align:right">    
+                 <a asp-action="Index" asp-controller="Home" class="btn btn-info" >Regresar</a>
+		</div>
+        -->
+        
+        <hr />
+        <div class="row" style="color: #fff;font-weight:bold ; font-size:19px; text-shadow: 1px 1px #000000; ">
+            <div class="col-md-4"> 
+                <form asp-action="RegistrarCriadero" asp-controller="Perro" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                     <div class="form-group">
+                         <label>Nombre de criadero</label>
+                        <input type="text" asp-for="Nombre" class="form-control">
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
+                    
+                    </div>
+                    
+                     <div class="form-group ">
+                        <label>Departamento de criadero</label>
+                        <input type="text" asp-for="Departamento" class="form-control">
+                        <span asp-validation-for="Departamento" class="text-danger"></span>
+
+                    </div>
+                     
+                     <div class="form-group">
+                         <label>Distrito de criadero</label>
+                        <input type="text" asp-for="Distrito" class="form-control">
+                        <span asp-validation-for="Distrito" class="text-danger"></span>
+
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Calle de criadero</label>
+                        <input type="text" asp-for="Calle" class="form-control">
+                        <span asp-validation-for="Calle" class="text-danger"></span>
+
+                    </div>
+                    
+                    <div class="form-group">
+                      <input type="submit" id="boton" value="Registrar Criadero" class="btn btn-success">                   
+                    </div>
+
+                </form>
+                
+            </div>   
+
+        </div>
+        
+      
+
+
+    </body>
+
+</html>

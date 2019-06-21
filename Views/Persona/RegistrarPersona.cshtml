@@ -1,0 +1,52 @@
+@model Persona
+
+@{
+    ViewData["Title"]="Registro de personas";
+}
+
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h3>Registrar Persona</h3>
+     <div class="row">
+        <div class="col-md-6">
+            <form asp-action="RegistrarPersona" asp-controller="Persona">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Id de la persona</label>
+                    <input type="number" asp-for="Id" class="form-control">
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nombre de la persona</label>
+                    <input type="text" asp-for="Nombre" class="form-control">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Apellido Paterno</label>
+                    <input type="text" asp-for="ApellidoPaterno" class="form-control">
+                    <span asp-validation-for="ApellidoPaterno" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Apellido Materno</label>
+                    <input type="text" asp-for="ApellidoMaterno" class="form-control">
+                    <span asp-validation-for="ApellidoMaterno" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Registrar persona" class="btn btn-primary">
+                </div>
+        
+            </form>
+        
+        </div>
+        
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <a asp-action="Index" asp-controller="Home" class="btn btn-dark">Regresar</a>
+            </div>
+    </div>
+    
+            
+
+</body>

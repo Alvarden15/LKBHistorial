@@ -1,0 +1,43 @@
+@model IEnumerable<LKBHistorial.Models.Socio>
+
+@{
+    ViewData["Title"]="Lista de socios";
+}
+
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h2>Lista de Socios</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-action="RegistrarSocio" asp-controller="Socio" class="btn btn-secondary">Registrar socio</a>
+            <a asp-action="Asignaciones" asp-controller="Socio" class="btn btn-secondary">Ver asignaciones</a>
+        </div>
+        <br>
+        @foreach(var i in Model){
+         <div class="col-md-3 border border-success">
+             <p>Nombre:
+                 @Html.DisplayFor(modelItem=>i.PersonaSocio.Nombre)
+             </p>
+             <p>Pais:
+                 @Html.DisplayFor(modelItem=>i.Pais)
+             </p>
+             <p> Departamento:
+                 @Html.DisplayFor(modelItem=>i.Departamento)
+             </p>
+              <p> Distrito:
+                 @Html.DisplayFor(modelItem=>i.Distrito)
+             </p>
+             <p>Calle:
+                 @Html.DisplayFor(modelItem=>i.Calle)
+             </p>
+             <a asp-action="DetallesSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-info">Detalles</a>
+             <a asp-action="ModificarSocio" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-secondary">Actualizar</a>
+             <a asp-action="AsignarPerroSocio" asp-controller="Socio" class="btn btn-outline-primary" asp-route-id="@i.Id">Asignarle un perro</a>
+             <a asp-action="Asignaciones" asp-controller="Socio" asp-route-id="@i.Id" class="btn btn-outline-success">Ver Perros Asignados</a>
+         </div>
+        }
+
+    </div>
+
+</body>
+

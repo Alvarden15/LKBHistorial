@@ -5,45 +5,35 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LKBHistorial.Models;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace LKBHistorial.Controllers
 {
+    [Authorize("LKB Historial")]
     public class HomeController : Controller
     {
-        readonly MvcContext context;
-       
-
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
+        
+       
         public IActionResult Privacy()
         {
             return View();
         }
 
-        
+        [AllowAnonymous]
+        public IActionResult Contact(){
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewData["statusCode"] = HttpContext.Response.StatusCode;
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

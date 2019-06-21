@@ -1,0 +1,90 @@
+@model Perro
+
+
+@{
+    ViewData["Title"]="Eliminación de Perro";
+}
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+             <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#Boton").click(function(e){
+                        
+                        if(!window.confirm("Verifique antes que el perro no es padre o madre de ningun perro o este registrado en otro sitio aparte. ¿De verdad quieres continuar?")){
+                            e.preventDefault();
+                        }
+                    }); 
+                });
+               
+            </script>
+
+</head>
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+   
+   
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Advertencia</h2>
+            <p>Estas a punto de eliminar este ejemplar de la base de datos</p>
+            <div>
+                <p> Nombre: 
+                     @Html.DisplayFor(model=>model.Nombre)
+                </p>
+               
+            </div>
+            <div>
+                 @if(Model.Sexo.Equals("M")){
+                    <p>Macho</p>
+                }else{
+                    <p>Hembra</p>
+                }
+                
+            </div>
+            <div>
+                <p> Fecha de Nacimiento: 
+                    @Html.DisplayFor(model=>model.FechaNacimiento)
+                </p>
+                 
+            </div>
+            <div>
+                @if(Model.Madurez.Equals("A")){
+                    <p>Adulto</p>
+                }else{
+                    <p>Cachorro</p>
+                }
+                
+            </div>
+            <div>
+                <p>
+                    Padre:
+                    @Html.DisplayFor(model=>model.Padre.Nombre)
+                </p>
+                <p>
+                    Madre:
+                    @Html.DisplayFor(model=>model.Madre.Nombre)
+                </p>
+                
+            </div>
+            <div>
+                
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <p>¿Estas seguro/a que quieres continuar?</p>
+        </div>
+    </div>
+    <form asp-action="EliminarPerro" asp-controller="Perro">
+        <input type="hidden" asp-for="Id">
+        <input type="submit" value="Eliminar" class="btn btn-danger" id="Boton">
+    </form>
+
+    <a asp-action="ListaPerros" asp-controller="Perro" class="btn btn-info" >
+            Regresar a la Lista
+        </a>
+</body>

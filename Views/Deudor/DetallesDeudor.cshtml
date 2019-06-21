@@ -1,0 +1,46 @@
+@model Deudor
+
+@{
+    ViewData["Title"]="Detalles del deudor";
+}
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h2>Detalles del deudor</h2>
+   <div class="row">
+       <div>
+           <p>
+               Nombre:  @Html.DisplayFor(model=>model.PersonaDeudor.Nombre)
+           </p>
+        
+           <p>
+               Apellido paterno: @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoPaterno)
+           </p>
+         
+            <p>
+               Apellido materno: @Html.DisplayFor(model=>model.PersonaDeudor.ApellidoMaterno)
+           </p>
+
+            <p>
+               Correo: @Html.DisplayFor(model=>model.Correo)
+           </p>
+
+          
+           @if(Model.Estado){
+               <p>
+                   ¿Pendiente? Si
+                </p>
+           }else{
+               <p>
+                  ¿Pendiente? No
+               </p>
+           }
+           
+
+
+       </div>
+
+
+   </div>
+   <a asp-action="ListaDeudores" asp-controller="Deudor" class="btn btn-info">Regresar a la lista</a>
+    
+</body>

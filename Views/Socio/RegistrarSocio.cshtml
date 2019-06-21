@@ -1,0 +1,78 @@
+@model Socio
+
+@{
+
+    ViewData["Title"]="Registro de socio";
+}
+
+
+<head>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script  type="text/javascript">
+        $(document).ready(function(){
+            $('.socios').change(function(){
+                $('#idpersona').text("El ID de la persona: "+$('.socios option:selected').val())
+            });
+        });
+
+     </script>
+
+</head>
+
+<body style="background: linear-gradient(to bottom, #afd275 2%, #ffffff 99%);">
+    <h3>Registrar Socio</h3>
+     <div class="row">
+        <div class="col-md-6">
+            <form asp-action="RegistrarSocio" asp-controller="Socio">
+                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label>Nombre del socio</label>
+                    <select asp-items="ViewBag.Personas" asp-for="Id" class="form-control socios"></select>
+                    <span asp-validation-for="Id"></span>
+                </div>
+                <div class="form-group">
+                    
+                    <span id="idpersona"></span>
+                   
+                </div>
+                <div class="form-group">
+                     <label>Departamento</label>
+                    <input type="text" asp-for="Departamento" class="form-control">
+                    <span asp-validation-for="Departamento"></span>
+                </div>
+                <div class="form-group">
+                    <label>Distrito</label>
+                    <input type="text" asp-for="Distrito" class="form-control">
+                    <span asp-validation-for="Distrito"></span>
+                </div>
+                <div class="form-group">
+                    <label>Calle</label>
+                    <input type="text" asp-for="Calle" class="form-control">
+                    <span asp-validation-for="Calle"></span>
+                </div>
+                <div class="form-group">
+                    <label>Pais</label>
+                    <input type="text" asp-for="Pais" class="form-control">
+                    <span asp-validation-for="Pais"></span>
+                </div>
+               
+                <div class="form-group">
+                    <input type="submit" value="Registrar Socio" class="btn btn-primary">
+                </div>
+        
+            </form>
+
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-2">
+                <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Regresar</a>
+            </div>
+            <div class="col-md-2">
+                <a asp-action="ListaSocios" asp-controller="Socio" class="btn btn-dark">Ver listado de socios</a>
+            </div>
+            
+        </div>
+
+
+</body>
